@@ -32,3 +32,26 @@
 #error403 div a:hover, #error404 div a:hover {
     text-decoration: underline;
 }
+
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap:15px;
+    padding: 0;
+}
+
+.navbar ul li{
+    width: max-content;
+}
+.navbar ul a{
+    width: max-content;
+    text-decoration: none;
+}
