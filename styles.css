@@ -20,6 +20,15 @@ h1, h2 {
     font-family: 'Source Sans 3';
 }
 
+a {
+    text-decoration-thickness: 5px;
+    text-decoration-color: var(--azul);
+    color: var(--gris-claro);
+    font-weight: bold;
+    transition: color .1s linear;
+}
+
+a:hover { color: var(--azul); }
 
 #error403, #error404 {
     background-color: #1E1E1E;
@@ -31,7 +40,7 @@ h1, h2 {
 }
 
 #error403 div, #error404 div {
-    color: white;
+    color: var(--gris-claro);
     text-align: center;
 }
 
@@ -46,16 +55,15 @@ h1, h2 {
 }
 
 #error403 div a, #error404 div a {
-    /*text-decoration: none;*/
     text-decoration-thickness: 5px;
     text-decoration-color: var(--azul);
-    color: white;
+    color: var(--gris-claro);
     font-weight: bold;
     font-size: 40px;
     transition: color .1s linear;
 }
 
 #error403 div a:hover, #error404 div a:hover {
-    /*text-decoration: underline;*/
     color: var(--azul);
 }
+
