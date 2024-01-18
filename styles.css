@@ -1,0 +1,34 @@
+#error403, #error404 {
+    background-color: #1E1E1E;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#error403 div, #error404 div {
+    color: white;
+    text-align: center;
+}
+
+#error403 div h1, #error404 div h1 {
+    font-size: 150px;
+    margin: 10px auto;
+}
+
+#error403 div p, #error404 div p {
+    font-size: 30px;
+    margin-bottom: 15%;
+}
+
+#error403 div a, #error404 div a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#error403 div a:hover, #error404 div a:hover {
+    text-decoration: underline;
+}
