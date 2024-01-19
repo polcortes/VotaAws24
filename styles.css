@@ -38,6 +38,182 @@ a {
     transition: color .1s linear;
 }
 
+
+body {
+    background-color: var(--gris-oscuro);
+    margin: 0;
+}
+
+/* Login */ 
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 55px auto;
+}
+
+#login h1 {
+    font-size: 75px;
+}
+
+#login form {
+    margin: 25px auto;
+    width: 20%;
+}
+
+#login input {
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
+}
+
+#login input::placeholder {
+    color: var(--gris-claro);
+}
+
+#login button {
+    background-color: var(--gris-oscuro);
+    border: var(--gris-claro) 3px solid;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 30px auto;
+    font-size: larger;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+}
+
+#login button:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    font-weight: bold;
+}
+
+/* Dashboard */
+#dashboard {
+    padding: 20px;
+    text-align: center;
+    margin: 45px auto;
+}
+
+#dashboard h1 {
+    font-size: 55px;
+    margin: 35px;
+}
+
+#dashboard ul {
+    list-style: none;
+    margin: 50px auto;
+    margin-bottom: 90px;
+    width: 50%;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: space-around;
+    color: var(--gris-oscuro);
+}
+
+#dashboard li {
+    background-color: var(--gris-claro);
+    padding: 80px 50px;
+    border-radius: 20px;
+}
+
+#dashboard li:first-child {
+    grid-column: span 1;
+    grid-row: span 2;
+    font-size: 18px;
+    padding: 100px;
+}
+
+/* Centra todo el contenido dentro de los elementos <li> */
+#dashboard li > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px;
+    color: var(--gris-oscuro);
+    text-decoration: none;
+    font-weight: bold;
+    transition: scale .5s;
+}
+
+#dashboard li > a:hover {
+    scale: 1.5;
+    text-decoration: underline;
+}
+
+#dashboard #logout {
+    margin-top: 80px;
+    text-decoration: none;
+    border: solid 3px var(--gris-claro);
+    padding: 15px 30px;
+    border-radius: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    font-size: larger;
+    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+}
+
+#dashboard #logout:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    font-weight: bold;
+}
+/*Errores */
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --azul: #32b9be;
+    --rojo: #FF2525;
+    --amarillo: #FFCD1D;
+    --verde: #21FF2A;
+    --gris-oscuro: #272727;
+    --gris-claro: #D9D9D9;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gris-claro);
+}
+
+h1, h2 {
+    font-family: 'Source Sans 3';
+    margin: 0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: var(--gris-oscuro);
+}
+
+a {
+    text-decoration-thickness: 5px;
+    text-decoration-color: var(--azul);
+    color: var(--gris-claro);
+    font-weight: bold;
+    transition: color .1s linear;
+}
+
 a:hover { color: var(--azul); }
 
 #error403, #error404 {
@@ -50,6 +226,7 @@ a:hover { color: var(--azul); }
 }
 
 #error403 div, #error404 div {
+    color: var(--gris-claro);
     color: var(--gris-claro);
     text-align: center;
 }
@@ -68,8 +245,10 @@ a:hover { color: var(--azul); }
     text-decoration-thickness: 5px;
     text-decoration-color: var(--azul);
     color: var(--gris-claro);
+    color: var(--gris-claro);
     font-weight: bold;
     font-size: 40px;
+    transition: color .1s linear;
     transition: color .1s linear;
 }
 
