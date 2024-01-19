@@ -18,6 +18,16 @@
 
 h1, h2 {
     font-family: 'Source Sans 3';
+    margin: 0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: var(--gris-oscuro);
 }
 
 a {
@@ -67,3 +77,125 @@ a:hover { color: var(--azul); }
     color: var(--azul);
 }
 
+#crear-cuenta main {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#crear-cuenta h1 {
+    font-size: 60px;
+    margin-bottom: 50px;
+
+}
+
+#crear-cuenta form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#crear-cuenta label {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#crear-cuenta form > input + label,
+#crear-cuenta form > select + label {
+    margin-top: 20px;
+}
+
+#crear-cuenta input:not([type="submit"]),
+#crear-cuenta select {
+    width: 500px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 3px var(--gris-claro);
+    outline: none;
+    transition: border-bottom .3s linear;
+}
+
+#crear-cuenta input:not([type="submit"]):focus {
+    border-bottom: solid 3px var(--azul);
+}
+
+#crear-cuenta select > option {
+    background-color: var(--gris-claro);
+    border: var(--azul);
+}
+
+#crear-cuenta select > option:not(:disabled) {
+    color: var(--gris-oscuro);
+}
+
+#crear-cuenta select > option:hover {
+    background-color: var(--azul);
+}
+
+#crear-cuenta input[type="submit"] {
+    margin-top: 50px;
+    width: 200px;
+    color: var(--gris-claro);
+    background-color: transparent;
+    border: 3px solid var(--gris-claro);
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    transition: color .3s linear, background-color .3s linear;
+}
+
+#crear-cuenta input[type="submit"]:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+}
+
+#crear-cuenta input[type="submit"]:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+/* Chrome, Safari, Edge, Opera */
+#crear-cuenta input::-webkit-outer-spin-button,
+#crear-cuenta input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#crear-cuenta input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#crear-cuenta span.required {
+    color: var(--rojo);
+    padding-left: 5px;
+}
+
+#crear-cuenta form > div.divisor {
+    display: flex;
+    gap: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#crear-cuenta form > div.divisor span {
+    display: flex;
+    flex-direction: column;
+}
+
+#crear-cuenta form > div.divisor span > label {
+    display: flex;
+}
+
+#crear-cuenta form > div.divisor span > input {
+    width: 230px;
+}
