@@ -27,23 +27,33 @@ body {
 }
 
 /* Login */ 
-
 #login {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    margin: 55px auto;
+}
+
+#login h1 {
+    font-size: 75px;
+}
+
+#login form {
+    margin: 25px auto;
+    width: 20%;
 }
 
 #login input {
     background-color: var(--gris-oscuro);
     border: none;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     width: 100%;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--gris-claro);
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
 }
 
 #login input::placeholder {
@@ -52,13 +62,59 @@ body {
 
 #login button {
     background-color: var(--gris-oscuro);
-    border: var(--gris-claro) 1px solid;
+    border: var(--gris-claro) 3px solid;
     text-align: center;
     cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 15px 30px;
+    border-radius: 15px;
     display: inline-block;
-    margin: 0 auto;
+    margin: 30px auto;
+    font-size: larger;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+}
+
+#login button:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    font-weight: bold;
+}
+
+/* Dashboard */
+#dashboard {
+    padding: 20px;
+    text-align: center;
+    color: var(--gris-oscuro);
+}
+
+#dashboard h1 {
+    font-size: 24px;
+}
+
+#dashboard ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    color: var(--gris-oscuro);
+}
+
+#dashboard li {
+    background-color: var(--gris-claro);
+    margin: 10px;
+    padding: 10px;
+    color: var(--gris-oscuro);
+}
+
+#dashboard li:first-child {
+    padding: 15 30px; /* Padding más grande para el primer elemento li */
+}
+
+#dashboard a {
+    text-decoration: none;
+    color: var(--gris-oscuro);
+    font-weight: bold;
 }
 
 /*Errores */

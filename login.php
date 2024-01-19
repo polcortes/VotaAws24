@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +9,46 @@
 <body>
     <main id="login">
         <h1>Iniciar sesión</h1>
-        <form method="post">
-            <input type="email" id="email" placeholder="email" required>
+        <form method="post" action="">
+            <input type="email" name="email" placeholder="email" required>
             <br>
-            <input type="password" id="password" placeholder="contraseña" required>
+            <input type="password" name="password" placeholder="contraseña" required>
             <br>
             <button type="submit">Iniciar sesión</button>
         </form>
     </main>
 </body>
 </html>
+
+<?php
+session_start();
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Cambiar parámetros, conexión a BD
+    $dsn = "mysql:host=*;dbname=*";
+    $pdo = new PDO($dsn, '', '');
+
+    // Cambiar query
+    $query = $pdo->prepare("SELECT * FROM * WHERE * = SHA2(:pwd, 512) AND nom = :email");
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->bindParam(':pwd', $password, PDO::PARAM_STR);
+    
+    $query->execute();
+    
+    $row = $query->fetch();
+
+    // Cambiar parámetro dentro de $row
+    if ($row) {
+        $_SESSION['usuario'] = $row['*'];
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        // Añadir las notificaciones
+        echo "Login Incorrecto";
+    }
+}
+?>
