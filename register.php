@@ -6,6 +6,7 @@
     <title>Crear una nueva cuenta | Vota!</title>
     <meta name="description" content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body id="crear-cuenta">
     <main>
@@ -54,5 +55,15 @@
             <input type="submit" value="Crear cuenta">
         </form>
     </main>
+
+    <ul id="notification__list">
+        <div>
+            <svg></svg>
+            <span></span>
+            <svg></svg>
+        </div>
+    </ul>
+
+    <script src="componentes/notificationHandler.js"></script>
 </body>
 </html>
