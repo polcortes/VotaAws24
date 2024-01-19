@@ -66,7 +66,7 @@ body {
     text-align: center;
     cursor: pointer;
     padding: 15px 30px;
-    border-radius: 15px;
+    border-radius: 20px;
     display: inline-block;
     margin: 30px auto;
     font-size: larger;
@@ -85,38 +85,76 @@ body {
 #dashboard {
     padding: 20px;
     text-align: center;
-    color: var(--gris-oscuro);
+    margin: 45px auto;
 }
 
 #dashboard h1 {
-    font-size: 24px;
+    font-size: 55px;
+    margin: 35px;
 }
 
 #dashboard ul {
     list-style: none;
+    margin: 50px auto;
+    margin-bottom: 90px;
+    width: 50%;
     padding: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     justify-content: space-around;
     color: var(--gris-oscuro);
 }
 
 #dashboard li {
     background-color: var(--gris-claro);
-    margin: 10px;
-    padding: 10px;
-    color: var(--gris-oscuro);
+    padding: 80px 50px;
+    border-radius: 20px;
 }
 
 #dashboard li:first-child {
-    padding: 15 30px; /* Padding más grande para el primer elemento li */
+    grid-column: span 1;
+    grid-row: span 2;
+    font-size: 18px;
+    padding: 100px;
 }
 
-#dashboard a {
+/* Centra todo el contenido dentro de los elementos <li> */
+#dashboard li > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px;
+    color: var(--gris-oscuro);
     text-decoration: none;
+    font-weight: bold;
+    transition: scale .5s;
+}
+
+#dashboard li > a:hover {
+    scale: 1.5;
+    text-decoration: underline;
+}
+
+#dashboard #logout {
+    margin-top: 80px;
+    text-decoration: none;
+    border: solid 3px var(--gris-claro);
+    padding: 15px 30px;
+    border-radius: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    font-size: larger;
+    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+}
+
+#dashboard #logout:hover {
+    background-color: var(--gris-claro);
     color: var(--gris-oscuro);
     font-weight: bold;
 }
-
 /*Errores */
 #error403, #error404 {
     background-color: #1E1E1E;

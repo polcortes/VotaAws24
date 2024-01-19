@@ -22,12 +22,12 @@ session_start();
         <h1>Bienvenido, Usuario</h1>
         
         <ul>
-            <li><a href="">Ver mis encuestas</a></li>
-            <li><a href="">Crear encuestas</a></li>
-            <li><a href="">Ver todas la encuestas</a></li>
+            <li><a href="list_polls.php">Ver mis encuestas</a></li>
+            <li><a href="create_poll.php">Crear encuestas</a></li>
+            <li><a href="#">Ver todas las encuestas</a></li>
         </ul>
         
-        <a href="logout.php">Cerrar sesión</a>
+        <a id="logout" href="logout.php">Cerrar sesión</a>
     </main>
 </body>
 </html>
