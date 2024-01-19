@@ -12,5 +12,8 @@
         <p>La página que estabas buscando no existe</p>
         <a href="../index.php">Volver a inicio</a>
     </div>
+    <?php
+include_once("common/footer.php")
+?>
 </body>
 </html>

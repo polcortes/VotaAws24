@@ -17,7 +17,7 @@ html{
 
 * {
     font-family: 'Montserrat', sans-serif;
-    color: var(--gris-oscuro);
+    color: var(--gris-claro);
 }
 
 h1, h2 {
@@ -55,11 +55,12 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    margin: 55px auto;
+    margin: 90px auto;
 }
 
 #login h1 {
     font-size: 75px;
+    margin: 35px auto;
 }
 
 #login form {
@@ -91,28 +92,28 @@ body {
     border-radius: 20px;
     display: inline-block;
     margin: 30px auto;
+    font-weight: bold;
     font-size: larger;
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #login button:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
-    font-weight: bold;
 }
 
 /* Dashboard */
 #dashboard {
     padding: 20px;
     text-align: center;
-    margin: 45px auto;
+    margin: auto;
 }
 
 #dashboard h1 {
     font-size: 55px;
-    margin: 35px;
+    margin: 10px;
 }
 
 #dashboard ul {
@@ -169,13 +170,12 @@ body {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     font-size: larger;
-    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-#dashboard #logout:hover {
+#logout:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
-    font-weight: bold;
 }
 
 a:hover { color: var(--azul); }
@@ -354,13 +354,13 @@ a:hover { color: var(--azul); }
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 1%;
+    margin: 0 5%;
 }
 .navbar ul {
     display: flex;
     flex-direction: row;
     list-style: none;
-    gap:15px;
+    gap:45px;
     align-items: center;
     padding: 0;
 }

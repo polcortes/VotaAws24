@@ -17,6 +17,9 @@ session_start();
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<?php
+include_once("common/header.php")
+?>
     <main id="dashboard">
         <!-- <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1> -->
         <h1>Bienvenido, Usuario</h1>
@@ -29,5 +32,8 @@ session_start();
         
         <a id="logout" href="logout.php">Cerrar sesión</a>
     </main>
+    <?php
+include_once("common/footer.php")
+?>
 </body>
 </html>
