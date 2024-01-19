@@ -173,49 +173,10 @@ body {
     color: var(--gris-oscuro);
     font-weight: bold;
 }
-/*Errores */
-/* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-
-:root {
-    --azul: #32b9be;
-    --rojo: #FF2525;
-    --amarillo: #FFCD1D;
-    --verde: #21FF2A;
-    --gris-oscuro: #272727;
-    --gris-claro: #D9D9D9;
-}
-
-* {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--gris-claro);
-}
-
-h1, h2 {
-    font-family: 'Source Sans 3';
-    margin: 0;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-}
-
-main {
-    background-color: var(--gris-oscuro);
-}
-
-a {
-    text-decoration-thickness: 5px;
-    text-decoration-color: var(--azul);
-    color: var(--gris-claro);
-    font-weight: bold;
-    transition: color .1s linear;
-}
 
 a:hover { color: var(--azul); }
 
+/*Errores */
 #error403, #error404 {
     background-color: #1E1E1E;
     height: 100vh;
