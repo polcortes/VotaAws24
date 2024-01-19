@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
+html{
+    scroll-behavior: smooth;
+}
+
 :root {
     --azul: #32b9be;
     --rojo: #FF2525;
@@ -13,7 +17,7 @@
 
 * {
     font-family: 'Montserrat', sans-serif;
-    color: var(--gris-claro);
+    color: var(--gris-oscuro);
 }
 
 h1, h2 {
@@ -59,25 +63,120 @@ h1, h2 {
     /*text-decoration: underline;*/
     color: var(--azul);
 }
-
-.navbar{
+.main{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 1%;
 }
-
-.navbar ul{
+.navbar ul {
     display: flex;
     flex-direction: row;
     list-style: none;
     gap:15px;
+    align-items: center;
     padding: 0;
 }
 
-.navbar ul li{
-    width: max-content;
-}
-.navbar ul a{
+.navbar ul a {
     width: max-content;
     text-decoration: none;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;    
+}
+.title h1, .title span{
+    margin: 0;
+}
+
+.title h1{
+    font-size: 7rem;
+}
+.title span{
+    font-size: larger;
+}
+.bodyimg{
+    background-image: url(imgs/persona-votando.webp);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    height: 95vh;
+    flex-direction: column;
+    align-items: center;
+
+    .bodytext{
+        margin: auto;
+        padding-bottom: 15%;
+        *{
+            z-index: 3;
+            color: var(--gris-claro);
+        }
+    }
+}
+
+
+.bodyimg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; 
+}
+
+.godown {
+    bottom: 0;
+    margin-bottom: 5%;
+    z-index: 3;
+    font-size: 3rem;
+    transform: translateY(0); /* Configuración inicial de transformación */
+    transition: transform 0.3s ease;
+}
+
+.godown:hover {
+    transform: translateY(-9px); /* Transformación al pasar el ratón sobre el elemento */
+}
+
+.maintext {
+    position: relative;
+    width: 80%;
+    margin: 2% auto;
+}
+
+footer {
+    width: 100%;
+    align-self: flex-end;
+    padding: 2vh 0 ;
+}
+.authors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+}
+.continfo p {
+    margin: 5%;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
