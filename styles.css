@@ -156,6 +156,29 @@ body {
     font-weight: bold;
 }
 /*Errores */
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --azul: #32b9be;
+    --rojo: #FF2525;
+    --amarillo: #FFCD1D;
+    --verde: #21FF2A;
+    --gris-oscuro: #272727;
+    --gris-claro: #D9D9D9;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gris-claro);
+}
+
+h1, h2 {
+    font-family: 'Source Sans 3';
+}
+
+
 #error403, #error404 {
     background-color: #1E1E1E;
     height: 100vh;
@@ -181,16 +204,20 @@ body {
 }
 
 #error403 div a, #error404 div a {
-    /*text-decoration: none;*/
+    /*/*text-decoration: none;*/
+    text-decoration-thickness: 5px;
+    text-decoration-color: var(--azul);*/
     text-decoration-thickness: 5px;
     text-decoration-color: var(--azul);
     color: white;
     font-weight: bold;
     font-size: 40px;
     transition: color .1s linear;
+    transition: color .1s linear;
 }
 
 #error403 div a:hover, #error404 div a:hover {
-    /*text-decoration: underline;*/
+    /*/*text-decoration: underline;*/
+    color: var(--azul);*/
     color: var(--azul);
 }
