@@ -189,7 +189,7 @@ h1, h2 {
 }
 
 #error403 div, #error404 div {
-    color: white;
+    color: var(--gris-claro);
     text-align: center;
 }
 
@@ -204,12 +204,11 @@ h1, h2 {
 }
 
 #error403 div a, #error404 div a {
-    /*/*text-decoration: none;*/
-    text-decoration-thickness: 5px;
-    text-decoration-color: var(--azul);*/
     text-decoration-thickness: 5px;
     text-decoration-color: var(--azul);
-    color: white;
+    text-decoration-thickness: 5px;
+    text-decoration-color: var(--azul);
+    color: var(--gris-claro);
     font-weight: bold;
     font-size: 40px;
     transition: color .1s linear;
@@ -217,7 +216,5 @@ h1, h2 {
 }
 
 #error403 div a:hover, #error404 div a:hover {
-    /*/*text-decoration: underline;*/
-    color: var(--azul);*/
     color: var(--azul);
 }
