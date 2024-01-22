@@ -2,7 +2,7 @@
     <div class="authors">
         <div class="continfo">
             <p class="author">Tianle</p>
-            <p class="mail">algo@algo.com</p>
+            <p class="mail">tianleyin8888@gmail.com</p>
         </div>
         <div class="continfo">
             <p class="author">Pol</p>

@@ -39,7 +39,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $pdo = new PDO($dsn, '', '');
 
     // Cambiar query
-    $query = $pdo->prepare("SELECT * FROM * WHERE * = SHA2(:pwd, 512) AND nom = :email");
+    $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
     $query->bindParam(':email', $email, PDO::PARAM_STR);
     $query->bindParam(':pwd', $password, PDO::PARAM_STR);
     
@@ -49,7 +49,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetro dentro de $row
     if ($row) {
-        $_SESSION['usuario'] = $row['*'];
+        $_SESSION['usuario'] = $row['user_mail'];
         header("Location: dashboard.php");
         exit();
     } else {

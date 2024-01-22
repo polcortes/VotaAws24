@@ -178,6 +178,90 @@ body {
     color: var(--gris-oscuro);
 }
 
+/* create_poll */ 
+#createPoll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 40px auto;
+}
+
+#createPoll h1 {
+    font-size: 55px;
+    margin: 10px;
+}
+
+#createPoll form {
+    margin: 15px auto;
+    width: 50%;
+}
+
+#createPoll input {
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box; 
+    border-bottom: 6px solid var(--gris-claro);
+    font-size: large;
+}
+
+#createPoll input::placeholder {
+    color: var(--gris-claro);
+}
+
+#createPoll input[type="date"] {
+    width: 25%;
+}
+
+#createPoll label {
+    margin: auto 40px;
+}
+
+#optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px auto;
+}
+
+#optionsContainer > input {
+    width: 80%;
+    margin: 10px auto;
+    border-bottom: 3px solid var(--gris-claro);
+}
+
+#createPoll button {
+    background-color: var(--gris-oscuro);
+    border: var(--gris-claro) 3px solid;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 25px auto;
+    font-size: larger;
+}
+
+#createPoll button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+#createPoll svg {
+    margin-right: 8px;
+}
+
+#createPoll button[type="submit"]:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+}
+
+
 a:hover { color: var(--azul); }
 
 /*Errores */
