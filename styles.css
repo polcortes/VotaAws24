@@ -245,6 +245,7 @@ body {
     display: inline-block;
     margin: 25px auto;
     font-size: larger;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #createPoll button:hover {
@@ -544,4 +545,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.links a {
+    text-decoration-thickness: 2px;
 }

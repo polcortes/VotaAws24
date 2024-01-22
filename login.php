@@ -27,7 +27,6 @@ include_once("common/footer.php")
 </html>
 
 <?php
-session_start();
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
@@ -49,7 +48,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetro dentro de $row
     if ($row) {
-        $_SESSION['usuario'] = $row['user_mail'];
+        $_SESSION['usuario'] = $row['user_id'];
+        $_SESSION['nombre'] = $row['customer_name'];
         header("Location: dashboard.php");
         exit();
     } else {
