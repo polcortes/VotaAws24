@@ -2,10 +2,10 @@
 session_start();
 
 // Verifica si el usuario ha iniciado sesión
-// if (!isset($_SESSION["usuario"])) {
-//     // header("HTTP/1.1 403 Forbidden");
-//     exit();
-// }
+if (!isset($_SESSION["usuario"])) {
+    header("HTTP/1.1 403 Forbidden");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +17,11 @@ session_start();
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<?php
+include_once("common/header.php")
+?>
     <main id="dashboard">
-        <!-- <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1> -->
-        <h1>Bienvenido, Usuario</h1>
+        <h1>Bienvenido, <?php echo $_SESSION["nombre"]; ?></h1>
         
         <ul>
             <li><a href="list_polls.php">Ver mis encuestas</a></li>
@@ -29,5 +31,8 @@ session_start();
         
         <a id="logout" href="logout.php">Cerrar sesión</a>
     </main>
+    <?php
+include_once("common/footer.php")
+?>
 </body>
 </html>
