@@ -7,9 +7,6 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<?php
-include_once("common/header.php")
-?>
     <main id="login">
         <h1>Iniciar sesión</h1>
         <form method="post">
@@ -19,6 +16,7 @@ include_once("common/header.php")
             <br>
             <button type="submit">Iniciar sesión</button>
         </form>
+        <a href="index.php" class="backhome">Volver a Inicio</a>
     </main>
     <?php
 include_once("common/footer.php")
@@ -40,7 +38,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     // Cambiar query
     $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
     // $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = :pwd AND user_mail = :email");
-    
+
     $query->bindParam(':email', $email, PDO::PARAM_STR);
     $query->bindParam(':pwd', $password, PDO::PARAM_STR);
     

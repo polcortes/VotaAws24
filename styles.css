@@ -104,6 +104,10 @@ body {
     color: var(--gris-oscuro);
 }
 
+#login a {
+    margin: 20px auto;
+}
+
 /* Dashboard */
 #dashboard {
     padding: 20px;
