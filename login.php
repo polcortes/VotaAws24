@@ -12,7 +12,7 @@ include_once("common/header.php")
 ?>
     <main id="login">
         <h1>Iniciar sesión</h1>
-        <form method="post" action="">
+        <form method="post">
             <input type="email" name="email" placeholder="email" required>
             <br>
             <input type="password" name="password" placeholder="contraseña" required>
@@ -34,11 +34,13 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST["password"];
 
     // Cambiar parámetros, conexión a BD
-    $dsn = "mysql:host=*;dbname=*";
-    $pdo = new PDO($dsn, '', '');
+    $dsn = "mysql:host=localhost;dbname=votadb";
+    $pdo = new PDO($dsn, 'root', 'AWS24VotaPRRojo_');
 
     // Cambiar query
     $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
+    // $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = :pwd AND user_mail = :email");
+
     $query->bindParam(':email', $email, PDO::PARAM_STR);
     $query->bindParam(':pwd', $password, PDO::PARAM_STR);
     

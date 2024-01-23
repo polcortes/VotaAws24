@@ -39,10 +39,10 @@ include_once("common/header.php")
                 </svg>  Añadir respuesta</button>
             <br>
             <label for="start_date">Fecha de Inicio:</label>
-            <input type="date" id="start_date" name="start_date" required>
+            <input type="datetime-local" id="start_date" name="start_date" required>
 
             <label for="end_date">Fecha de Finalización:</label>
-            <input type="date" id="end_date" name="end_date" required>
+            <input type="datetime-local" id="end_date" name="end_date" required>
             <br>
             <button type="submit">Crear Encuesta</button>
         </form>
@@ -66,9 +66,9 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
 
     try {
         // Cambiar parámetros de conexión a BD
-        $dsn = "mysql:host=tu_servidor;dbname=tu_base_de_datos";
-        $username = "";
-        $password = "tu_contraseña";
+        $dsn = "mysql:host=root;dbname=votadb";        
+        $username = "localhost";
+        $password = "AWS24VotaPRRojo_";
         
         // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);
@@ -88,8 +88,8 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
 
         $survey_id = $pdo->lastInsertId();
 
-        // Insertar opciones en la tabla Options
-        $query_options = $pdo->prepare("INSERT INTO Options (option_text, survey_id) VALUES (:option_text, :survey_id)");
+        // Insertar opciones en la tabla 
+        $query_options = $pdo->prepare("INSERT INTO Questions (option_text, survey_id) VALUES (:option_text, :survey_id)");
 
         foreach ($options as $option_text) {
             $query_options->bindParam(':option_text', $option_text);

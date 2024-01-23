@@ -6,7 +6,7 @@
         </div>
         <div class="continfo">
             <p class="author">Pol</p>
-            <p class="mail">algo@algo.com</p>
+            <p class="mail">polcortesg@gmail.com</p>
         </div>
         <div class="continfo">
             <p class="author">Renato</p>
