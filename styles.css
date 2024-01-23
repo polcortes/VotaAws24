@@ -521,7 +521,12 @@ a:hover { color: var(--azul); }
 .maintext {
     position: relative;
     width: 80%;
-    margin: 2% auto;
+    margin: 5% auto;
+}
+
+.maintext p, .maintext h3, .maintext ul  {
+    margin: 2em;
+    font-size: large;
 }
 
 footer {

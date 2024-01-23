@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="main">
-<?php
-include_once("common/header.php")
-?>
+    <?php
+    include_once("common/header.php")
+    ?>
     <div class="bodyimg">
         <div class="bodytext">
             <div class="title">
@@ -21,8 +23,23 @@ include_once("common/header.php")
             <a href="#maintext" class="ancoreto">&#11167;</a>
         </div>
     </div>
-            <div class="maintext" id="maintext">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit asperiores eligendi quae fugit, sequi libero facilis quas rem consequuntur ipsam corporis maxime aperiam labore quisquam veniam a, adipisci eos voluptatem.
+    <div class="maintext" id="maintext">
+        <p>En este proyecto, desarrollaremos un portal destinado a organizaciones que requieren procesos de votación, especialmente, aunque no exclusivamente, dirigido a partidos políticos, ayuntamientos, instituciones, claustros, entre otros.</p>
+        <h3>Un usuario registrado tendrá la capacidad de:</h3>
+        <ul>
+            <li>Administrar encuestas:</li>
+            <ul>
+                <li>Crear nuevas encuestas.</li>
+                <li>Invitar a votantes.</li>
+                <li>Supervisar la publicación de enunciados y resultados.</li>
+                <li>Bloquear votaciones.</li>
+                <li>Crear agendas para votantes.</li>
+                <li>Visualizar las encuestas en las que ha sido invitado como votante y las votaciones pendientes.</li>
+            </ul>
+        </ul>
+        <h3>Usuario anónimo</h3>
+        <p>Los usuarios anónimos podrán participar en votaciones mediante un enlace de votación que recibirán por correo electrónico. Si deciden registrarse más adelante con esa dirección de correo electrónico, podrán acceder a sus votaciones anteriores.</p>
+        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit asperiores eligendi quae fugit, sequi libero facilis quas rem consequuntur ipsam corporis maxime aperiam labore quisquam veniam a, adipisci eos voluptatem.
             Accusantium tempora aliquid veniam ut exercitationem voluptas ullam fuga quo, veritatis corrupti similique doloremque dolor. Autem, explicabo officiis repellendus quis dolorem neque laborum necessitatibus expedita nostrum numquam fugiat quam fuga.
             Sit recusandae provident maiores, rem perferendis voluptatibus earum sint, fuga eius doloremque consequatur nihil, quos molestias. Autem totam natus animi possimus ad deserunt ullam, officia mollitia adipisci, similique, eius vel.
             Alias, neque rerum vero consequatur aliquid porro cumque, est aut dicta soluta esse, obcaecati iusto optio? Et eum voluptates officia, rem, velit culpa corporis repudiandae quis, voluptatibus vero reprehenderit enim!
@@ -71,11 +88,12 @@ include_once("common/header.php")
             Doloremque corporis ducimus iure expedita odio debitis nisi provident inventore! Repudiandae eius praesentium temporibus quia perferendis id, explicabo sed amet obcaecati vero quod eos doloribus ratione et nam, repellendus voluptates?
             Nisi pariatur quia totam earum nobis reprehenderit placeat laborum tempore ex! Deleniti at perspiciatis, dicta earum consequatur fugiat vero hic dolores explicabo totam necessitatibus itaque aspernatur ipsa voluptates laborum nesciunt.
             Rem excepturi voluptatibus deleniti dolorem repellendus, labore nam modi expedita in cumque ullam, rerum facere quam velit maiores sint? Fuga voluptatum laboriosam sint dignissimos a optio velit neque. Cumque, quam.
-            At voluptatem quasi repudiandae libero esse! Tempore consequatur eius veniam repellendus ab nobis? Accusantium consequuntur amet expedita sint eligendi sapiente necessitatibus, veniam molestias, praesentium enim non error doloremque, odio provident?</p>
-            </div>
+            At voluptatem quasi repudiandae libero esse! Tempore consequatur eius veniam repellendus ab nobis? Accusantium consequuntur amet expedita sint eligendi sapiente necessitatibus, veniam molestias, praesentium enim non error doloremque, odio provident?</p> -->
+    </div>
     </div>
     <?php
-include_once("common/footer.php")
-?>
+    include_once("common/footer.php")
+    ?>
 </body>
+
 </html>
