@@ -17,7 +17,7 @@ html{
 
 * {
     font-family: 'Montserrat', sans-serif;
-    color: var(--gris-oscuro);
+    color: var(--gris-claro);
 }
 
 h1, h2 {
@@ -460,4 +460,30 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+:disabled, .dis{
+    opacity: 0.6; 
+    cursor: not-allowed;
+}
+
+#prefixtel{
+    width: 50px !important;
+    border-right: 1px solid var(--gris-claro) !important;
+    
+}
+
+#tel {
+    width: 500px;
+    display: flex;
+
+}
+
+#register_tel{
+    width: 450px !important;
+}
+
+.backhome{
+    margin-top: 0;
+    margin-left: 0;
 }

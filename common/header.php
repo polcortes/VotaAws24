@@ -7,6 +7,6 @@
 </ul>
 <ul>
     <li><a href="">Iniciar Sesion</a></li>
-    <li><a href="">Registrarse</a></li>
+    <li><a href="register.php">Registrarse</a></li>
 </ul>
 </nav>

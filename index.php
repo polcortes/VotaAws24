@@ -8,7 +8,7 @@
 </head>
 <body class="main">
 <?php
-include_once("common/header.php")
+include_once("common/header.php");
 ?>
     <div class="bodyimg">
         <div class="bodytext">
@@ -75,7 +75,7 @@ include_once("common/header.php")
             </div>
     </div>
     <?php
-include_once("common/footer.php")
+include_once("common/footer.php");
 ?>
 </body>
 </html>
