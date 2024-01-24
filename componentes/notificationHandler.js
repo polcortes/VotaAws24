@@ -9,8 +9,6 @@ $(function() {
     $("#notification__list > li button.close_notification").click(function() {
         $(this).closest("li").remove();
     });
-
-    $("#createError").click(function() { errorNotification("esto es un error muy grave!!!") })
 });
 
 function errorNotification(text) {

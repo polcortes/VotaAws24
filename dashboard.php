@@ -19,7 +19,7 @@ if (!isset($_SESSION["usuario"])) {
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="/componentes/notificationHandler.js"></script>
+    <script src="componentes/notificationHandler.js"></script>
 </head>
 <body>
 <?php

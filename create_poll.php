@@ -78,7 +78,7 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         // Cambiar parámetros de conexión a BD
         $dsn = "mysql:host=localhost;dbname=votadb";        
         $username = "root";
-        $password = "p@raMor3"; // AWS24VotaPRRojo_
+        $password = "1234"; // AWS24VotaPRRojo_
         
         // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);
@@ -89,7 +89,7 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         $true = true;
 
         // Insertar la encuesta en la tabla Surveys
-        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time, isPublished)
+        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time, is_published)
                                        VALUES (:owner_id, :question_text, :start_time, :end_time, :isPublished)");
         $query_survey->bindParam(':owner_id', $_SESSION['usuario']);
         $query_survey->bindParam(':question_text', $question_text);

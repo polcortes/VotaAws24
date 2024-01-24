@@ -1,10 +1,8 @@
-
 <?php
-
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "p@raMor3";
+$password = "1234";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
@@ -62,7 +60,7 @@ try {
     }else if (!validarPais($pais,$country_names)) {
         echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
     }else if(strlen($telefonoprp)!== 9){
-        echo "<script>errorNotification('El teléfono no es válido.')</script>";
+        // echo "<script>errorNotification('El teléfono no es válido.')</script>";
     }else if(!validarPrefix($prefix)){
         echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
     }else if(!validarNombre($ciudad)){
@@ -87,6 +85,21 @@ try {
 
     $stmt_insert->execute();
     $conn_insert = null;
+
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $query = "select user_id from Users where user_email = :email";
+    $stmtUsername = $conn->prepare($query);
+    $stmtUsername->bindParam(':email', $email);
+
+    $user_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    session_start();
+    $_SESSION["usuario"] = $user_id;
+    $_SESSION['nombre'] = $nombre;
+    header("Location: dashboard.php?succ=1");
+    exit();
     }
     }
 } catch (PDOException $e) {

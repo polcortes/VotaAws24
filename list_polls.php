@@ -16,10 +16,11 @@
         <section class="grid-polls">
             <?php
             session_start();
+
             if (isset($_SESSION["usuario"])) {
                 $dbname = "votadb";
                 $user = "root";
-                $password = "p@raMor3";
+                $password = "1234";
             
                 try {
                     $dsn = "mysql:host=localhost;dbname=$dbname";
@@ -28,8 +29,8 @@
                     echo $e->getMessage("");
                 }
             
-                $query = $pdo -> prepare("SELECT question_text, start_time, end_time, isPublished FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
-                // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, isPublished FROM Surveys WHERE owner_id = 2;");
+                $query = $pdo -> prepare("SELECT question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
+                // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = 2;");
                 $query -> execute();
             
                 // Error:
@@ -73,7 +74,7 @@
                             
 
                             <footer>
-                                <div class="poll-is-published '. ($row["isPublished"] ? " publicada" : "") .'">'. ($row["isPublished"] ? " Publicada" : "No publicada") .'</div>
+                                <div class="poll-is-published '. ($row["is_published"] ? " publicada" : "") .'">'. ($row["is_published"] ? " Publicada" : "No publicada") .'</div>
                                 <div class="poll-is-online '. $isOnlineClass .'">'. $isOnline .'</div>
                             </footer>
                         </article>

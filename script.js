@@ -1,4 +1,5 @@
 $(function(){
+
     $("#register_name").on('focusout', function(){
         var input = $(this).val();
         validacionNombres(input);
@@ -211,6 +212,7 @@ function validacionNombres(nombre){
         $("#register_name").css('border-bottom', '3px solid var(--verde)');
         creacionMail();
     } else {
+        errorNotification('El nombre solo puede contener letras mayúsculas y minúsculas.');
         $("#register_name").css('border-bottom', '3px solid var(--rojo)');
     }
 }
@@ -221,6 +223,7 @@ function validacionMail(mail){
         $("#register_email").css('border-bottom', '3px solid var(--verde)');
         creacionPassword();
     } else {
+        errorNotification('El correo no tiene un formato válido.');
         $("#register_email").css('border-bottom', '3px solid var(--rojo)');
     }
 }
@@ -234,6 +237,7 @@ function validacionPass(pass){
         $("#register_pass").css('border-bottom', '3px solid var(--verde)');
         return true
     } else {
+        errorNotification('La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.');
         $("#register_pass").css('border-bottom', '3px solid var(--rojo)');
         return false
     }
@@ -245,20 +249,22 @@ function passIgual(pass){
         $("#register_repeat_pass").css('border-bottom', '3px solid var(--verde)');
         creacionPais();
     }else{
+        errorNotification("Las contraseñas no coinciden.");
         $("#register_repeat_pass").css('border-bottom', '3px solid var(--rojo)');
     }
 }
 
 function validacionTel(tel){
+    // if (("" + tel).length !== 9) errorNotification("El telefono no es válido");
     var telefonofin = tel.split('-').join('');
     var regex = /^\d{1,9}$/;
 
-    if (regex.test(telefonofin)) {
+    if (regex.test(telefonofin) && telefonofin.length === 9) {
         $("#register_tel").css('border-bottom', '3px solid var(--verde)');
         creacionCiudad();
     }else{
+        errorNotification("El teléfono no es válido.");
         $("#register_tel").css('border-bottom', '3px solid var(--rojo)');
-
     }
 }
 
@@ -275,8 +281,8 @@ function validacionCiudad(ciudad){
         validacionNumeros();
         crearSubmit();
     } else {
+        errorNotification("La ciudad que has proporcionado no parece válida.");
         $("#register_ciudad").css('border-bottom', '3px solid var(--rojo)');
-
     }
 }
 

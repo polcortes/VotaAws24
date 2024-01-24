@@ -137,15 +137,21 @@ body {
 
 #dashboard li {
     background-color: var(--gris-claro);
-    padding: 80px 50px;
+    /* padding: 80px 50px; */
     border-radius: 20px;
+    transition: transform .3s linear;
+}
+
+#dashboard li:hover {
+    transform: scale(1.05);
 }
 
 #dashboard li:first-child {
     grid-column: span 1;
     grid-row: span 2;
     font-size: 18px;
-    padding: 100px;
+    height: 450px;
+    /* padding: 100px; */
 }
 
 /* Centra todo el contenido dentro de los elementos <li> */
@@ -159,11 +165,11 @@ body {
     color: var(--gris-oscuro);
     text-decoration: none;
     font-weight: bold;
-    transition: scale .5s;
+    /* transition: scale .5s; */
 }
 
 #dashboard li > a:hover {
-    scale: 1.5;
+    /* scale: 1.5; */
     text-decoration: underline;
 }
 
