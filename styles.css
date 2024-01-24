@@ -18,6 +18,7 @@ html{
 * {
     font-family: 'Montserrat', sans-serif;
     color: var(--gris-claro);
+    color: var(--gris-claro);
 }
 
 h1, h2 {
@@ -443,6 +444,14 @@ a:hover { color: var(--azul); }
 
 #crear-cuenta form > div.divisor span > input {
     width: 230px;
+}
+
+#prefixtel {
+    width:50px !important;
+}
+
+#register_tel {
+    width: 440px !important;
 }
 
 .main{
