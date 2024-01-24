@@ -52,27 +52,27 @@ try {
     $telefonodef = $prefix . "" . $telefonoprp;
 
     if(!validarNombre($nombre)){
-        echo "nonombre";
+        echo "<script>errorNotification('El nombre solo puede contener letras mayúsculas y minúsculas.')</script>";
     }else if(!validarEmail($email)){
-        echo "noemail";
+        echo "<script>errorNotification('El correo no tiene un formato válido');</script>";
     }elseif(!validarPass($pass)){
-        echo "nopassvalid";
+        echo "<script>errorNotification('La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.')</script>";
     }else if($pass != $passcheck){
-        echo "nopassigual";
+        echo "<script>errorNotification('Las contraseñas no coinciden.')</script>";
     }else if (!validarPais($pais,$country_names)) {
-        echo "El país no está en la lista de nombres de país.";
+        echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
     }else if(strlen($telefonoprp)!== 9){
-        echo "notel";
+        echo "<script>errorNotification('El teléfono no es válido.')</script>";
     }else if(!validarPrefix($prefix)){
-        echo "noprefix";
+        echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
     }else if(!validarNombre($ciudad)){
-        echo "nociudad";
+        echo "<script>errorNotification('La ciudad que has puesto no es válida.')</script>";
     }else if(strlen($cp)!== 5){
-        echo "nocp";
+        echo "<script>errorNotification('El código postal no es válido.')</script>";
     }else if(!emailRepetido($email,$correxistente)){
-        echo "repe";
+        echo "<script>errorNotification('El email ya existe en nuestra base de datos.')</script>";
     }elseif(!telRepetido($telefonoprp,$telsexistente)){
-        echo "repetel";
+        echo "<script>errorNotification('El teléfono ya existe en nuestra base de datos.')</script>";
     }else{
     $passhash = hash('sha512',$pass);
     $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, 248, :cp, :email, :pass, :tel )";
@@ -177,6 +177,7 @@ function validarPrefix($prefix){
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body id="crear-cuenta">
     <main>
