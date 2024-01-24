@@ -40,7 +40,7 @@
                     die("Error accedint a dades: " . $e[2]);
                 } 
             
-                if (!empty($query)) {
+                if (!$query->rowCount() == 0) {
                     foreach ($query as $row) {
                         $end_time = new DateTime($row["end_time"]);
                         $formated_end_time = $end_time -> format('d-m-Y H:i:s');
