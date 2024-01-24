@@ -36,7 +36,7 @@ main {
 }
 
 a {
-    text-decoration-thickness: 5px;
+    text-decoration-thickness: 3px;
     text-decoration-color: var(--azul);
     color: var(--gris-claro);
     font-weight: bold;
@@ -174,7 +174,6 @@ body {
     padding: 15px 30px;
     border-radius: 20px;
     text-decoration: underline;
-    text-decoration-thickness: 1px;
     font-size: larger;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -477,7 +476,6 @@ a:hover { color: var(--azul); }
 
 .navbar ul a {
     width: max-content;
-    text-decoration: none;
 }
 
 .title{
@@ -541,6 +539,14 @@ a:hover { color: var(--azul); }
 
 .godown:hover {
     transform: translateY(-9px); /* Transformación al pasar el ratón sobre el elemento */
+}
+
+.godown > a > svg {
+    transition: filter .3s linear;
+}
+
+.godown:hover > a > svg {
+    filter: invert(60%) sepia(73%) saturate(410%) hue-rotate(133deg) brightness(110%) contrast(110%);
 }
 
 .maintext {

@@ -34,7 +34,7 @@ include_once("common/header.php");
             <li><a href="#">Ver todas las encuestas</a></li>
         </ul>
         
-        <a id="logout" href="logout.php">Cerrar sesión</a>
+        <!--<a id="logout" href="logout.php">Cerrar sesión</a>-->
     </main>
 
     <ul id="notification__list">

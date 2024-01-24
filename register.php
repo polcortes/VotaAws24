@@ -4,7 +4,7 @@
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "p@raMor3";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
@@ -51,12 +51,11 @@ try {
     
     $telefonodef = $prefix . "" . $telefonoprp;
 
-    echo $telefonodef;
     if(!validarNombre($nombre)){
         echo "nonombre";
     }else if(!validarEmail($email)){
         echo "noemail";
-    }elseif(validarPass($pass)){
+    }elseif(!validarPass($pass)){
         echo "nopassvalid";
     }else if($pass != $passcheck){
         echo "nopassigual";
@@ -82,7 +81,7 @@ try {
     $stmt_insert->bindParam(':email', $email);
     $stmt_insert->bindParam(':pass', $passhash);
     $stmt_insert->bindParam(':pais', $pais);
-    $stmt_insert->bindParam(':tel', $telefonoprp);
+    $stmt_insert->bindParam(':tel', $telefonodef);
     $stmt_insert->bindParam(':ciudad', $ciudad);
     $stmt_insert->bindParam(':cp', $cp);
 
@@ -115,7 +114,7 @@ function validarEmail($email) {
 }
 
 function validarPass($pass){
-    if(strlen($contrasena) >= 8 && preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) && preg_match('/[0-9]/', $contrasena)){
+    if(strlen($pass) >= 8 && preg_match('/[A-Z]/', $pass) && preg_match('/[a-z]/', $pass) && preg_match('/[0-9]/', $pass)){
         return true;
     }else{
         return false;
@@ -176,7 +175,8 @@ function validarPrefix($prefix){
     <title>Crear una nueva cuenta | Vota!</title>
     <meta name="description" content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body id="crear-cuenta">
     <main>
@@ -192,6 +192,7 @@ function validarPrefix($prefix){
             <input type="text" name="register_name" id="register_name" placeholder="María" required>
 
         </form>
+
     </main>
 
     <ul id="notification__list">
