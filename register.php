@@ -31,7 +31,9 @@ try {
     $correxistente = $result2;
     $telsexistente = $result3;
 
+    
     $conn = null;
+
     if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $conn_insert = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -48,10 +50,11 @@ try {
     $cp = $_POST['register_cp'];
     $telefono_sin_guiones = str_replace("-", "", $tel);
     $telefonoprp = preg_replace("/[^0-9]/", "", $telefono_sin_guiones);
-    
     $telefonodef = $prefix . "" . $telefonoprp;
+    
+    $idpais = getCountryId($pais, $country_names);
 
-    echo $telefonodef;
+
     if(!validarNombre($nombre)){
         echo "nonombre";
     }else if(!validarEmail($email)){
@@ -74,9 +77,11 @@ try {
         echo "repe";
     }elseif(!telRepetido($telefonoprp,$telsexistente)){
         echo "repetel";
+    }elseif (is_null($idpais)) {
+        echo "nopais";
     }else{
     $passhash = hash('sha512',$pass);
-    $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, 248, :cp, :email, :pass, :tel )";
+    $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, :paisid, :cp, :email, :pass, :tel )";
     $stmt_insert = $conn_insert->prepare($sql_insert);
     $stmt_insert->bindParam(':nombre', $nombre);
     $stmt_insert->bindParam(':email', $email);
@@ -84,6 +89,7 @@ try {
     $stmt_insert->bindParam(':pais', $pais);
     $stmt_insert->bindParam(':tel', $telefonoprp);
     $stmt_insert->bindParam(':ciudad', $ciudad);
+    $stmt_insert->bindParam(':paisid', $idpais);
     $stmt_insert->bindParam(':cp', $cp);
 
     $stmt_insert->execute();
@@ -165,6 +171,14 @@ function validarPrefix($prefix){
         return false;
     } else {
         return true;
+    }
+}
+
+function getCountryId($pais ,$listapaises){
+    foreach ($listapaises as $datapais) {
+        if ($datapais['country_name'] == $pais){
+            return $datapais['country_id'];
+        }
     }
 }
 ?>
