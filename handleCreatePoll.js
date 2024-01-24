@@ -15,4 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
     if (addButton) {
         addButton.addEventListener('click', addOption);
     }
-});
+
+    function deleteOption() {
+        const optionsContainer = document.getElementById('optionsContainer');
+        const inputCount = optionsContainer.childElementCount;
+
+        if (inputCount > 2) {
+            const lastInput = optionsContainer.lastElementChild;
+            optionsContainer.removeChild(lastInput);
+        }
+    }
+
+    const deleteButton = document.getElementById('deleteButton');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', deleteOption);
+    }
+
+}); 

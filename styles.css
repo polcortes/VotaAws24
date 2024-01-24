@@ -78,6 +78,7 @@ body {
     box-sizing: border-box; 
     border-bottom: 3px solid var(--gris-claro);
     font-size: large;
+    outline: none;
 }
 
 #login input::placeholder {
@@ -103,6 +104,10 @@ body {
 #login button:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
+}
+
+#login a {
+    margin: 20px auto;
 }
 
 /* Dashboard */
@@ -186,7 +191,8 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    margin: 40px auto;
+    margin: 30px auto;
+    margin-bottom: 5px;
 }
 
 #createPoll h1 {
@@ -195,27 +201,37 @@ body {
 }
 
 #createPoll form {
-    margin: 15px auto;
+    margin: 5px auto;
     width: 50%;
+}
+
+#createPoll #question {
+    margin-bottom: 15px;
 }
 
 #createPoll input {
     background-color: var(--gris-oscuro);
     border: none;
     padding: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     width: 100%;
     box-sizing: border-box; 
     border-bottom: 6px solid var(--gris-claro);
     font-size: large;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+#createPoll input:not([type="submit"]):focus {
+    border-color: var(--azul);
 }
 
 #createPoll input::placeholder {
     color: var(--gris-claro);
 }
 
-#createPoll input[type="date"] {
-    width: 25%;
+#createPoll input[type="datetime-local"] {
+    width: 100%;
 }
 
 #createPoll label {
@@ -244,7 +260,7 @@ body {
     padding: 15px 30px;
     border-radius: 20px;
     display: inline-block;
-    margin: 25px auto;
+    margin: 20px 15px;
     font-size: larger;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -530,7 +546,12 @@ a:hover { color: var(--azul); }
 .maintext {
     position: relative;
     width: 80%;
-    margin: 2% auto;
+    margin: 5% auto;
+}
+
+.maintext p, .maintext h3, .maintext ul  {
+    margin: 2em;
+    font-size: large;
 }
 
 footer {
