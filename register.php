@@ -59,7 +59,7 @@ try {
         echo "nonombre";
     }else if(!validarEmail($email)){
         echo "noemail";
-    }elseif(validarPass($pass)){
+    }elseif(!validarPass($pass)){
         echo "nopassvalid";
     }else if($pass != $passcheck){
         echo "nopassigual";
@@ -121,7 +121,7 @@ function validarEmail($email) {
 }
 
 function validarPass($pass){
-    if(strlen($contrasena) >= 8 && preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) && preg_match('/[0-9]/', $contrasena)){
+    if(strlen($pass) >= 8 && preg_match('/[A-Z]/', $pass) && preg_match('/[a-z]/', $pass) && preg_match('/[0-9]/', $pass)){
         return true;
     }else{
         return false;
