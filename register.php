@@ -13,16 +13,25 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT country_name,tel_prefix,country_id FROM Countries";
-
+    $sql2 = "SELECT user_mail FROM Users";
+    $sql3 = "SELECT user_tel FROM Users";
     $stmt = $conn->prepare($sql);
+    $stmt2 = $conn->prepare($sql2);
+    $stmt3 = $conn->prepare($sql3);
 
     $stmt->execute();
+    $stmt2->execute();
+    $stmt3->execute();
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    $result3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
     $country_names = $result;
-    $conn = null;
+    $correxistente = $result2;
+    $telsexistente = $result3;
 
+    $conn = null;
     if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $conn_insert = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -38,10 +47,11 @@ try {
     $ciudad = $_POST['register_ciudad'];
     $cp = $_POST['register_cp'];
     $telefono_sin_guiones = str_replace("-", "", $tel);
-    $telefonodef = preg_replace("/[^0-9]/", "", $telefono_sin_guiones);
+    $telefonoprp = preg_replace("/[^0-9]/", "", $telefono_sin_guiones);
+    
+    $telefonodef = $prefix . "" . $telefonoprp;
 
-
-
+    echo $telefonodef;
     if(!validarNombre($nombre)){
         echo "nonombre";
     }else if(!validarEmail($email)){
@@ -52,7 +62,7 @@ try {
         echo "nopassigual";
     }else if (!validarPais($pais,$country_names)) {
         echo "El país no está en la lista de nombres de país.";
-    }else if(strlen($telefonodef)!== 9){
+    }else if(strlen($telefonoprp)!== 9){
         echo "notel";
     }else if(!validarPrefix($prefix)){
         echo "noprefix";
@@ -60,27 +70,25 @@ try {
         echo "nociudad";
     }else if(strlen($cp)!== 5){
         echo "nocp";
+    }else if(!emailRepetido($email,$correxistente)){
+        echo "repe";
+    }elseif(!telRepetido($telefonoprp,$telsexistente)){
+        echo "repetel";
     }else{
-        echo "todobiencrack";
-    }
-
-    $passhash = password_hash($pass, PASSWORD_DEFAULT);
-    echo password_verify("fas", $passhash);
+    $passhash = hash('sha512',$pass);
     $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, 248, :cp, :email, :pass, :tel )";
     $stmt_insert = $conn_insert->prepare($sql_insert);
     $stmt_insert->bindParam(':nombre', $nombre);
     $stmt_insert->bindParam(':email', $email);
     $stmt_insert->bindParam(':pass', $passhash);
     $stmt_insert->bindParam(':pais', $pais);
-    $stmt_insert->bindParam(':tel', $telefonodef);
+    $stmt_insert->bindParam(':tel', $telefonoprp);
     $stmt_insert->bindParam(':ciudad', $ciudad);
     $stmt_insert->bindParam(':cp', $cp);
 
     $stmt_insert->execute();
-
-    echo "Usuario insertado correctamente en la otra tabla.";
-
     $conn_insert = null;
+    }
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -127,6 +135,30 @@ function validarPais($pais,$listapaises){
     }
 }
 
+function emailRepetido($email,$listamails){
+    $mails = array();
+    foreach ($listamails as $mail) {
+        $mails[] = $mail['user_mail'];
+    }
+    if (in_array($email, $mails)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function telRepetido($telefono,$listatelefonos){
+    $tels = array();
+    foreach ($listatelefonos as $tel) {
+        $tels[] = $tel['user_tel'];
+    }
+    if (in_array($telefono, $tels)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function validarPrefix($prefix){
     $regex = '/^\+\d{1,3}$/';
     if (!preg_match($regex, $prefix)) {
@@ -135,11 +167,7 @@ function validarPrefix($prefix){
         return true;
     }
 }
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -167,5 +195,11 @@ function validarPrefix($prefix){
         </form>
 
     </main>
+
+    <ul id="notification__list">
+        <!-- todas las notificaciones -->
+    </ul>
+
+    <script src="componentes/notificationHandler.js"></script>
 </body>
 </html>

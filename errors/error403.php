@@ -12,5 +12,8 @@
         <p>No tienes permiso para visualizar esta página</p>
         <a href="../index.php">Volver a inicio</a>
     </div>
+    <?php
+include_once("common/footer.php")
+?>
 </body>
 </html>

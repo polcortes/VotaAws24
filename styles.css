@@ -18,6 +18,7 @@ html{
 * {
     font-family: 'Montserrat', sans-serif;
     color: var(--gris-claro);
+    color: var(--gris-claro);
 }
 
 h1, h2 {
@@ -55,11 +56,12 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    margin: 55px auto;
+    margin: 90px auto;
 }
 
 #login h1 {
     font-size: 75px;
+    margin: 35px auto;
 }
 
 #login form {
@@ -91,28 +93,28 @@ body {
     border-radius: 20px;
     display: inline-block;
     margin: 30px auto;
+    font-weight: bold;
     font-size: larger;
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #login button:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
-    font-weight: bold;
 }
 
 /* Dashboard */
 #dashboard {
     padding: 20px;
     text-align: center;
-    margin: 45px auto;
+    margin: auto;
 }
 
 #dashboard h1 {
     font-size: 55px;
-    margin: 35px;
+    margin: 10px;
 }
 
 #dashboard ul {
@@ -169,14 +171,98 @@ body {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     font-size: larger;
-    transition: background-color 0.3s, color 0.3s, font-weight 0.2s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-#dashboard #logout:hover {
+#logout:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
-    font-weight: bold;
 }
+
+/* create_poll */ 
+#createPoll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 40px auto;
+}
+
+#createPoll h1 {
+    font-size: 55px;
+    margin: 10px;
+}
+
+#createPoll form {
+    margin: 15px auto;
+    width: 50%;
+}
+
+#createPoll input {
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box; 
+    border-bottom: 6px solid var(--gris-claro);
+    font-size: large;
+}
+
+#createPoll input::placeholder {
+    color: var(--gris-claro);
+}
+
+#createPoll input[type="date"] {
+    width: 25%;
+}
+
+#createPoll label {
+    margin: auto 40px;
+}
+
+#optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px auto;
+}
+
+#optionsContainer > input {
+    width: 80%;
+    margin: 10px auto;
+    border-bottom: 3px solid var(--gris-claro);
+}
+
+#createPoll button {
+    background-color: var(--gris-oscuro);
+    border: var(--gris-claro) 3px solid;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 25px auto;
+    font-size: larger;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#createPoll button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+#createPoll svg {
+    margin-right: 8px;
+}
+
+#createPoll button[type="submit"]:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+}
+
 
 a:hover { color: var(--azul); }
 
@@ -344,6 +430,14 @@ a:hover { color: var(--azul); }
     width: 230px;
 }
 
+#prefixtel {
+    width:50px !important;
+}
+
+#register_tel {
+    width: 440px !important;
+}
+
 .main{
     display: flex;
     flex-direction: column;
@@ -354,13 +448,13 @@ a:hover { color: var(--azul); }
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 1%;
+    margin: 0 5%;
 }
 .navbar ul {
     display: flex;
     flex-direction: row;
     list-style: none;
-    gap:15px;
+    gap:45px;
     align-items: center;
     padding: 0;
 }
@@ -460,30 +554,4 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-}
-
-:disabled, .dis{
-    opacity: 0.6; 
-    cursor: not-allowed;
-}
-
-#prefixtel{
-    width: 50px !important;
-    border-right: 1px solid var(--gris-claro) !important;
-    
-}
-
-#tel {
-    width: 500px;
-    display: flex;
-
-}
-
-#register_tel{
-    width: 450px !important;
-}
-
-.backhome{
-    margin-top: 0;
-    margin-left: 0;
 }

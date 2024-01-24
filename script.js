@@ -64,6 +64,23 @@ $(function(){
         var input = $(this).val();
         validacionCiudad(input);
     })
+
+    $("body").on('keydown', 'input', function(event) {
+    if (event.keyCode === 13) { 
+        event.preventDefault();
+        $(this).blur(); 
+
+        var borderBottomColor = $(this).css('border-bottom-color');
+        console.log(borderBottomColor)
+        // Comprobar si el color es rojo
+        if (borderBottomColor != 'rgb(255, 37, 37)') {
+            var inputs = $('input');
+            var currentIndex = inputs.index(this);
+            var nextIndex = (currentIndex + 1) % inputs.length;
+            inputs[nextIndex].focus();
+        }
+    }
+    });
 });
 
 function creacionMail(){
@@ -129,7 +146,7 @@ function creacionTel(){
         $("#register_pais").after(`
         <label for="register_tel">Teléfono<span class="required">*</span></label>
         <div id="tel">
-           <input type="text" name="register_prefix" readonly4 id="prefixtel" value="">
+           <input type="text" name="register_prefix" readonly id="prefixtel" value="">
            <input type="tel" name="register_tel" id="register_tel" placeholder="639122561" required>
        </div>
         `)
@@ -191,18 +208,20 @@ function crearSubmit(){
 function validacionNombres(nombre){
     var regex = /^[a-zA-Z\s]+$/;
     if (nombre.trim() !== '' && regex.test(nombre)) {
+        $("#register_name").css('border-bottom', '3px solid var(--verde)');
         creacionMail();
     } else {
-        console.log("nos");
+        $("#register_name").css('border-bottom', '3px solid var(--rojo)');
     }
 }
 
 function validacionMail(mail){
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;    
     if (emailRegex.test(mail)) {
+        $("#register_email").css('border-bottom', '3px solid var(--verde)');
         creacionPassword();
     } else {
-        console.log("n");
+        $("#register_email").css('border-bottom', '3px solid var(--rojo)');
     }
 }
 
@@ -211,33 +230,35 @@ function validacionPass(pass){
     var hasUppercase = /[A-Z]/.test(pass);
     var hasLowercase = /[a-z]/.test(pass);
     var hasNumber = /\d/.test(pass);
-    // var hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(pass);
-    // hasSpecialChar
     if (pass.length >= minLength && hasUppercase && hasLowercase && hasNumber) {
-        console.log("Contraseña segura");
+        $("#register_pass").css('border-bottom', '3px solid var(--verde)');
         return true
     } else {
-        console.log("La contraseña no cumple con los requisitos mínimos de seguridad");
+        $("#register_pass").css('border-bottom', '3px solid var(--rojo)');
         return false
     }
 }
 
 function passIgual(pass){
     if (pass == $("#register_repeat_pass").val()){
-        console.log("siu");
+        
+        $("#register_repeat_pass").css('border-bottom', '3px solid var(--verde)');
         creacionPais();
     }else{
-        console.log("nou");  
+        $("#register_repeat_pass").css('border-bottom', '3px solid var(--rojo)');
     }
 }
 
 function validacionTel(tel){
-    var telefono = $("#register_tel").val();
-    var telefonofin = telefono.split('-').join('');
+    var telefonofin = tel.split('-').join('');
     var regex = /^\d{1,9}$/;
 
     if (regex.test(telefonofin)) {
+        $("#register_tel").css('border-bottom', '3px solid var(--verde)');
         creacionCiudad();
+    }else{
+        $("#register_tel").css('border-bottom', '3px solid var(--rojo)');
+
     }
 }
 
@@ -249,10 +270,13 @@ function validacionNumeros(){
 function validacionCiudad(ciudad){
     var regex = /^[a-zA-Z\s]+$/;
     if (ciudad.trim() !== '' && regex.test(ciudad)) {
+        $("#register_ciudad").css('border-bottom', '3px solid var(--verde)');
+
         validacionNumeros();
         crearSubmit();
     } else {
-        console.log("nos");
+        $("#register_ciudad").css('border-bottom', '3px solid var(--rojo)');
+
     }
 }
 
