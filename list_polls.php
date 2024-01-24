@@ -14,46 +14,9 @@
     <main>
         <h1>Tus encuestas</h1>
         <section class="grid-polls">
-            <!--<article class="grid-poll-item">
-                <div>
-                    <h2>Pregunta del formulario.</h2>
-                    <div>De: emieza</div>
-                </div>
-
-                <footer>
-                    <div class="poll-is-published">No publicada</div>    
-                    <div class="poll-is-online en-proceso">En proceso</div>
-                </footer>
-            </article>
-
-            <article class="grid-poll-item">
-                <div>
-                    <h2>Pregunta del formulario.</h2>
-                    <div>De: Xavi</div>
-                </div>
-
-                <footer>
-                    <div class="poll-is-published publicada">Publicada</div>
-                    <div class="poll-is-online programada">Programada</div>
-                </footer>
-            </article>
-
-            <article class="grid-poll-item">
-                <div>
-                    <h2>Pregunta del formulario.</h2>
-                    <div>De: lzabala</div>
-                </div>
-
-                <footer>
-                    <div class="poll-is-published publicada">Publicada</div>
-                    <div class="poll-is-online finalizada">Finalizada</div>
-                </footer>
-            </article>-->
-
             <?php
-            //session_start();
-            //if (isset($_SESSION["usuario"])) {
-            if (true) {
+            session_start();
+            if (isset($_SESSION["usuario"])) {
                 $dbname = "votadb";
                 $user = "root";
                 $password = "p@raMor3";
@@ -64,19 +27,9 @@
                 } catch (PDOException $e){
                     echo $e->getMessage("");
                 }
-
-                //$query = $pdo -> prepare("SELECT customer_name FROM Users WHERE user_id = ". $_SESSION["usuario"] . ";");
-                $query = $pdo -> prepare("SELECT customer_name FROM Users WHERE user_id = 2;");
-                $query -> execute();
-
-                $username;
-
-                foreach ($query as $row) {
-                    $username = $row["customer_name"];
-                }
             
-                //$query = $pdo -> prepare("SELECT question_text, start_time, end_time FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
-                $query = $pdo -> prepare("SELECT question_text, start_time, end_time, isPublished FROM Surveys WHERE owner_id = 2;");
+                $query = $pdo -> prepare("SELECT question_text, start_time, end_time, isPublished FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
+                // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, isPublished FROM Surveys WHERE owner_id = 2;");
                 $query -> execute();
             
                 // Error:
@@ -96,7 +49,6 @@
 
                         $current_date = new DateTime();
 
-
                         $isOnline;
                         $isOnlineClass;
 
@@ -111,21 +63,11 @@
                             $isOnlineClass = "en-proceso";
                         }
 
-                        /*(
-                            ($current_date >= $formated_end_time && $current_date > $formated_start_time ) 
-                                ? "finalizada" 
-                                : (
-                                    ($current_date < $formated_end_time && $current_date < $formated_start_time) 
-                                        ? "programada" 
-                                        : "en-proceso"
-                                )) .'">'. ($current_date >= $formated_end_time ? "Finalizada" : ($current_date < $formated_end_time ? "Programada" : "En proceso")
-                        );*/
-
                         echo '
                         <article class="grid-poll-item">
                             <div>
                                 <h2>'. $row["question_text"] .'</h2>
-                                <div>De: '. $username .'</div>
+                                <div>De: '. $_SESSION["nombre"] .'</div>
                             </div>
 
                             
@@ -146,6 +88,8 @@
                     </article>
                     ";
                 }
+            } else {
+
             }
             ?>
         </section>

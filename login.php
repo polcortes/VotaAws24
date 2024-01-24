@@ -44,7 +44,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetros, conexión a BD
     $dsn = "mysql:host=localhost;dbname=votadb";
-    $pdo = new PDO($dsn, 'root', 'AWS24VotaPRRojo_'); // 
+    $pdo = new PDO($dsn, 'root', 'p@raMor3'); // 
 
     // Cambiar query
     $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
@@ -59,7 +59,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetro dentro de $row
     if ($row) {
-        $_SESSION['usuario'] = $row['user_id'];
+        session_start();
+        $_SESSION["usuario"] = $row['user_id'];
         $_SESSION['nombre'] = $row['customer_name'];
         header("Location: dashboard.php?succ=1");
         exit();
