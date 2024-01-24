@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 404 - Inexistente</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
 </head>
 <body id="error404">
     <div>

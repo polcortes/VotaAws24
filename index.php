@@ -7,6 +7,8 @@
     <meta name="description" content="Página de inicio de nuestra aplicación web 'Vota!', en la que podrás crear encuestas disponibles en todo el mundo en tan solo un par de clics!">
     <meta name="keywords" content="encuestas, votos, votar, votas, votad, ieti, worldwide">
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
 </head>
 <body class="main">
 <?php

@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
+    <meta name="description" content="Inicia sesión en tu cuenta para acceder a 'Vota!'">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body>
 <?php
@@ -20,9 +25,15 @@ include_once("common/header.php")
             <button type="submit">Iniciar sesión</button>
         </form>
     </main>
+
+    <ul id="notification__list">
+        <!-- todas las notificaciones -->
+    </ul>
     <?php
 include_once("common/footer.php")
 ?>
+
+
 </body>
 </html>
 
@@ -35,7 +46,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetros, conexión a BD
     $dsn = "mysql:host=localhost;dbname=votadb";
-    $pdo = new PDO($dsn, 'root', 'AWS24VotaPRRojo_');
+    $pdo = new PDO($dsn, 'root', 'p@raMor3'); // AWS24VotaPRRojo_
 
     // Cambiar query
     $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
@@ -52,11 +63,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     if ($row) {
         $_SESSION['usuario'] = $row['user_id'];
         $_SESSION['nombre'] = $row['customer_name'];
-        header("Location: dashboard.php");
+        header("Location: dashboard.php?succ=1");
         exit();
     } else {
         // Añadir las notificaciones
-        echo "Login Incorrecto";
+        echo "<script> errorNotification('Los datos no coinciden en nuestra base de datos o no existen.'); </script>";
     }
 }
 ?>

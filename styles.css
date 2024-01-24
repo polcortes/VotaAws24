@@ -562,7 +562,9 @@ footer {
     gap: 20px;
 }
 
-#notification__list > li {
+/* input:not([type="submit"]) {} */
+
+#notification__list li {
     max-width: 430px;
     display: flex;
     justify-content: space-between;

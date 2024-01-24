@@ -12,8 +12,12 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Encuesta</title>
+    <title>Crear encuesta | Vota!</title>
+    <meta name="description" content="Crea una encuesta para obtener las respuestas de todo el mundo!">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
 </head>
 
 <body>
@@ -50,6 +54,11 @@ include_once("common/header.php")
     <?php
 include_once("common/footer.php")
 ?>
+
+    <ul id="notification__list">
+        <!-- todas las notificaciones -->
+    </ul>
+<script src="componentes/notificationHandler.js"></script>
 <script src="handleCreatePoll.js"></script>
 </body>
 

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de encuestas | Vota!</title>
+    <meta name="description" content="Accede a todas las encuestas que hayas creado.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
 </head>
 <body id="list_polls">
     <?php include_once('common/header.php'); ?>
