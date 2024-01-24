@@ -9,11 +9,14 @@ $(function() {
     $("#notification__list > li button.close_notification").click(function() {
         $(this).closest("li").remove();
     });
+
+    $("#createError").click(function() { errorNotification("esto es un error muy grave!!!") })
 });
 
 function errorNotification(text) {
     const notifList = $('#notification__list');
-    notifList.append(`<li><span>${SVGS.error}<span>${text}</span></span><button class="close_notification">${SVGS.close}</button></li>`); // Está sin probar ni estilizar.
+    notifList.append($(`<li><span>${SVGS.error}<span>${text}</span></span><button class="close_notification">${SVGS.close}</button></li>`)); // Está sin probar ni estilizar.
+
     $("#notification__list > li button.close_notification").click(function() {
         $(this).closest("li").remove();
     })
@@ -22,6 +25,7 @@ function errorNotification(text) {
 function successfulNotification(text) {
     const notifList = $('#notification__list');
     notifList.append(`<li><span>${SVGS.successful}<span>${text}</span></span><button class="close_notification">${SVGS.close}</button></li>`); // Está sin probar ni estilizar.
+
     $("#notification__list > li button.close_notification").click(function() {
         $(this).closest("li").remove();
     })

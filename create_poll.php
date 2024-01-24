@@ -12,8 +12,13 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Encuesta</title>
+    <title>Crear encuesta | Vota!</title>
+    <meta name="description" content="Crea una encuesta para obtener las respuestas de todo el mundo!">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
+    <script src="/componentes/notificationHandler.js"></script>
 </head>
 
 <body>
@@ -51,15 +56,19 @@ include_once("common/header.php")
     <?php
 include_once("common/footer.php")
 ?>
+
+    <ul id="notification__list">
+        <!-- todas las notificaciones -->
+    </ul>
+<script src="componentes/notificationHandler.js"></script>
 <script src="handleCreatePoll.js"></script>
 </body>
 
 </html>
 
 <?php
-
+session_start();
 if (isset($_POST['options']) && isset($_POST['question'])) {
-
     $question_text = $_POST['question'];
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
@@ -67,9 +76,9 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
 
     try {
         // Cambiar parámetros de conexión a BD
-        $dsn = "mysql:host=root;dbname=votadb";        
-        $username = "localhost";
-        $password = "AWS24VotaPRRojo_";
+        $dsn = "mysql:host=localhost;dbname=votadb";        
+        $username = "root";
+        $password = "p@raMor3"; // AWS24VotaPRRojo_
         
         // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);
@@ -77,13 +86,16 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         // Iniciar transacción
         $pdo->beginTransaction();
 
+        $true = true;
+
         // Insertar la encuesta en la tabla Surveys
-        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time)
-                                       VALUES (:owner_id, :question_text, :start_time, :end_time)");
+        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time, isPublished)
+                                       VALUES (:owner_id, :question_text, :start_time, :end_time, :isPublished)");
         $query_survey->bindParam(':owner_id', $_SESSION['usuario']);
         $query_survey->bindParam(':question_text', $question_text);
         $query_survey->bindParam(':start_time', $start_date);
         $query_survey->bindParam(':end_time', $end_date);
+        $query_survey->bindParam(':isPublished', $true);
 
         $query_survey->execute();
 
@@ -100,11 +112,14 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
 
         $pdo->commit();
 
-        header("Location: dashboard.php");
-        exit();
+        echo "<script>successfulNotification('Tu encuesta se ha creado correctamente.');</script>";
+
+        //header("Location: dashboard.php");
+        //exit();
     } catch (PDOException $e) {
         $pdo->rollBack();
         echo "Error al crear la encuesta: " . $e->getMessage();
+        echo "<script> errorNotification('Ha habido un error al crear la encuesta, por favor, vuelva a crearla o intentalo en otro momento.'); </script>";
     } finally {
         $pdo = null;
     }

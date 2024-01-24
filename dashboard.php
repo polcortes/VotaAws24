@@ -13,12 +13,17 @@ if (!isset($_SESSION["usuario"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard | Vota!</title>
+    <meta name="description" content='Accede a diversas funciones disponibles tras crearte una cuenta en "Vota!"'>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
+    <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body>
 <?php
-include_once("common/header.php")
+include_once("common/header.php");
 ?>
     <main id="dashboard">
         <h1>Bienvenido, <?php echo $_SESSION["nombre"]; ?></h1>
@@ -29,10 +34,17 @@ include_once("common/header.php")
             <li><a href="#">Ver todas las encuestas</a></li>
         </ul>
         
-        <a id="logout" href="logout.php">Cerrar sesión</a>
+        <!--<a id="logout" href="logout.php">Cerrar sesión</a>-->
     </main>
+
+    <ul id="notification__list">
+        <!-- todas las notificaciones -->
+    </ul>
     <?php
-include_once("common/footer.php")
+    if (isset($_GET["succ"])) {
+        echo "<script>successfulNotification('Has iniciado sesión correctamente.');</script>";
+    }
+include_once("common/footer.php");
 ?>
 </body>
 </html>

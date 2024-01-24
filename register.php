@@ -4,7 +4,7 @@
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "p@raMor3";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
@@ -87,7 +87,7 @@ try {
     $stmt_insert->bindParam(':email', $email);
     $stmt_insert->bindParam(':pass', $passhash);
     $stmt_insert->bindParam(':pais', $pais);
-    $stmt_insert->bindParam(':tel', $telefonoprp);
+    $stmt_insert->bindParam(':tel', $telefonodef);
     $stmt_insert->bindParam(':ciudad', $ciudad);
     $stmt_insert->bindParam(':paisid', $idpais);
     $stmt_insert->bindParam(':cp', $cp);
