@@ -12,9 +12,6 @@
     <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body>
-<?php
-include_once("common/header.php")
-?>
     <main id="login">
         <h1>Iniciar sesión</h1>
         <form method="post">
@@ -24,6 +21,7 @@ include_once("common/header.php")
             <br>
             <button type="submit">Iniciar sesión</button>
         </form>
+        <a href="index.php" class="backhome">Volver a Inicio</a>
     </main>
 
     <ul id="notification__list">
