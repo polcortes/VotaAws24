@@ -19,6 +19,7 @@
     <ul>
         <?php
         if (isset($_SESSION['usuario'])) {
+            echo '<li>Bienvenido '. $_SESSION['nombre'] .'</li>';
             echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
         } else {
             echo '<li><a href="login.php">Iniciar Sesión</a></li>';
