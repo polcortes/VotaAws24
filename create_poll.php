@@ -78,7 +78,7 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         // Cambiar parámetros de conexión a BD
         $dsn = "mysql:host=localhost;dbname=votadb";        
         $username = "root";
-        $password = "AWS24VotaPRRojo_"; // AWS24VotaPRRojo_
+        $password = "p@raMor3"; // AWS24VotaPRRojo_
         
         // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);
@@ -117,7 +117,7 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         //header("Location: dashboard.php");
         //exit();
     } catch (PDOException $e) {
-        $pdo->rollBack();
+        //$pdo->rollBack();
         echo "Error al crear la encuesta: " . $e->getMessage();
         echo "<script> errorNotification('Ha habido un error al crear la encuesta, por favor, vuelva a crearla o intentalo en otro momento.'); </script>";
     } finally {

@@ -94,7 +94,7 @@ try {
         $conn_insert = null;
 
         $dsn = "mysql:host=localhost;dbname=votadb";
-        $pdo = new PDO($dsn, 'root', 'AWS24VotaPRRojo_');
+        $pdo = new PDO($dsn, 'root', 'p@raMor3'); // AWS24VotaPRRojo_
 
         $query = $pdo->prepare("SELECT user_id FROM Users WHERE user_mail = :email");
 

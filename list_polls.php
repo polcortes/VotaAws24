@@ -74,7 +74,7 @@
                             
 
                             <footer>
-                                <div class="poll-is-published '. ($row["is_published"] ? " publicada" : "") .'">'. ($row["is_published"] ? " Publicada" : "No publicada") .'</div>
+                                <div class="poll-is-published '. ($row["is_published"] ? " publicada" : "") .'"> Encuesta '. ($row["is_published"] ? "publicada" : "no publicada") .'</div>
                                 <div class="poll-is-online '. $isOnlineClass .'">'. $isOnline .'</div>
                             </footer>
                         </article>
