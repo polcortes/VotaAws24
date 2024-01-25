@@ -78,41 +78,40 @@ try {
     }elseif (is_null($idpais)) {
         echo "<script>errorNotification('País no válido.')</script>";
     }else{
-    $passhash = hash('sha512',$pass);
-    $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, :paisid, :cp, :email, :pass, :tel )";
-    $stmt_insert = $conn_insert->prepare($sql_insert);
-    $stmt_insert->bindParam(':nombre', $nombre);
-    $stmt_insert->bindParam(':email', $email);
-    $stmt_insert->bindParam(':pass', $passhash);
-    $stmt_insert->bindParam(':pais', $pais);
-    $stmt_insert->bindParam(':tel', $telefonodef);
-    $stmt_insert->bindParam(':ciudad', $ciudad);
-    $stmt_insert->bindParam(':paisid', $idpais);
-    $stmt_insert->bindParam(':cp', $cp);
+        $passhash = hash('sha512',$pass);
+        $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, :paisid, :cp, :email, :pass, :tel )";
+        $stmt_insert = $conn_insert->prepare($sql_insert);
+        $stmt_insert->bindParam(':nombre', $nombre);
+        $stmt_insert->bindParam(':email', $email);
+        $stmt_insert->bindParam(':pass', $passhash);
+        $stmt_insert->bindParam(':pais', $pais);
+        $stmt_insert->bindParam(':tel', $telefonodef);
+        $stmt_insert->bindParam(':ciudad', $ciudad);
+        $stmt_insert->bindParam(':paisid', $idpais);
+        $stmt_insert->bindParam(':cp', $cp);
 
-    $stmt_insert->execute();
-    $conn_insert = null;
+        $stmt_insert->execute();
+        $conn_insert = null;
 
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dsn = "mysql:host=localhost;dbname=votadb";
+        $pdo = new PDO($dsn, 'root', 'AWS24VotaPRRojo_');
 
-    $query = "select user_id from Users where user_email = :email";
-    $stmtUsername = $conn->prepare($query);
-    $stmtUsername->bindParam(':email', $email);
+        $query = $pdo->prepare("SELECT user_id FROM Users WHERE user_mail = :email");
 
-    $user_ids = $stmt->fetchAll();
-    $user_id;
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->execute();
+        
+        $row = $query->fetch();
 
-    foreach($user_ids as $user_id_uno) {
-        $user_id = $user_id_uno;
-        break;
-    }
-
-    session_start();
-    $_SESSION["usuario"] = $user_id;
-    $_SESSION['nombre'] = $nombre;
-    header("Location: dashboard.php?succ=1");
-    exit();
+        if ($row) {
+            session_start();
+            $_SESSION["usuario"] = $row["user_id"];
+            $_SESSION['nombre'] = $nombre;
+            header("Location: dashboard.php?succ=1");
+            exit();
+        } else {
+            echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.')</script>";
+        }
     }
     }
 } catch (PDOException $e) {
