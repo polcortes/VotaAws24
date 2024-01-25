@@ -20,6 +20,15 @@ function errorNotification(text) {
     })
 }
 
+function alertNotification(text) {
+    const notifList = $('#notification__list');
+    notifList.append($(`<li><span>${SVGS.alert}<span>${text}</span></span><button class="close_notification">${SVGS.close}</button></li>`)); // Está sin probar ni estilizar.
+
+    $("#notification__list > li button.close_notification").click(function() {
+        $(this).closest("li").remove();
+    })
+}
+
 function successfulNotification(text) {
     const notifList = $('#notification__list');
     notifList.append(`<li><span>${SVGS.successful}<span>${text}</span></span><button class="close_notification">${SVGS.close}</button></li>`); // Está sin probar ni estilizar.

@@ -2,7 +2,7 @@
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "AWS24VotaPRRojo_";
+$password = "Pepe25";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
@@ -210,7 +210,7 @@ function getCountryId($pais ,$listapaises){
     <meta name="description" content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="register.js"></script>
     <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body id="crear-cuenta">
@@ -221,12 +221,8 @@ function getCountryId($pais ,$listapaises){
     <a href="index.php" class="backhome">Volver a Inicio</a>
 
     <h1>Crear una cuenta</h1>
-        <form method="POST">
-            
-            <label for="register_name">Nombre<span class="required">*</span></label>
-            <input type="text" name="register_name" id="register_name" placeholder="María" required>
 
-        </form>
+
 
     </main>
 

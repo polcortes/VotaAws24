@@ -14,7 +14,7 @@
         </div>
         <div class="continfo">
             <p class="author">Renato</p>
-            <p class="mail">otaner2002@gmail.com</p>
+            <p class="mail">ffloresgarcia.cf@iesesteverradas.cat</p>
         </div>
         <div class="links">
             <div class="ieti">&copy <a href="https://www.iesesteveterradas.cat/" target="_blank">IES Esteve Terradas i Illa</a></div>
