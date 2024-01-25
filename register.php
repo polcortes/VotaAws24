@@ -2,7 +2,7 @@
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "1234";
+$password = "AWS24VotaPRRojo_";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
@@ -64,7 +64,7 @@ try {
     }else if (!validarPais($pais,$country_names)) {
         echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
     }else if(strlen($telefonoprp)!== 9){
-        // echo "<script>errorNotification('El teléfono no es válido.')</script>";
+        echo "<script>errorNotification('El teléfono no es válido.')</script>";
     }else if(!validarPrefix($prefix)){
         echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
     }else if(!validarNombre($ciudad)){
@@ -100,7 +100,13 @@ try {
     $stmtUsername = $conn->prepare($query);
     $stmtUsername->bindParam(':email', $email);
 
-    $user_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $user_ids = $stmt->fetchAll();
+    $user_id;
+
+    foreach($user_ids as $user_id_uno) {
+        $user_id = $user_id_uno;
+        break;
+    }
 
     session_start();
     $_SESSION["usuario"] = $user_id;
