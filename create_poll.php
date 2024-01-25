@@ -78,7 +78,7 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         // Cambiar parámetros de conexión a BD
         $dsn = "mysql:host=localhost;dbname=votadb";        
         $username = "root";
-        $password = "1234"; // AWS24VotaPRRojo_
+        $password = "AWS24VotaPRRojo_"; // AWS24VotaPRRojo_
         
         // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);

@@ -20,7 +20,7 @@
             if (isset($_SESSION["usuario"])) {
                 $dbname = "votadb";
                 $user = "root";
-                $password = "1234";
+                $password = "AWS24VotaPRRojo_";
             
                 try {
                     $dsn = "mysql:host=localhost;dbname=$dbname";

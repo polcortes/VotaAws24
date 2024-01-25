@@ -2,7 +2,7 @@
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "1234";
+$password = "AWS24VotaPRRojo_";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
