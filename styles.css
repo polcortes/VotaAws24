@@ -767,17 +767,105 @@ footer {
 }
 
 /* survey_details.php */
-#survey_details > main {
+#survey_details {
     display: flex;
-    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
+    min-height: 100vh;
 }
 
+#survey_details > a {
+    position: absolute;
+    font-size: 20px;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#survey_details > main {
+    width: 600px;
+    display: block;
+}
+
+#survey_details span, #survey_details label { font-size: 20px; }
+
 #survey_details > main > section {
-    width: 70vw;
+    padding: 20px;
+}
+
+#survey_details > main > section > h1 {
+    font-size: 45px;
+    text-align: center;
+}
+
+#survey_details > main > section > h1+span {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 #survey_details > main > aside {
-    width: 30vw;
-    background-color: gray;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
 }
+
+#survey_details > main > aside > div > form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#survey_details > main > aside > div > form > select {
+    font-size: 20px;
+    color: var(--gris-claro);
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid var(--gris-claro);
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#survey_details > main > aside > div > form > select > option {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+}
+
+#survey_details > main > aside > div > form > input[type='submit'] {
+    margin-top: 20px;
+    border: 3px solid var(--gris-claro);
+    border-radius: 20px;
+    padding: 15px 20px;
+    background-color: transparent;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    font-weight: 600;
+    transition: color .15s linear, background-color .15s linear, text-decoration-color .15s linear;
+}
+
+#survey_details > main > aside > div > form > input[type='submit']:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    text-decoration-color: var(--gris-oscuro);
+}
+
+/* Gráfico: */
+div.apexcharts-legend.apexcharts-align-center.apx-legend-position-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+span.apexcharts-legend-text {color: var(--gris-claro)!important;}
+

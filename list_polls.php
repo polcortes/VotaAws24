@@ -21,7 +21,7 @@
             if (isset($_SESSION["usuario"])) {
                 $dbname = "votadb";
                 $user = "root";
-                $password = "Pepe25";
+                $password = "p@raMor3";
             
                 try {
                     $dsn = "mysql:host=localhost;dbname=$dbname";
@@ -39,7 +39,7 @@
                 if ($e[0]!='00000') {
                     echo "\nPDO::errorInfo():\n";
                     die("Error accedint a dades: " . $e[2]);
-                } 
+                }
             
                 if (!$query->rowCount() == 0) {
                     foreach ($query as $row) {

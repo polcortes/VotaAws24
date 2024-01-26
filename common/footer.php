@@ -6,15 +6,15 @@
         </div>-->
         <div class="continfo">
             <p class="author">Eric</p>
-            <p class="mail">eescrichalmagro.cf@iesesteverradas.cat</p>
+            <a href="mailto:eescrichalmagro.cf@iesesteverradas.cat" class="mail">eescrichalmagro.cf@iesesteverradas.cat</a>
         </div>
         <div class="continfo">
             <p class="author">Pol</p>
-            <p class="mail">pcortesgarcia.cf@iesesteveterradas.cat</p>
+            <a href="mailto:pcortesgarcia.cf@iesesteveterradas.cat" class="mail">pcortesgarcia.cf@iesesteveterradas.cat</a>
         </div>
-        <div class="continfo">
+        <div class="contifo">
             <p class="author">Renato</p>
-            <p class="mail">ffloresgarcia.cf@iesesteverradas.cat</p>
+            <a href="mailto:ffloresgarcia.cf@iesesteverradas.cat" class="mail">ffloresgarcia.cf@iesesteverradas.cat</a>
         </div>
         <div class="links">
             <div class="ieti">&copy <a href="https://www.iesesteveterradas.cat/" target="_blank">IES Esteve Terradas i Illa</a></div>
