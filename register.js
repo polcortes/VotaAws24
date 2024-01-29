@@ -1,6 +1,13 @@
 $(function(){
 
-    $("#register_name").on('focusout', function(){
+    $('h1').after(`
+    <form method="POST">
+            
+    <label for="register_name">Nombre<span class="required">*</span></label>
+    <input type="text" name="register_name" id="register_name" placeholder="María" required>
+    `);
+
+    $("body").on('focusout', '#register_name', function(){
         var input = $(this).val();
         validacionNombres(input);
     });
@@ -202,6 +209,7 @@ function crearSubmit(){
     if ($("#submit").length === 0) {
         $(".divciudad").after(`
         <input type="submit" id="submit" value="Crear cuenta">
+        </form>
         `
         )} 
 }

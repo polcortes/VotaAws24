@@ -44,7 +44,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetros, conexión a BD
     $dsn = "mysql:host=localhost;dbname=votadb";
-    $pdo = new PDO($dsn, 'root', 'AWS24VotaPRRojo_');
+    $pdo = new PDO($dsn, 'root', 'Pepe25');
 
     // Cambiar query
     $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");

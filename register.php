@@ -2,7 +2,7 @@
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "AWS24VotaPRRojo_";
+$password = "Pepe25";
 $database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
 
 try {
@@ -64,7 +64,7 @@ try {
     }else if (!validarPais($pais,$country_names)) {
         echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
     }else if(strlen($telefonoprp)!== 9){
-        // echo "<script>errorNotification('El teléfono no es válido.')</script>";
+        echo "<script>errorNotification('El teléfono no es válido.')</script>";
     }else if(!validarPrefix($prefix)){
         echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
     }else if(!validarNombre($ciudad)){
@@ -78,35 +78,40 @@ try {
     }elseif (is_null($idpais)) {
         echo "<script>errorNotification('País no válido.')</script>";
     }else{
-    $passhash = hash('sha512',$pass);
-    $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, :paisid, :cp, :email, :pass, :tel )";
-    $stmt_insert = $conn_insert->prepare($sql_insert);
-    $stmt_insert->bindParam(':nombre', $nombre);
-    $stmt_insert->bindParam(':email', $email);
-    $stmt_insert->bindParam(':pass', $passhash);
-    $stmt_insert->bindParam(':pais', $pais);
-    $stmt_insert->bindParam(':tel', $telefonodef);
-    $stmt_insert->bindParam(':ciudad', $ciudad);
-    $stmt_insert->bindParam(':paisid', $idpais);
-    $stmt_insert->bindParam(':cp', $cp);
+        $passhash = hash('sha512',$pass);
+        $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, :paisid, :cp, :email, :pass, :tel )";
+        $stmt_insert = $conn_insert->prepare($sql_insert);
+        $stmt_insert->bindParam(':nombre', $nombre);
+        $stmt_insert->bindParam(':email', $email);
+        $stmt_insert->bindParam(':pass', $passhash);
+        $stmt_insert->bindParam(':pais', $pais);
+        $stmt_insert->bindParam(':tel', $telefonodef);
+        $stmt_insert->bindParam(':ciudad', $ciudad);
+        $stmt_insert->bindParam(':paisid', $idpais);
+        $stmt_insert->bindParam(':cp', $cp);
 
-    $stmt_insert->execute();
-    $conn_insert = null;
+        $stmt_insert->execute();
+        $conn_insert = null;
 
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dsn = "mysql:host=localhost;dbname=votadb";
+        $pdo = new PDO($dsn, 'root', 'p@raMor3'); // AWS24VotaPRRojo_
 
-    $query = "select user_id from Users where user_email = :email";
-    $stmtUsername = $conn->prepare($query);
-    $stmtUsername->bindParam(':email', $email);
+        $query = $pdo->prepare("SELECT user_id FROM Users WHERE user_mail = :email");
 
-    $user_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->execute();
+        
+        $row = $query->fetch();
 
-    session_start();
-    $_SESSION["usuario"] = $user_id;
-    $_SESSION['nombre'] = $nombre;
-    header("Location: dashboard.php?succ=1");
-    exit();
+        if ($row) {
+            session_start();
+            $_SESSION["usuario"] = $row["user_id"];
+            $_SESSION['nombre'] = $nombre;
+            header("Location: dashboard.php?succ=1");
+            exit();
+        } else {
+            echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.')</script>";
+        }
     }
     }
 } catch (PDOException $e) {
@@ -204,7 +209,7 @@ function getCountryId($pais ,$listapaises){
     <meta name="description" content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="register.js"></script>
     <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body id="crear-cuenta">
@@ -215,12 +220,8 @@ function getCountryId($pais ,$listapaises){
     <a href="index.php" class="backhome">Volver a Inicio</a>
 
     <h1>Crear una cuenta</h1>
-        <form method="POST">
-            
-            <label for="register_name">Nombre<span class="required">*</span></label>
-            <input type="text" name="register_name" id="register_name" placeholder="María" required>
 
-        </form>
+
 
     </main>
 

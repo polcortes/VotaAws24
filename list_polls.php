@@ -13,6 +13,7 @@
     <?php include_once('common/header.php'); ?>
     <main>
         <h1>Tus encuestas</h1>
+        <span>Haz click para ver los detalles de las encuestas</span>
         <section class="grid-polls">
             <?php
             session_start();
@@ -20,7 +21,7 @@
             if (isset($_SESSION["usuario"])) {
                 $dbname = "votadb";
                 $user = "root";
-                $password = "AWS24VotaPRRojo_";
+                $password = "Pepe25";
             
                 try {
                     $dsn = "mysql:host=localhost;dbname=$dbname";
@@ -29,7 +30,7 @@
                     echo $e->getMessage("");
                 }
             
-                $query = $pdo -> prepare("SELECT question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
+                $query = $pdo -> prepare("SELECT survey_id, question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
                 // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = 2;");
                 $query -> execute();
             
@@ -66,17 +67,19 @@
 
                         echo '
                         <article class="grid-poll-item">
-                            <div>
-                                <h2>'. $row["question_text"] .'</h2>
-                                <div>De: '. $_SESSION["nombre"] .'</div>
-                            </div>
+                            <a href="/survey_details.php?id='. $row["survey_id"] .'">
+                                <div>
+                                    <h2>'. $row["question_text"] .'</h2>
+                                    <div>De: '. $_SESSION["nombre"] .'</div>
+                                </div>
 
-                            
+                                
 
-                            <footer>
-                                <div class="poll-is-published '. ($row["is_published"] ? " publicada" : "") .'">'. ($row["is_published"] ? " Publicada" : "No publicada") .'</div>
-                                <div class="poll-is-online '. $isOnlineClass .'">'. $isOnline .'</div>
-                            </footer>
+                                <footer>
+                                    <div class="poll-is-published '. ($row["is_published"] ? " publicada" : "") .'"> Encuesta '. ($row["is_published"] ? "publicada" : "no publicada") .'</div>
+                                    <div class="poll-is-online '. $isOnlineClass .'">'. $isOnline .'</div>
+                                </footer>
+                            </a>
                         </article>
                         ';
                     }
