@@ -1,0 +1,11 @@
+{
+    "name": "super/vota-aws24",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "authors": [
+        {
+            "name": "renato, eric, pol"
+        }
+    ]
+}

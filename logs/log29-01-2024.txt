@@ -1,0 +1,17 @@
+
+[send_invitations.php | 19:57:18 -> MySQL ERROR]: SQLSTATE error code: PDO::errorInfo():
+
+
+[send_invitations.php―20:03:26 -> MySQL ERROR]: SQLSTATE error code: PDO::errorInfo():
+
+[send_invitations.php ― 20:03:34 -> MySQL ERROR]: SQLSTATE error code: PDO::errorInfo():
+
+[send_invitations.php ― 20:05:06 -> MySQL ERROR]: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.Invitation' doesn't exist in /home/super/Documents/Projectes/VotaAws24/send_invitations.php:29
+Stack trace:
+#0 /home/super/Documents/Projectes/VotaAws24/send_invitations.php(29): PDOStatement->execute()
+#1 {main}
+
+[send_invitations.php ― 20:08:48 ― MySQL ERROR]: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.Invitation' doesn't exist in /home/super/Documents/Projectes/VotaAws24/send_invitations.php:29
+Stack trace:
+#0 /home/super/Documents/Projectes/VotaAws24/send_invitations.php(29): PDOStatement->execute()
+#1 {main}
