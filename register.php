@@ -1,18 +1,17 @@
 <?php
-// Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "Pepe25";
-$database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
+$database = "votadb";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT country_name,tel_prefix,country_id FROM Countries";
-    $sql2 = "SELECT user_mail FROM Users";
-    $sql3 = "SELECT user_tel FROM Users";
+    $sql = "SELECT country_name,tel_prefix,country_id FROM Country";
+    $sql2 = "SELECT user_mail FROM User";
+    $sql3 = "SELECT user_tel FROM User";
     $stmt = $conn->prepare($sql);
     $stmt2 = $conn->prepare($sql2);
     $stmt3 = $conn->prepare($sql3);
@@ -47,8 +46,7 @@ try {
     $ciudad = $_POST['register_ciudad'];
     $cp = $_POST['register_cp'];
     $telefono_sin_guiones = str_replace("-", "", $tel);
-    $telefonoprp = preg_replace("/[^0-9]/", "", $telefono_sin_guiones);
-    $telefonodef = $prefix . "" . $telefonoprp;
+    $telefonodef = preg_replace("/[^0-9]/", "", $telefono_sin_guiones);
     
     $idpais = getCountryId($pais, $country_names);
 
@@ -63,7 +61,7 @@ try {
         echo "<script>errorNotification('Las contraseñas no coinciden.')</script>";
     }else if (!validarPais($pais,$country_names)) {
         echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
-    }else if(strlen($telefonoprp)!== 9){
+    }else if(strlen($telefonodef)!== 9){
         echo "<script>errorNotification('El teléfono no es válido.')</script>";
     }else if(!validarPrefix($prefix)){
         echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
@@ -79,24 +77,25 @@ try {
         echo "<script>errorNotification('País no válido.')</script>";
     }else{
         $passhash = hash('sha512',$pass);
-        $sql_insert = "INSERT INTO Users (customer_name, user_city, user_country, user_country_id, user_cp, user_mail, user_pass, user_tel) VALUES (:nombre, :ciudad, :pais, :paisid, :cp, :email, :pass, :tel )";
+        $sql_insert = "INSERT INTO User (customer_name, user_city, user_country_id, user_cp, user_mail, user_pass, user_tel, user_tel_prefix) VALUES (:nombre, :ciudad, :paisid, :cp, :email, :pass, :tel, :pre)";
         $stmt_insert = $conn_insert->prepare($sql_insert);
         $stmt_insert->bindParam(':nombre', $nombre);
         $stmt_insert->bindParam(':email', $email);
         $stmt_insert->bindParam(':pass', $passhash);
-        $stmt_insert->bindParam(':pais', $pais);
         $stmt_insert->bindParam(':tel', $telefonodef);
+        $stmt_insert->bindParam(':pre', $prefix);
         $stmt_insert->bindParam(':ciudad', $ciudad);
         $stmt_insert->bindParam(':paisid', $idpais);
+
         $stmt_insert->bindParam(':cp', $cp);
 
         $stmt_insert->execute();
         $conn_insert = null;
 
         $dsn = "mysql:host=localhost;dbname=votadb";
-        $pdo = new PDO($dsn, 'root', 'p@raMor3'); // AWS24VotaPRRojo_
+        $pdo = new PDO($dsn, 'root', 'Pepe25'); // AWS24VotaPRRojo_
 
-        $query = $pdo->prepare("SELECT user_id FROM Users WHERE user_mail = :email");
+        $query = $pdo->prepare("SELECT user_id FROM User WHERE user_mail = :email");
 
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->execute();
