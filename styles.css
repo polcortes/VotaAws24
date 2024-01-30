@@ -784,10 +784,61 @@ footer {
 
 #mailVerification {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    text-align: center;
     min-height: 100vh;
 }
 
 #mailVerification .footer {
     margin-top: auto;
+}
+
+#conditions {
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#conditions main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#conditions h1 {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+#conditions .footer {
+    margin-top: auto;
+}
+
+#conditions #terms {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#conditions #terms p {
+    text-wrap: pretty;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 152.188%;
+    margin: 0;
+}
+
+#conditions #terms p span {
+    font-weight: 700;
+}
+
+#conditions #terms p#check {
+    margin-top: 50px;
 }

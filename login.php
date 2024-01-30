@@ -44,16 +44,14 @@ try {
     include 'data/dbAccess.php';
 
     if (isset($_POST['email']) && isset($_POST['password'])) {
-        echo $_POST['email'];
-        echo $_POST['password'];
         $email = $_POST["email"];
         $password = $_POST["password"];
 
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
         // Cambiar query
-        $query = $pdo->prepare("SELECT * FROM `User` WHERE `user_pass` = SHA2(:pwd, 512) AND `user_mail` = :email");
-        // $query = $pdo->prepare("SELECT * FROM User WHERE user_pass = :pwd AND user_mail = :email");
+        // $query = $pdo->prepare("SELECT * FROM `User` WHERE `user_pass` = SHA2(:pwd, 512) AND `user_mail` = :email");
+        $query = $pdo->prepare("SELECT * FROM User WHERE user_pass = :pwd AND user_mail = :email");
 
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->bindParam(':pwd', $password, PDO::PARAM_STR);
@@ -61,19 +59,16 @@ try {
         $query->execute();
 
         $row = $query->fetch();
-        echo "DESPUES DEL FETCH";
-        // Cambiar parámetro dentro de $row
         if ($row) {
             session_start();
             $_SESSION["usuario"] = $row['user_id'];
-            $_SESSION['nombre'] = $row['customer_name'];
-            echo "aNTES DEL IF";
 
             if (!$row['is_mail_valid']) {
                 header("Location: mail_verification.php");
                 exit();
 
-            } else if ($row['conditions_accepted']) {
+            }
+            if (!$row['conditions_accepted']) {
                 header("Location: terms_conditions.php");
                 exit();
             }
@@ -88,9 +83,6 @@ try {
 
 
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-
+    echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
 }
-include 'data/dbAccess.php';
-
 ?>
