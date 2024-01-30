@@ -781,3 +781,13 @@ footer {
     width: 30vw;
     background-color: gray;
 }
+
+#mailVerification {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#mailVerification .footer {
+    margin-top: auto;
+}
