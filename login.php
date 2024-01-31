@@ -44,10 +44,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetros, conexión a BD
     $dsn = "mysql:host=localhost;dbname=votadb";
-    $pdo = new PDO($dsn, 'root', 'p@raMor3');
+    $pdo = new PDO($dsn, 'root', '1234');
 
     // Cambiar query
-    $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
+    $query = $pdo->prepare("SELECT * FROM user WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
     // $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = :pwd AND user_mail = :email");
 
     $query->bindParam(':email', $email, PDO::PARAM_STR);
