@@ -39,6 +39,7 @@ try {
         } else {
             $query = $pdo->prepare("UPDATE Invitation SET is_sent = 1 WHERE invitation_id = :id");
             $query->execute([':id' => $mail['invitation_id']]);
+            echo "<script>errorNotification('Se ha invitado a " . $mail['mail_to'] . "')</script>";
         }
     }
 } catch (Exception $e) {
