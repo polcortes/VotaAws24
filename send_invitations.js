@@ -5,7 +5,6 @@ $(document).ready(function(){
         $("#overlay").show();
     });
 
-    // Cuando se hace clic en el botón de cerrar (x) o fuera del modal, se cierra el modal y la superposición
     $(".close, #overlay").click(function(){
         $("#modal-share").hide();
         $("#overlay").hide();
