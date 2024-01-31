@@ -111,6 +111,7 @@ try {
             exit();
         } else {
             echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.')</script>";
+            
         }
     }
     }

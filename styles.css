@@ -714,6 +714,7 @@ footer {
 
 #list_polls > main section.grid-polls > article.grid-poll-item a > footer {
     padding: 0;
+    position: relative;
 }
 
 #list_polls > main section.grid-polls > article.grid-poll-item a > div {
@@ -765,6 +766,82 @@ footer {
 
 #list_polls > main section.grid-polls > article.grid-poll-item a > footer > div.poll-is-online.en-proceso::before {
     background-color: var(--verde);
+}
+
+#list_polls #invitar {
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 2px solid var(--gris-claro);
+    background-color: transparent;
+    color: var(--gris-claro);
+    font-weight: 600;
+    padding: 8px 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: background-color .2s, color .2s;
+}
+
+#list_polls #invitar:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+}
+
+#list_polls #modal-invitar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gris-claro);
+    border-radius: 20px;
+}
+
+#list_polls #modal-invitar > h1 {
+    font-size: 35px;
+}
+
+#list_polls #modal-invitar input {
+    border: 2px solid var(--gris-oscuro);
+    color: var(--gris-oscuro);
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: color .2s, background-color .2s;
+}
+
+#list_polls #modal-invitar input:hover {
+    color: var(--gris-claro)!important;
+    background-color: var(--gris-oscuro);
+}
+
+#list_polls #modal-invitar::backdrop {
+    background: rgb(0 0 0 / 50%);
+}
+
+#list_polls #modal-invitar > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#list_polls #modal-invitar h1,
+#list_polls #modal-invitar span,
+#list_polls #modal-invitar input[type="submit"] {
+    text-align: center;
+    color: var(--gris-oscuro);
+}
+
+#list_polls #modal-invitar textarea {
+    color: var(--gris-oscuro);
+    margin-top: 10px;
+    resize: none;
 }
 
 /* survey_details.php */

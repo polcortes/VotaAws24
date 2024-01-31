@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
+    <script src="invitar.js"></script>
 </head>
 <body id="list_polls">
     <?php include_once('common/header.php'); ?>
@@ -30,7 +31,7 @@
                     echo $e->getMessage("");
                 }
             
-                $query = $pdo -> prepare("SELECT survey_id, survey_title, start_date, end_date, public_title, public_results FROM Surveys WHERE user_id = ". $_SESSION['usuario'] .";");
+                $query = $pdo -> prepare("SELECT survey_id, survey_title, start_date, end_date, public_title, public_results FROM Survey WHERE user_id = ". $_SESSION['usuario'] .";");
                 // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, public_title,  FROM Surveys WHERE owner_id = 2;");
                 $query -> execute();
             
@@ -75,16 +76,16 @@
                         <article class="grid-poll-item">
                             <a href="/survey_details.php?id='. $row["survey_id"] .'">
                                 <div>
-                                    <h2>'. $row["question_text"] .'</h2>
+                                    <h2>'. $row["survey_title"] .'</h2>
                                     <div>De: '. $_SESSION["nombre"] .'</div>
                                 </div>
-
-                                
 
                                 <footer>
                                     <div class="poll-is-published '. ($row["public_title"] ? " publicada" : "") .'"> Encuesta '. ($row["public_title"] ? "publicada" : "no publicada") .'</div>
                                     <div class="poll-is-online '. $isOnlineClass .'">'. $isOnline .'</div>
                                     <div class="poll-results-public">'. ($row["public_results"] === "public" ? $isPublic["public"]."Resultados públicos" : ($row["public_results"] === $isPublic["hidden"]."Resultados ocultos" ? "hidden-results" : $isPublic["private"]."Resultados privados")) .'"</div>
+
+                                    <button type="button" id="invitar">Invitar</button>
                                 </footer>
                             </a>
                         </article>
@@ -103,6 +104,15 @@
 
             }
             ?>
+
+            <dialog id="modal-invitar">
+                <h1>Invita a gente a tu encuesta:</h1>
+                <span>Separa los correos por comas</span>
+                <form method="POST">
+                    <textarea name="invite-area" id="invite-area" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Invitar">
+                </form>
+            </dialog>
         </section>
     </main>
     <?php include_once("common/footer.php") ?>

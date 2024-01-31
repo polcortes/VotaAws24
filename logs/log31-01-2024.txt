@@ -1,0 +1,2 @@
+
+[login.php ― 17:59:51 ― Successful login]: El usuario pol@gmail.com con la ID 1 ha iniciado sesión correctamente.

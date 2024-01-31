@@ -49,7 +49,7 @@ if (!isset($_SESSION["usuario"])) {
         
         if (isset($_POST['conditions'])) {
             $dsn = "mysql:host=localhost;dbname=votadb";
-            $pdo = new PDO($dsn, 'root', '1234');
+            $pdo = new PDO($dsn, 'root', 'p@raMor3');
 
             // Cambiar query
             $query = $pdo->prepare("UPDATE user SET conditions_accepted = true WHERE user_id = :user_id");
@@ -74,6 +74,8 @@ if (!isset($_SESSION["usuario"])) {
         
         if (isset($_GET["succ"])) {
             echo "<script>successfulNotification('Has iniciado sesión correctamente.');</script>";
+
+            
         }
         include_once("common/footer.php");
     }

@@ -44,10 +44,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Cambiar parámetros, conexión a BD
     $dsn = "mysql:host=localhost;dbname=votadb";
-    $pdo = new PDO($dsn, 'root', '1234');
+    $pdo = new PDO($dsn, 'root', 'p@raMor3');
 
     // Cambiar query
-    $query = $pdo->prepare("SELECT * FROM user WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
+    $query = $pdo->prepare("SELECT * FROM User WHERE user_pass = SHA2(:pwd, 512) AND user_mail = :email");
     // $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = :pwd AND user_mail = :email");
 
     $query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -62,11 +62,33 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         session_start();
         $_SESSION["usuario"] = $row['user_id'];
         $_SESSION['nombre'] = $row['customer_name'];
+        
+        $logFilePath = "logs/log" . date("d-m-Y") .".txt";
+        if (!file_exists(dirname($logFilePath))) {
+            mkdir(dirname($logFilePath), 0755, true);
+        }
+
+        $log = fopen($logFilePath, "a");
+        $logTxt = "\n[" . end(explode("/", __FILE__)) . " ― " . date('H:i:s') . " ― Successful login]: El usuario ".$email." con la ID ".$row['user_id']." ha iniciado sesión correctamente.\n";
+        
+        fwrite($log, $logTxt);
+        fclose($log);
+        
         header("Location: dashboard.php?succ=1");
         exit();
     } else {
         // Añadir las notificaciones
         echo "<script> errorNotification('Los datos no coinciden en nuestra base de datos o no existen.'); </script>";
+        $logFilePath = "logs/log" . date("d-m-Y") .".txt";
+        if (!file_exists(dirname($logFilePath))) {
+            mkdir(dirname($logFilePath), 0755, true);
+        }
+    
+        $log = fopen($logFilePath, "a");
+        $logTxt = "\n[" . end(explode("/", __FILE__)) . " ― " . date('H:i:s') . " ― Login error]: El usuario con ID ".$_SESSION['usuario']." y nombre ".$_SESSION["nombre"]." ha iniciado sesión correctamente.\n";
+        
+        fwrite($log, $logTxt);
+        fclose($log);
     }
 } else {
     // Aquí va hacer cosas del sistema de logs.

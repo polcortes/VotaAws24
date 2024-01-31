@@ -63,22 +63,24 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         $pdo->beginTransaction();
 
         $true = true;
+        $private = 'private';
 
         // Insertar la encuesta en la tabla Surveys
-        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time, is_published)
-                                       VALUES (:owner_id, :question_text, :start_time, :end_time, :isPublished)");
+        $query_survey = $pdo->prepare("INSERT INTO Survey (user_id, survey_title, start_date, end_date, public_title, public_results)
+                                       VALUES (:owner_id, :question_text, :start_time, :end_time, :isPublished, :public_results)");
         $query_survey->bindParam(':owner_id', $_SESSION['usuario']);
         $query_survey->bindParam(':question_text', $question_text);
         $query_survey->bindParam(':start_time', $start_date);
         $query_survey->bindParam(':end_time', $end_date);
         $query_survey->bindParam(':isPublished', $true);
+        $query_survey->bindParam(":public_results", $private);
 
         $query_survey->execute();
 
         $survey_id = $pdo->lastInsertId();
 
         // Insertar opciones en la tabla 
-        $query_options = $pdo->prepare("INSERT INTO Questions (option_text, survey_id) VALUES (:option_text, :survey_id)");
+        $query_options = $pdo->prepare("INSERT INTO SurveyOption (option_text, survey_id) VALUES (:option_text, :survey_id)");
 
         foreach ($options as $option_text) {
             $query_options->bindParam(':option_text', $option_text);
