@@ -1,9 +1,8 @@
 <?php
-// Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
-$password = "root";
-$database = "votadb"; // Asegúrate de usar el nombre correcto de tu base de datos
+$password = "Pepe25";
+$database = "votadb";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -61,7 +60,7 @@ try {
             echo "<script>errorNotification('Las contraseñas no coinciden.')</script>";
         } else if (!validarPais($pais, $country_names)) {
             echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
-        } else if (strlen($telefonoprp) !== 9) {
+        } else if (strlen($telefonOK) !== 9) {
             echo "<script>errorNotification('El teléfono no es válido.')</script>";
         } else if (!validarPrefix($prefix)) {
             echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
@@ -71,34 +70,38 @@ try {
             echo "<script>errorNotification('El código postal no es válido.')</script>";
         } else if (!emailRepetido($email, $correxistente)) {
             echo "<script>errorNotification('El email ya existe en nuestra base de datos.')</script>";
-        } elseif (!telRepetido($telefonoprp, $telsexistente)) {
+        } elseif (!telRepetido($telefonOK, $telsexistente)) {
             echo "<script>errorNotification('El teléfono ya existe en nuestra base de datos.')</script>";
         } elseif (is_null($idpais)) {
             echo "<script>errorNotification('País no válido.')</script>";
         } else {
+            $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+            echo "conetado";
+        
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             $passhash = hash('sha512', $pass);
-            $sql_insert = "INSERT INTO Users (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
-            $stmt_insert = $conn_insert->prepare($sql_insert);
+            $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
+            $stmt_insert = $conn->prepare($sql_insert);
             $stmt_insert->bindParam(':nombre', $nombre);
             $stmt_insert->bindParam(':email', $email);
             $stmt_insert->bindParam(':pass', $passhash);
-            $stmt_insert->bindParam(':pais', $pais);
             $stmt_insert->bindParam(':tel', $telefonOK);
             $stmt_insert->bindParam(':prefix', $prefix);
             $stmt_insert->bindParam(':ciudad', $ciudad);
             $stmt_insert->bindParam(':paisid', $idpais);
             $stmt_insert->bindParam(':cp', $cp);
-            $stmt_insert->bindParam(':token', $token);
+            // $stmt_insert->bindParam(':token', $token);
 
             $stmt_insert->execute();
-            $conn_insert = null;
-
-            $query = $pdo->prepare("SELECT user_id FROM User WHERE user_mail = :email");
-
+            
+            $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
+            
             $query->bindParam(':email', $email, PDO::PARAM_STR);
             $query->execute();
-
+            
             $row = $query->fetch();
+            $conn = null;
             if ($row) {
                 session_start();
                 $_SESSION["usuario"] = $row["user_id"];

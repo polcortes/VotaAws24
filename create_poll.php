@@ -49,23 +49,20 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
     $options = $_POST['options'];
-
     try {
-        // Cambiar parámetros de conexión a BD
         $dsn = "mysql:host=localhost;dbname=votadb";        
         $username = "root";
-        $password = "p@raMor3"; // AWS24VotaPRRojo_
+        $password = "Pepe25"; // AWS24VotaPRRojo_
         
-        // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);
 
-        // Iniciar transacción
         $pdo->beginTransaction();
 
-        $true = true;
+        $true = 2;
+
 
         // Insertar la encuesta en la tabla Surveys
-        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time, is_published)
+        $query_survey = $pdo->prepare("INSERT INTO Survey (user_id, survey_title, start_date, end_date, public_title )
                                        VALUES (:owner_id, :question_text, :start_time, :end_time, :isPublished)");
         $query_survey->bindParam(':owner_id', $_SESSION['usuario']);
         $query_survey->bindParam(':question_text', $question_text);
@@ -78,20 +75,44 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         $survey_id = $pdo->lastInsertId();
 
         // Insertar opciones en la tabla 
-        $query_options = $pdo->prepare("INSERT INTO Questions (option_text, survey_id) VALUES (:option_text, :survey_id)");
 
-        foreach ($options as $option_text) {
-            $query_options->bindParam(':option_text', $option_text);
+        foreach ($options as $index => $ans) {
+            $query_options = $pdo->prepare("INSERT INTO SurveyOption (option_text, survey_id) VALUES (:option_text, :survey_id)");
+            $query_options->bindParam(':option_text', $ans);
             $query_options->bindParam(':survey_id', $survey_id);
             $query_options->execute();
-        }
+            $answerId = $pdo->lastInsertId();
+            echo $answerId;
+          
+                if (!empty($_FILES['img_ans']['name'][$index][$answerIndex])) {
+                    $directorioDestino = 'uploads/';
+                    $fileType = $_FILES['img_ans']['type'][$index];
+                    $fileName = $_FILES['img_ans']['name'][$index];
+                    $nombreImagenUnico = generarNombreUnico($fileName);
+
+                    $newFileName = $nombreImagenUnico;
+                    $targetPath = $directorioDestino . $newFileName;
+
+                    if (move_uploaded_file($_FILES['img_ans']['tmp_name'][$index], $targetPath)) {
+                        $queryInsertImagen = $pdo->prepare("UPDATE SurveyOption SET imag = :imgurl WHERE option_id = :ansid");
+                        $queryInsertImagen->bindParam(':imgurl', $targetPath);
+                        $queryInsertImagen->bindParam(':ansid', $answerId );
+                        $queryInsertImagen->execute();
+                    } else {
+                        //aqui van logs
+                    }
+                }else{
+                    //logs
+                }                
+        
+    }
 
         $pdo->commit();
 
         echo "<script>successfulNotification('Tu encuesta se ha creado correctamente.');</script>";
 
-        //header("Location: dashboard.php");
-        //exit();
+        header("Location: dashboard.php");
+        exit();
     } catch (PDOException $e) {
         //$pdo->rollBack();
         echo "Error al crear la encuesta: " . $e->getMessage();
@@ -99,5 +120,15 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
     } finally {
         $pdo = null;
     }
+}
+
+function generarNombreUnico($nombre_original) {
+    // Obtiene la extensión del archivo
+    $extension = pathinfo($nombre_original, PATHINFO_EXTENSION);
+    
+    // Genera un nombre único basado en la fecha y hora actual
+    $nombre_unico = uniqid() . '_' . time() . '.' . $extension;
+
+    return $nombre_unico;
 }
 ?>
