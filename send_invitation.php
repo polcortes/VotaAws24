@@ -36,6 +36,9 @@ try {
         $mail->MsgHTML($content);
         if (!$mail->Send()) {
             echo "<script>errorNotification('Ha surgido un error al enviar el email.')</script>";
+        } else {
+            $query = $pdo->prepare("UPDATE Invitation SET is_sent = 1 WHERE invitation_id = :id");
+            $query->execute([':id' => $mail['invitation_id']]);
         }
     }
 } catch (Exception $e) {
