@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
 </head>
+
 <body id="list_polls">
     <?php include_once('common/header.php'); ?>
     <main>
@@ -18,86 +20,75 @@
             <?php
             session_start();
 
-            if (isset($_SESSION["usuario"])) {
-                $dbname = "votadb";
-                $user = "root";
-                $password = "Pepe25";
-            
-                try {
-                    $dsn = "mysql:host=localhost;dbname=$dbname";
-                    $pdo = new PDO($dsn, $user, $password);
-                } catch (PDOException $e){
-                    echo $e->getMessage("");
-                }
-            
-                $query = $pdo -> prepare("SELECT survey_id, question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
-                // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = 2;");
-                $query -> execute();
-            
-                // Error:
-                $e= $query->errorInfo();
-                if ($e[0]!='00000') {
-                    echo "\nPDO::errorInfo():\n";
-                    die("Error accedint a dades: " . $e[2]);
-                } 
-            
-                if (!$query->rowCount() == 0) {
-                    foreach ($query as $row) {
-                        $end_time = new DateTime($row["end_time"]);
-                        $formated_end_time = $end_time -> format('d-m-Y H:i:s');
-                        
-                        $start_time = new DateTime($row["start_time"]);
-                        $formated_start_time = $start_time -> format('d-m-Y H:i:s');
+            try {
+                if (isset($_SESSION["usuario"])) {
 
-                        $current_date = new DateTime();
+                    require 'data/dbAccess.php';
 
-                        $isOnline;
-                        $isOnlineClass;
+                    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
-                        if ($current_date >= $end_time && $current_date > $start_time) {
-                            $isOnline = "Finalizada";
-                            $isOnlineClass = "finalizada";
-                        } else if ($current_date < $end_time && $current_date < $start_time) {
-                            $isOnline = "Programada";
-                            $isOnlineClass = "programada";
-                        } else {
-                            $isOnline = "En proceso";
-                            $isOnlineClass = "en-proceso";
-                        }
+                    $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id");
+                    $query->execute([':user_id' => $_SESSION["usuario"]]);
 
-                        echo '
+                    if ($query->rowCount() > 0) {
+                        foreach ($query as $row) {
+                            $end_date = new DateTime($row["end_date"]);
+                            $formatted_end_date = $end_date->format('d-m-Y H:i:s');
+
+                            $start_date = new DateTime($row["start_date"]);
+                            $formatted_start_date = $start_date->format('d-m-Y H:i:s');
+
+                            $current_date = new DateTime();
+
+                            $isOnline;
+                            $isOnlineClass;
+
+                            if ($current_date >= $end_date && $current_date > $start_date) {
+                                $isOnline = "Finalizada";
+                                $isOnlineClass = "finalizada";
+                            } else if ($current_date < $end_date && $current_date < $start_date) {
+                                $isOnline = "Programada";
+                                $isOnlineClass = "programada";
+                            } else {
+                                $isOnline = "En proceso";
+                                $isOnlineClass = "en-proceso";
+                            }
+
+                            echo '
                         <article class="grid-poll-item">
-                            <a href="/survey_details.php?id='. $row["survey_id"] .'">
+                            <a href="/survey_details.php?id=' . $row["survey_id"] . '">
                                 <div>
-                                    <h2>'. $row["question_text"] .'</h2>
-                                    <div>De: '. $_SESSION["nombre"] .'</div>
+                                    <h2>' . $row["question_text"] . '</h2>
+                                    <div>De: ' . $_SESSION["nombre"] . '</div>
                                 </div>
 
                                 
 
                                 <footer>
-                                    <div class="poll-is-published '. ($row["is_published"] ? " publicada" : "") .'"> Encuesta '. ($row["is_published"] ? "publicada" : "no publicada") .'</div>
-                                    <div class="poll-is-online '. $isOnlineClass .'">'. $isOnline .'</div>
+                                    <div class="poll-is-published ' . ($row["is_published"] ? " publicada" : "") . '"> Encuesta ' . ($row["is_published"] ? "publicada" : "no publicada") . '</div>
+                                    <div class="poll-is-online ' . $isOnlineClass . '">' . $isOnline . '</div>
                                 </footer>
                             </a>
                         </article>
                         ';
-                    }
-                } else {
-                    echo "
+                        }
+                    } else {
+                        echo "
                     <article>
                         <div>
                             <h2>No tienes encuestas creadas.</h2>
                         </div>
                     </article>
                     ";
+                    }
                 }
-            } else {
-
+            } catch (PDOException $e) {
+                echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
             }
             ?>
         </section>
     </main>
     <?php include_once("common/footer.php") ?>
 </body>
+
 </html>
