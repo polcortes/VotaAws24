@@ -1,5 +1,24 @@
+<?php
+session_start();
+if (isset($_POST['send_invitations'])) {
+    $emails = explode(',', $_POST['emails']);
+    $survey_id = $_POST['survey_id'];
+
+    foreach ($emails as $email) {
+        $email = trim($email);
+
+        $token = bin2hex(random_bytes(50));
+
+        $query = $pdo->prepare("INSERT INTO Invitation (mail_to, survey_id, invitation_token) VALUES (:mail_to, :survey_id, :invitation_token)");
+        $query->execute([':mail_to' => $email, ':survey_id' => $survey_id, ':invitation_token' => $token]);
+
+        // Aquí debes enviar el correo electrónico con PHPMailer
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +27,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="invitar.js"></script>
 </head>
+
 <body id="list_polls">
     <?php include_once('common/header.php'); ?>
     <main>
@@ -50,10 +71,10 @@
                         $start_time = new DateTime($row["start_date"]);
                         $formated_start_time = $start_time -> format('d-m-Y H:i:s');
 
-                        $current_date = new DateTime();
+                            $current_date = new DateTime();
 
-                        $isOnline;
-                        $isOnlineClass;
+                            $isOnline;
+                            $isOnlineClass;
 
                         if ($current_date >= $end_time && $current_date > $start_time) {
                             $isOnline = "Finalizada";
@@ -72,9 +93,9 @@
                             "private" => '<svg width="10" height="10" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 9c-2.4 2.667 -5.4 4 -9 4c-3.6 0 -6.6 -1.333 -9 -4" /><path d="M3 15l2.5 -3.8" /><path d="M21 14.976l-2.492 -3.776" /><path d="M9 17l.5 -4" /><path d="M15 17l-.5 -4" /></svg>'
                         ];
 
-                        echo '
+                            echo '
                         <article class="grid-poll-item">
-                            <a href="/survey_details.php?id='. $row["survey_id"] .'">
+                            <a href="/survey_details.php?id=' . $row["survey_id"] . '">
                                 <div>
                                     <h2>'. $row["survey_title"] .'</h2>
                                     <div>De: '. $_SESSION["nombre"] .'</div>
@@ -87,21 +108,34 @@
 
                                     <button type="button" id="invitar">Invitar</button>
                                 </footer>
+                                <button class="share-button" data-survey-id="' . $row["survey_id"] . '">Compartir encuesta</button>
                             </a>
                         </article>
                         ';
-                    }
-                } else {
-                    echo "
+                        }
+                    } else {
+                        echo "
                     <article>
                         <div>
                             <h2>No tienes encuestas creadas.</h2>
                         </div>
                     </article>
                     ";
+                    } ?>
+                    <div id="overlay" style="display: none;"></div>
+                    <dialog id="modal-share">
+                        <span class="close">&times;</span>
+                        <h1>Invita a gente a tu encuesta:</h1>
+                        <span>Separa los correos por comas</span>
+                        <form method="POST">
+                            <textarea name="invite-area" id="invite-area" cols="30" rows="10"></textarea>
+                            <input type="submit" value="Invitar">
+                        </form>
+                    </dialog>
+                    <?php
                 }
-            } else {
-
+            } catch (PDOException $e) {
+                echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
             }
             ?>
 
@@ -115,6 +149,8 @@
             </dialog>
         </section>
     </main>
+    <script src="send_invitations.js"></script>
     <?php include_once("common/footer.php") ?>
 </body>
+
 </html>
