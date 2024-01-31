@@ -30,7 +30,7 @@
                     echo $e->getMessage("");
                 }
             
-                $query = $pdo -> prepare("SELECT survey_id, question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = ". $_SESSION['usuario'] .";");
+                $query = $pdo -> prepare("SELECT survey_id, survey_title, start_date, end_date, public_title FROM Survey WHERE user_id = ". $_SESSION['usuario'] .";");
                 // $query = $pdo -> prepare("SELECT question_text, start_time, end_time, is_published FROM Surveys WHERE owner_id = 2;");
                 $query -> execute();
             

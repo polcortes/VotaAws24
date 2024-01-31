@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
-    $pdo = new PDO("mysql:host=localhost;dbname=votadb", 'root', 'p@raMor3'); //AWS24VotaPRRojo_
+    $pdo = new PDO("mysql:host=localhost;dbname=votadb", 'root', 'Pepe25'); //AWS24VotaPRRojo_
 
-    $query = $pdo->prepare("SELECT * FROM Surveys WHERE owner_id = :user_id AND survey_id = :survey_id");
+    $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id AND survey_id = :survey_id");
 
     $query->bindParam(':user_id', $_SESSION["usuario"], PDO::PARAM_INT);
     $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
@@ -18,10 +18,10 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
 
     // Cambiar parámetro dentro de $row
     if ($row) {
-        $question_text = $row["question_text"];
-        $start_time = $row["start_time"];
-        $end_time = $row["end_time"];
-        $is_published = $row["is_published"];
+        $question_text = $row["survey_title"];
+        $start_time = $row["start_date"];
+        $end_time = $row["end_date"];
+        $is_published = $row["public_title"];
     } else {
         // Añadir las notificaciones
         echo "<script> errorNotification('No tienes una encuesta con esa ID.'); </script>";

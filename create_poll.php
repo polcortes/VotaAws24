@@ -44,17 +44,26 @@ include_once("common/footer.php")
 </html>
 
 <?php
-if (isset($_POST['options']) && isset($_POST['question'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// if (isset($_POST['option']) && isset($_POST['question'])) 
     $question_text = $_POST['question'];
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
-    $options = $_POST['options'];
+    $options = [];
 
+    foreach ($_POST as $name => $value) {
+        // Verificar si el nombre del input comienza con "input"
+        if (strpos($name, 'option') === 0) {
+            // Imprimir el nombre del input y su valor
+            echo "Nombre del input: $name, Valor: $value <br>";
+        }
+    }
+    
     try {
         // Cambiar parámetros de conexión a BD
         $dsn = "mysql:host=localhost;dbname=votadb";        
         $username = "root";
-        $password = "p@raMor3"; // AWS24VotaPRRojo_
+        $password = "Pepe25"; // AWS24VotaPRRojo_
         
         // Conectar a la base de datos
         $pdo = new PDO($dsn, $username, $password);
@@ -62,10 +71,10 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         // Iniciar transacción
         $pdo->beginTransaction();
 
-        $true = true;
+        $true = 2;
 
         // Insertar la encuesta en la tabla Surveys
-        $query_survey = $pdo->prepare("INSERT INTO Surveys (owner_id, question_text, start_time, end_time, is_published)
+        $query_survey = $pdo->prepare("INSERT INTO Survey (user_id, survey_title, start_date, end_date, public_title )
                                        VALUES (:owner_id, :question_text, :start_time, :end_time, :isPublished)");
         $query_survey->bindParam(':owner_id', $_SESSION['usuario']);
         $query_survey->bindParam(':question_text', $question_text);
@@ -78,7 +87,7 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         $survey_id = $pdo->lastInsertId();
 
         // Insertar opciones en la tabla 
-        $query_options = $pdo->prepare("INSERT INTO Questions (option_text, survey_id) VALUES (:option_text, :survey_id)");
+        $query_options = $pdo->prepare("INSERT INTO SurveyOption (option_text, survey_id) VALUES (:option_text, :survey_id)");
 
         foreach ($options as $option_text) {
             $query_options->bindParam(':option_text', $option_text);

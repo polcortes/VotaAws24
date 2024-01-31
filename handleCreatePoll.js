@@ -1,5 +1,6 @@
 $(function(){
     createQuestion();
+    var i = 2;
     
     $("body").on('focusout', '#question', function(){
         var input = $(this).val();
@@ -23,7 +24,8 @@ $(function(){
     });
 
     $("body").on('click', '#addButton', function(){
-        addOption();
+        i++
+        addOption(i);
         deleteDate();
     });
 
@@ -64,8 +66,8 @@ function createOriginalAns(){
     if ($("#optionsContainer").length === 0) {
     $('#question').after(`
     <div id="optionsContainer">
-         <input type="text" name="options[]" id = 'quest' class="quest" placeholder="Respuesta" required>
-         <input type="text" name="options[]" id = 'quest' class="quest" placeholder="Respuesta" required>
+         <input type="text" name="option1" id = 'quest' class="quest" placeholder="Respuesta" required>
+         <input type="text" name="option2" id = 'quest' class="quest" placeholder="Respuesta" required>
      </div>
      <button type="button" id="addButton"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -102,6 +104,12 @@ function deleteDate(){
 
 }
 
+function deleteQuests(){   
+    if ($("#optionsContainer").length != 0) {
+        $('#optionsContainer').remove();
+    }
+}
+
 function createPoll(){
     if ($("#create").length === 0) {
     $('#end_date').after(`
@@ -112,18 +120,28 @@ function createPoll(){
 
 function deletePoll(){
     if ($("#create").length !== 0) {
-        $('#end_date').remove(`
-        <button type="submit" id="create">Crear Encuesta</button>
-        </form>
-        `)}
+        $('#create').remove()}
+}
+
+function deleteButtons(){
+    if ($("#addButton").length !== 0 && $("#deleteButton").length !== 0 ) {
+        $('#deleteButton').remove()
+        $('#addButton').remove();
+}
 }
 
 
 function checkQuest(question){
     if (question !== null && question.trim() !== '') {
         createOriginalAns();
+    }else{
+        deleteDate();
+        deletePoll();
+        deleteQuests();
+        deleteButtons();
     }
 }
+
 
 function fillDate(){
     var start = $('#start_date').val();
@@ -138,14 +156,16 @@ function checkDate(){
     var fechaInicio = new Date($('#start_date').val());
     var fechaFin = new Date($('#end_date').val());
     var hoy = new Date();
-    console.log(fechaInicio)
-    console.log(fechaFin)
     if(fechaFin < fechaInicio){
-        errorNotification('La fecha de final no puede ser menor a la de inicio ')
+        errorNotification('La fecha de final no puede ser menor a la de inicio ');
+        deletePoll()
         return false;
     }else if(fechaInicio < hoy){
-        errorNotification('La fecha de inicio no puede ser menor a la actual ')
+        errorNotification('La fecha de inicio no puede ser menor a la actual ');
+        deletePoll()
         return false;
+    }else{
+        return true;
     }
 }
 function checkAns(){
@@ -153,7 +173,6 @@ function checkAns(){
     var complete = true;
     $('.quest').each(function() {
         var valorInput = $(this).val();
-        console.log()
         if (valorInput !== null && valorInput.trim() !== '') {
             arrayquest.push(11)
         }else{
@@ -165,7 +184,6 @@ function checkAns(){
             complete = false;
         }
     })
-    console.log(complete)
     if(complete){
         createStartDate();
     }else{
@@ -175,11 +193,11 @@ function checkAns(){
 }
 
 
-function addOption(){
+function addOption(i){
     var optionsContainer = $('#optionsContainer');
     var optionInputs = optionsContainer.find('input[name="options[]"]');
     if(optionInputs.length < 100){
-        optionsContainer.append('<input type="text" name="options[]" id = "quest" class="quest" placeholder="Respuesta" required>');
+        optionsContainer.append('<input type="text" name="option'+i+'" id = "quest" class="quest" placeholder="Respuesta" required>');
     } else {
         alertNotification('El numero maximo de preguntas es de cien')
     }
@@ -187,7 +205,7 @@ function addOption(){
 
 function deleteOption(){
     var optionsContainer = $('#optionsContainer');
-    var optionInputs = optionsContainer.find('input[name="options[]"]');
+    var optionInputs = optionsContainer.find('input[name^="option"]');
     if(optionInputs.length > 2){
         optionInputs.last().remove();
     } else {
