@@ -15,7 +15,7 @@ CREATE TABLE `User` (
   `user_tel` int UNIQUE,
   `user_tel_prefix` varchar(255),
   `user_pass` varchar(255),
-  `token` varchar(255) UNIQUE NOT NULL,
+  `token` varchar(255) UNIQUE,
   `is_mail_valid` boolean DEFAULT false,
   `conditions_accepted` boolean DEFAULT false
 );
@@ -50,7 +50,8 @@ CREATE TABLE `Invitation` (
   `mail_to` varchar(255) NOT NULL,
   `survey_id` int NOT NULL,
   `is_send` boolean NOT NULL DEFAULT false,
-  `is_survey_done` boolean NOT NULL DEFAULT false
+  `is_survey_done` boolean NOT NULL DEFAULT false,
+  `invitation_token` varchar(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE `UserVote` (
