@@ -1,7 +1,6 @@
 $(function(){
     createQuestion();
-    var i = 2;
-    
+    var numeroinput = 2;
     $("body").on('focusout', '#question', function(){
         var input = $(this).val();
         checkQuest(input);
@@ -24,8 +23,8 @@ $(function(){
     });
 
     $("body").on('click', '#addButton', function(){
-        i++
-        addOption(i);
+        numeroinput++;
+        addOption(numeroinput);
         deleteDate();
     });
 
@@ -57,7 +56,7 @@ $(function(){
 
 function createQuestion(){
     $('h1').after(`
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     <input type="text" id="question" name="question" placeholder="Pregunta de la encuesta" required>
     <br>`);
 }
@@ -66,8 +65,10 @@ function createOriginalAns(){
     if ($("#optionsContainer").length === 0) {
     $('#question').after(`
     <div id="optionsContainer">
-         <input type="text" name="option1" id = 'quest' class="quest" placeholder="Respuesta" required>
-         <input type="text" name="option2" id = 'quest' class="quest" placeholder="Respuesta" required>
+         <input type="text" name="options[1]" id = 'quest' class="quest" placeholder="Respuesta" required>
+         <input name="img_ans[1]" type="file" class="imagen" accept="image/*">
+         <input type="text" name="options[2]" id = 'quest' class="quest" placeholder="Respuesta" required>
+         <input name="img_ans[2]" type="file" class="imagen" accept="image/*">
      </div>
      <button type="button" id="addButton"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -104,10 +105,13 @@ function deleteDate(){
 
 }
 
-function deleteQuests(){   
+function deleteQuests(){
+    
     if ($("#optionsContainer").length != 0) {
         $('#optionsContainer').remove();
     }
+
+
 }
 
 function createPoll(){
@@ -197,7 +201,10 @@ function addOption(i){
     var optionsContainer = $('#optionsContainer');
     var optionInputs = optionsContainer.find('input[name="options[]"]');
     if(optionInputs.length < 100){
-        optionsContainer.append('<input type="text" name="option'+i+'" id = "quest" class="quest" placeholder="Respuesta" required>');
+        optionsContainer.append(`
+        <input type="text" name="options[`+i+`] " id = "quest" class="quest" placeholder="Respuesta" required>
+        <input name="img_ans[` + i +`]" type="file" class="imagen" accept="image/*">
+        `);
     } else {
         alertNotification('El numero maximo de preguntas es de cien')
     }
@@ -205,9 +212,11 @@ function addOption(i){
 
 function deleteOption(){
     var optionsContainer = $('#optionsContainer');
-    var optionInputs = optionsContainer.find('input[name^="option"]');
-    if(optionInputs.length > 2){
+    var optionInputs = optionsContainer.find('input[name^="options"]');
+    var imginputs = optionsContainer.find('input[name^="img_ans"]');
+    if(optionInputs.length > 2 && imginputs.length > 2){
         optionInputs.last().remove();
+        imginputs.last().remove();
     } else {
         alertNotification('El numero minimo de preguntas es de dos')
     }
