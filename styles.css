@@ -1056,3 +1056,56 @@ span.apexcharts-legend-text {color: var(--gris-claro)!important;}
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
 }
+
+body:has(#vote) {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+#vote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#vote form {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    height: 200px;
+    gap: 25px;
+}
+
+#vote form > article > img {
+    aspect-ratio: 16/9;
+    width: 200px;
+    object-fit: cover;
+}
+
+#vote form input[type="submit"] {
+    border: 3px solid var(--gris-claro);
+    color: var(--gris-claro);
+    background-color: transparent;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 10px;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+
+    transition: background-color .2s, color .2s;
+}
+
+#vote form input[type="submit"]:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+}
+
+#vote > h1 + img {
+    aspect-ratio: 16/9;
+    width: 425px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
