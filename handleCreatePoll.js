@@ -10,20 +10,47 @@ $(function(){
         checkAns();
     });
 
-    $('body').on('focusout', '#start_date', function(){
-        checkStartDate();
+    $('body').on('change', '#start_date', function(){
+        fillDate();
+        checkDate();
+
+    });
+
+    $('body').on('change', '#end_date', function(){
+        fillDate();
+        checkDate();
+
     });
 
     $("body").on('click', '#addButton', function(){
         addOption();
         deleteDate();
     });
-    
+
     $("body").on('click', '#deleteButton', function(){
         deleteOption();
         checkAns();
     });
+    
+    $("body").on('click', '#create', function(){
+        checkDate();
+    });
 
+
+    $("body").on('keydown', 'input', function(event) {
+        if (event.keyCode === 13 || event.keyCode === 9 ) { 
+            event.preventDefault();
+            $(this).blur();
+            var borderBottomColor = $(this).css('border-bottom-color');
+
+            if (borderBottomColor != 'rgb(255, 37, 37)') {
+                var inputs = $('input');
+                var currentIndex = inputs.index(this);
+                var nextIndex = (currentIndex + 1) % inputs.length;
+                inputs[nextIndex].focus();
+            }
+        }
+        });
 });
 
 function createQuestion(){
@@ -58,22 +85,15 @@ function createStartDate(){
     <div id="datepoll">
     <label for="start_date">Fecha de Inicio:</label>
     <input type="datetime-local" id="start_date" name="start_date" required>
-    
-
-    `);
-    }
-}
-
-function createEndDate(){
-    if ($("#datepoll").length === 0) {
-        $('#deleteButton').after(`
     <label for="end_date">Fecha de Finalización:</label>
     <input type="datetime-local" id="end_date" name="end_date" required>
     <br>
     </div>
-    `)};
-
+    `);
+    }
 }
+
+
 
 function deleteDate(){
     if ($("#datepoll").length != 0) {
@@ -102,17 +122,32 @@ function deletePoll(){
 function checkQuest(question){
     if (question !== null && question.trim() !== '') {
         createOriginalAns();
-    }else{
-        console.log('no');
     }
 }
 
-function checkStartDate(){
-    var fechaEntrada = new Date($('#start_date').val());
-    var fechaActual = new Date();
-    $('#start_date').attr('min', minDate);
+function fillDate(){
+    var start = $('#start_date').val();
+    var end = $('#end_date').val();
+
+    if(start != "" && end != ""){
+        createPoll()
+    }
 }
 
+function checkDate(){
+    var fechaInicio = new Date($('#start_date').val());
+    var fechaFin = new Date($('#end_date').val());
+    var hoy = new Date();
+    console.log(fechaInicio)
+    console.log(fechaFin)
+    if(fechaFin < fechaInicio){
+        errorNotification('La fecha de final no puede ser menor a la de inicio ')
+        return false;
+    }else if(fechaInicio < hoy){
+        errorNotification('La fecha de inicio no puede ser menor a la actual ')
+        return false;
+    }
+}
 function checkAns(){
     var arrayquest = [];
     var complete = true;
@@ -139,9 +174,6 @@ function checkAns(){
     }
 }
 
-function checkinput(){
-
-}
 
 function addOption(){
     var optionsContainer = $('#optionsContainer');
