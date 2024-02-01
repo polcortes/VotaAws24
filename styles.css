@@ -43,12 +43,28 @@ a {
     transition: color .1s linear;
 }
 
-
 body {
     background-color: var(--gris-oscuro);
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ooter {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
 /* Login */
 #login main {
     height: 100dvh;
@@ -334,40 +350,30 @@ a:hover { color: var(--azul); }
     color: var(--azul);
 }
 
-#crear-cuenta main {
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#crear-cuenta h1 {
+#register h1 {
     font-size: 60px;
     margin-bottom: 50px;
-
 }
 
-#crear-cuenta form {
+#register form {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-#crear-cuenta label {
+#register label {
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 600;
 }
 
-#crear-cuenta form > input + label,
-#crear-cuenta form > select + label {
+#register form > input + label,
+#register form > select + label {
     margin-top: 20px;
 }
 
-#crear-cuenta input:not([type="submit"]),
-#crear-cuenta select {
+#register input:not([type="submit"]),
+#register select {
     width: 500px;
     font-size: 20px;
     background-color: transparent;
@@ -377,24 +383,24 @@ a:hover { color: var(--azul); }
     transition: border-bottom .3s linear;
 }
 
-#crear-cuenta input:not([type="submit"]):focus {
+#register input:not([type="submit"]):focus {
     border-bottom: solid 3px var(--azul);
 }
 
-#crear-cuenta select > option {
+#register select > option {
     background-color: var(--gris-claro);
     border: var(--azul);
 }
 
-#crear-cuenta select > option:not(:disabled) {
+#register select > option:not(:disabled) {
     color: var(--gris-oscuro);
 }
 
-#crear-cuenta select > option:hover {
+#register select > option:hover {
     background-color: var(--azul);
 }
 
-#crear-cuenta input[type="submit"] {
+#register input[type="submit"] {
     margin-top: 50px;
     width: 200px;
     color: var(--gris-claro);
@@ -410,50 +416,50 @@ a:hover { color: var(--azul); }
     transition: color .3s linear, background-color .3s linear;
 }
 
-#crear-cuenta input[type="submit"]:hover {
+#register input[type="submit"]:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
 }
 
-#crear-cuenta input[type="submit"]:disabled {
+#register input[type="submit"]:disabled {
     opacity: .7;
     cursor: not-allowed;
 }
 
 /* Chrome, Safari, Edge, Opera */
-#crear-cuenta input::-webkit-outer-spin-button,
-#crear-cuenta input::-webkit-inner-spin-button {
+#register input::-webkit-outer-spin-button,
+#register input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-#crear-cuenta input[type=number] {
+#register input[type=number] {
     -moz-appearance: textfield;
 }
 
-#crear-cuenta span.required {
+#register span.required {
     color: var(--rojo);
     padding-left: 5px;
 }
 
-#crear-cuenta form > div.divisor {
+#register form > div.divisor {
     display: flex;
     gap: 35px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-#crear-cuenta form > div.divisor span {
+#register form > div.divisor span {
     display: flex;
     flex-direction: column;
 }
 
-#crear-cuenta form > div.divisor span > label {
+#register form > div.divisor span > label {
     display: flex;
 }
 
-#crear-cuenta form > div.divisor span > input {
+#register form > div.divisor span > input {
     width: 230px;
 }
 
