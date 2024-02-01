@@ -11,6 +11,7 @@ try {
     $query = $pdo->prepare("SELECT * FROM User WHERE user_id = :id");
     $query->execute([':id' => $_SESSION["usuario"]]);
     $row = $query->fetch();
+    // ['is_mail_valid'] && $row['conditions_accepted']
 
     if ($row) {
         $validUser = ($row['is_mail_valid'] && $row['conditions_accepted']);
@@ -36,10 +37,13 @@ try {
             if ($validUser) {
                 echo "<li><a href='dashboard.php'>DashBoard</a></li>";
                 echo '<li><a href="create_poll.php">Crear Encuesta</a></li>';
+                echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
             } else {
-                echo '<li><a href="mail_verification.php">Acaba de registrarte</a></li>';
+                echo '<li><a href="register.php">Acaba de registrarte</a></li>';
+                echo '<li><a href="login.php">Iniciar Sesión</a></li>';
             }
-
+        } else {
+            echo '<li><a href="register.php">Registrarse</a></li>';
         }
         ?>
     </ul>
@@ -47,10 +51,6 @@ try {
         <?php
         if (isset($_SESSION['usuario'])) {
             echo '<li>Bienvenido ' . $_SESSION['nombre'] . '</li>';
-            echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
-        } else {
-            echo '<li><a href="login.php">Iniciar Sesión</a></li>';
-            echo '<li><a href="register.php">Registrarse</a></li>';
         }
         ?>
     </ul>

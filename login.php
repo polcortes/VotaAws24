@@ -14,8 +14,8 @@
     <script src="/componentes/notificationHandler.js"></script>
 </head>
 
-<body>
-    <main id="login">
+<body id="login">
+    <main>
         <h1>Iniciar sesión</h1>
         <form method="post">
             <input type="email" name="email" placeholder="email" required>
@@ -27,12 +27,10 @@
         <a href="index.php" class="backhome">Volver a Inicio</a>
     </main>
 
-    <ul id="notification__list">
-        <!-- todas las notificaciones -->
-    </ul>
-    <?php
-    include_once("common/footer.php")
-        ?>
+    <ul id="notification__list"></ul>
+    <div class="footer">
+        <?php include_once("common/footer.php") ?>
+    </div>
 
 
 </body>

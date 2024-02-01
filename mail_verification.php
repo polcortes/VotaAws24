@@ -1,21 +1,27 @@
 <?php
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
-require 'data/dbAccess.php';
-
 try {
+    require 'PHPMailer-master/src/Exception.php';
+    require 'PHPMailer-master/src/PHPMailer.php';
+    require 'PHPMailer-master/src/SMTP.php';
+    require 'data/dbAccess.php';
+    require 'data/mailCredentials.php';
+
+    $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
+    if (!file_exists(dirname($logFilePath))) {
+        mkdir(dirname($logFilePath), 0755, true);
+    }
+    $filePathParts = explode("/", __FILE__);
+
+    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+
     session_start();
     if (!isset($_SESSION["usuario"])) {
         header("Location: login.php");
         exit();
     }
-
-    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
     if (isset($_GET['token'])) {
         $query = $pdo->prepare("SELECT * FROM User WHERE token = :token");
@@ -27,19 +33,29 @@ try {
                 if ($row['user_id'] === $_SESSION["usuario"]) {
                     $query = $pdo->prepare("UPDATE User SET is_mail_valid = true WHERE user_id = :id");
                     $query->execute([':id' => $_SESSION["usuario"]]);
-                    header("Location: dashboard.php?succ=1");
-                    exit();
+                    if ($row['conditions_accepted']) {
+                        header("Location: dashboard.php?succ=1");
+                        exit();
+                    } else {
+                        header("Location: terms_conditions.php");
+                        exit();
+                    }
+
                 } else {
-                    echo 'El token no es válido.';
+                    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido\n";
+                    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
                 }
             } else {
-                echo 'El token no es válido.';
+                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido\n";
+                file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             }
         } else {
-            echo 'El token no es válido.';
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
         }
     } else {
-        echo 'No se ha encontrado ningún token.';
+        $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: No se ha encontrado ningún token.\n";
+        file_put_contents($logFilePath, $logTxt, FILE_APPEND);
     }
 
     $query = $pdo->prepare("SELECT * FROM User WHERE user_id = :id");
@@ -66,7 +82,6 @@ try {
 
             $link = "https://aws24.ieti.site/mail_verification.php?token=$token";
             try {
-                include './data/mailCredentials.php';
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
                 $mail->Mailer = "smtp";

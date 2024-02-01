@@ -37,6 +37,18 @@ try {
                 <?php
                 try {
                     if (isset($_SESSION["usuario"])) {
+                        $query = $pdo->prepare("SELECT * FROM User WHERE user_id = :user_id");
+                        $query->execute([':user_id' => $_SESSION["usuario"]]);
+                        $row = $query->fetch();
+                        if (!$query->rowCount() == 0) {
+                            if (!$row['is_mail_valid'] || !$row['conditions_accepted']) {
+                                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― ERROR user not verified]: El usuario no está verificado\n";
+                                file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+                                echo "<script>errorNotification('Debes verificar tu correo electrónico para poder crear encuestas.');</script>";
+
+                                header("Location: index.php");
+                            }
+                        }
                         $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id");
                         $query->execute([':user_id' => $_SESSION["usuario"]]);
 

@@ -1,10 +1,14 @@
 <?php
-require 'data/dbAccess.php';
-
-
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    echo "conetado";
+    require 'data/dbAccess.php';
+
+    $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
+    if (!file_exists(dirname($logFilePath))) {
+        mkdir(dirname($logFilePath), 0755, true);
+    }
+    $filePathParts = explode("/", __FILE__);
+
+    $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -18,7 +22,6 @@ try {
     $stmt->execute();
     $stmt2->execute();
     $stmt3->execute();
-    echo "He hecho la consulta";
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +33,38 @@ try {
 
 
     $conn = null;
+    ?>
+    <!DOCTYPE html>
+    <html lang="es">
 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear una nueva cuenta | Vota!</title>
+        <meta name="description"
+            content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="register.js"></script>
+    </head>
+
+    <body id="crear-cuenta">
+        <main>
+            <?php
+            echo "<input type='hidden' name='countries' id='jsoncountry' value='" . json_encode($country_names, JSON_UNESCAPED_UNICODE) . "'>";
+            ?>
+            <a href="index.php" class="backhome">Volver a Inicio</a>
+            <h1>Crear una cuenta</h1>
+        </main>
+
+        <ul id="notification__list">
+            <!-- todas las notificaciones -->
+        </ul>
+        <script src="componentes/notificationHandler.js"></script>
+    </body>
+
+    </html>
+    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "He entrado en el post";
 
@@ -49,28 +83,52 @@ try {
 
 
         if (!validarNombre($nombre)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El nombre solo puede contener letras mayúsculas y minúsculas.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El nombre solo puede contener letras mayúsculas y minúsculas.')</script>";
         } else if (!validarEmail($email)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El correo no tiene un formato válido.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El correo no tiene un formato válido');</script>";
         } elseif (!validarPass($pass)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.')</script>";
         } else if ($pass != $passcheck) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: Las contraseñas no coinciden.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('Las contraseñas no coinciden.')</script>";
         } else if (!validarPais($pais, $country_names)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El páis no está en la lista de paises.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
         } else if (strlen($telefonOK) !== 9) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El teléfono no es válido.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El teléfono no es válido.')</script>";
         } else if (!validarPrefix($prefix)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El prefijo del teléfono no es válido.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
         } else if (!validarNombre($ciudad)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: La ciudad que has puesto no es válida.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('La ciudad que has puesto no es válida.')</script>";
         } else if (strlen($cp) !== 5) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El código postal no es válido.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El código postal no es válido.')</script>";
         } else if (!emailRepetido($email, $correxistente)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El email ya existe en nuestra base de datos.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El email ya existe en nuestra base de datos.')</script>";
         } elseif (!telRepetido($telefonOK, $telsexistente)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El teléfono ya existe en nuestra base de datos.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El teléfono ya existe en nuestra base de datos.')</script>";
         } elseif (is_null($idpais)) {
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: País no válido.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('País no válido.')</script>";
         } else {
             $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -107,13 +165,15 @@ try {
                 header("Location: dashboard.php?succ=1");
                 exit();
             } else {
-                echo "ha habido un error";
+                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.\n";
+                file_put_contents($logFilePath, $logTxt, FILE_APPEND);
                 echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.')</script>";
             }
         }
     }
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: " . $e->getMessage() . "\n";
+    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
     echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.')</script>";
 }
 
@@ -207,39 +267,3 @@ function getCountryId($pais, $listapaises)
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear una nueva cuenta | Vota!</title>
-    <meta name="description"
-        content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="register.js"></script>
-    <script src="/componentes/notificationHandler.js"></script>
-</head>
-
-<body id="crear-cuenta">
-    <main>
-        <?php
-        echo "<input type='hidden' name='countries' id='jsoncountry' value='" . json_encode($country_names, JSON_UNESCAPED_UNICODE) . "'>";
-        ?>
-        <a href="index.php" class="backhome">Volver a Inicio</a>
-
-        <h1>Crear una cuenta</h1>
-
-
-
-    </main>
-
-    <ul id="notification__list">
-        <!-- todas las notificaciones -->
-    </ul>
-
-    <script src="componentes/notificationHandler.js"></script>
-</body>
-
-</html>
