@@ -208,3 +208,5 @@
 [mail_verification.php ― 06:29:33 ― TOKEN ERROR]: No se ha encontrado ningún token.
 
 [mail_verification.php ― 06:30:02 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 06:39:58 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
