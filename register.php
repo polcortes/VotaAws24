@@ -1,8 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "Pepe25";
-$database = "votadb";
+require 'data/dbAccess.php';
+
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -77,7 +75,7 @@ try {
         } else {
             $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
             echo "conetado";
-        
+
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $passhash = hash('sha512', $pass);
@@ -94,12 +92,12 @@ try {
             // $stmt_insert->bindParam(':token', $token);
 
             $stmt_insert->execute();
-            
+
             $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
-            
+
             $query->bindParam(':email', $email, PDO::PARAM_STR);
             $query->execute();
-            
+
             $row = $query->fetch();
             $conn = null;
             if ($row) {
