@@ -13,7 +13,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT country_name,tel_prefix,country_id FROM Country";
-    $sql2 = "SELECT user_mail FROM User";
+    $sql2 = "SELECT user_mail, customer_name FROM User";
     $sql3 = "SELECT user_tel FROM User";
     $stmt = $conn->prepare($sql);
     $stmt2 = $conn->prepare($sql2);
@@ -66,7 +66,6 @@ try {
     </html>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        echo "He entrado en el post";
 
         $nombre = $_POST['register_name'];
         $email = $_POST['register_email'];
@@ -131,39 +130,76 @@ try {
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('País no válido.')</script>";
         } else {
-            $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+            $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             echo "conetado";
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $passhash = hash('sha512', $pass);
-            $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
-            $stmt_insert = $conn->prepare($sql_insert);
-            $stmt_insert->bindParam(':nombre', $nombre);
-            $stmt_insert->bindParam(':email', $email);
-            $stmt_insert->bindParam(':pass', $passhash);
-            $stmt_insert->bindParam(':tel', $telefonOK);
-            $stmt_insert->bindParam(':prefix', $prefix);
-            $stmt_insert->bindParam(':ciudad', $ciudad);
-            $stmt_insert->bindParam(':paisid', $idpais);
-            $stmt_insert->bindParam(':cp', $cp);
-            // $stmt_insert->bindParam(':token', $token);
 
-            $stmt_insert->execute();
-
-            $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
-
-            $query->bindParam(':email', $email, PDO::PARAM_STR);
+            $query = $conn->prepare("SELECT user_mail,customer_name FROM User");
             $query->execute();
 
-            $row = $query->fetch();
-            $conn = null;
+            $new_register = 0;
+
+            while ($row = $query->fetch()) {
+                if ($email == $row[0] && $row[1] == "") {
+                    $new_register = false;
+                    break;
+                }
+            }
+            if ($new_register) {
+                $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
+                $stmt_insert = $conn->prepare($sql_insert);
+                $stmt_insert->bindParam(':nombre', $nombre);
+                $stmt_insert->bindParam(':email', $email);
+                $stmt_insert->bindParam(':pass', $passhash);
+                $stmt_insert->bindParam(':tel', $telefonOK);
+                $stmt_insert->bindParam(':prefix', $prefix);
+                $stmt_insert->bindParam(':ciudad', $ciudad);
+                $stmt_insert->bindParam(':paisid', $idpais);
+                $stmt_insert->bindParam(':cp', $cp);
+                // $stmt_insert->bindParam(':token', $token);
+
+                $stmt_insert->execute();
+
+                $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
+
+                $query->bindParam(':email', $email, PDO::PARAM_STR);
+                $query->execute();
+
+                $row = $query->fetch();
+                $conn = null;
+            } else {
+                $sql_update = "UPDATE User SET customer_name = :nombre, user_country_id = :paisid, user_city = :ciudad, user_cp = :cp, user_tel = :tel, user_tel_prefix = :prefix, user_pass = :pass WHERE user_mail = :email";
+                $stmt_insert = $conn->prepare($sql_update);
+                $stmt_insert->bindParam(':nombre', $nombre);
+                $stmt_insert->bindParam(':email', $email);
+                $stmt_insert->bindParam(':pass', $passhash);
+                $stmt_insert->bindParam(':tel', $telefonOK);
+                $stmt_insert->bindParam(':prefix', $prefix);
+                $stmt_insert->bindParam(':ciudad', $ciudad);
+                $stmt_insert->bindParam(':paisid', $idpais);
+                $stmt_insert->bindParam(':cp', $cp);
+                // $stmt_insert->bindParam(':token', $token);
+
+                $stmt_insert->execute();
+
+                $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
+
+                $query->bindParam(':email', $email, PDO::PARAM_STR);
+                $query->execute();
+
+                $row = $query->fetch();
+                $conn = null;
+            }
+
             if ($row) {
-                session_start();
-                $_SESSION["usuario"] = $row["user_id"];
-                $_SESSION['nombre'] = $nombre;
-                header("Location: dashboard.php?succ=1");
-                exit();
+                // session_start();
+                // $_SESSION["usuario"] = $row["user_id"];
+                // $_SESSION['nombre'] = $nombre;
+                // header("Location: dashboard.php?succ=1");
+                // exit();
             } else {
                 $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.\n";
                 file_put_contents($logFilePath, $logTxt, FILE_APPEND);
@@ -226,7 +262,9 @@ function emailRepetido($email, $listamails)
 {
     $mails = array();
     foreach ($listamails as $mail) {
-        $mails[] = $mail['user_mail'];
+        if ($mail['customer_name'] != "") {
+            $mails[] = $mail['user_mail'];
+        }
     }
     if (in_array($email, $mails)) {
         return false;
