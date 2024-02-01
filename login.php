@@ -46,7 +46,7 @@ try {
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = $_POST["email"];
         $password = $_POST["password"];
-
+        $passhash = hash('sha512', $password);
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
         // Cambiar query
@@ -54,7 +54,7 @@ try {
         $query = $pdo->prepare("SELECT * FROM User WHERE user_pass = :pwd AND user_mail = :email");
 
         $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':pwd', $password, PDO::PARAM_STR);
+        $query->bindParam(':pwd', $passhash, PDO::PARAM_STR);
 
         $query->execute();
 
