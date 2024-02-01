@@ -7,33 +7,9 @@ try {
     if (!file_exists(dirname($logFilePath))) {
         mkdir(dirname($logFilePath), 0755, true);
     }
-    file_put_contents($logFilePath, "Log entry\n", FILE_APPEND);
+    $filePathParts = explode("/", __FILE__);
 
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-
-    if (isset($_POST['invite-area'], $_POST['survey_id'])) {
-        $emails = explode(',', $_POST['invite-area']);
-        $survey_id = $_POST['survey_id'];
-
-        echo "antes del foreach";
-        foreach ($emails as $email) {
-            $email = trim($email);
-            $token = bin2hex(random_bytes(50));
-
-            $checkQuery = $pdo->prepare("SELECT * FROM User WHERE user_mail = :user_mail");
-            $checkQuery->execute([':user_mail' => $email]);
-
-            if ($checkQuery->rowCount() == 0) {
-                $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail) VALUES (:user_mail)");
-                $insertUserQuery->execute([':user_mail' => $email]);
-            }
-
-            $query = $pdo->prepare("INSERT INTO Invitation (mail_to, survey_id, invitation_token) VALUES (:mail_to, :survey_id, :invitation_token)");
-            $query->execute([':mail_to' => $email, ':survey_id' => $_POST['survey_id'], ':invitation_token' => $token]);
-        }
-    } else {
-        echo "no hay post";
-    }
     ?>
     <!DOCTYPE html>
     <html lang="es">
@@ -52,6 +28,9 @@ try {
     <body id="list_polls">
         <?php include_once('common/header.php'); ?>
         <main>
+            <ul id="notification__list">
+                <!-- todas las notificaciones -->
+            </ul>
             <h1>Tus encuestas</h1>
             <span>Haz clic para ver los detalles de las encuestas</span>
             <section class="grid-polls">
@@ -89,7 +68,7 @@ try {
                                     <a href="/survey_details.php?id=<?php echo $row["survey_id"]; ?>">
                                         <div>
                                             <h2>
-                                                <?php echo $row["question_text"]; ?>
+                                                <?php echo $row["survey_title"]; ?>
                                             </h2>
                                             <div>De:
                                                 <?php echo $_SESSION["nombre"]; ?>
@@ -130,20 +109,72 @@ try {
                     }
                 } catch (PDOException $e) {
                     $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― ERROR db connect]: ERROR al conectarse con la base de datos -> " . $e->getMessage() . "\n";
+                    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
                 }
                 ?>
             </section>
         </main>
-        <ul id="notification__list">
-            <!-- todas las notificaciones -->
-        </ul>
-        <script src="send_invitations.js"></script>
+
+        <script src="/componentes/notificationHandler.js"></script>
+        <script src="/componentes/send_invitations.js"></script>
         <?php include_once("common/footer.php") ?>
     </body>
 
     </html>
+
     <?php
+    if (isset($_POST['invite-area'], $_POST['survey_id'])) {
+        $emails = explode(',', $_POST['invite-area']);
+        $survey_id = $_POST['survey_id'];
+        echo "1";
+        foreach ($emails as $email) {
+            $email = trim($email);
+
+            if (validarEmail($email)) {
+                $checkUserQuery = $pdo->prepare("SELECT * FROM User WHERE user_mail = :user_mail");
+                $checkUserQuery->execute([':user_mail' => $email]);
+
+                if ($checkUserQuery->rowCount() == 0) {
+                    $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail) VALUES (:user_mail)");
+                    $insertUserQuery->execute([':user_mail' => $email]);
+                }
+
+                $checkInvitationQuery = $pdo->prepare("SELECT * FROM Invitation WHERE mail_to = :mail_to AND survey_id = :survey_id");
+                $checkInvitationQuery->execute([':mail_to' => $email, ':survey_id' => $survey_id]);
+
+                // Si no existe una invitación para este usuario y esta encuesta, insertarla
+                if ($checkInvitationQuery->rowCount() == 0) {
+                    $token = bin2hex(random_bytes(50));
+                    $query = $pdo->prepare("INSERT INTO Invitation (mail_to, survey_id, invitation_token) VALUES (:mail_to, :survey_id, :invitation_token)");
+                    $query->execute([':mail_to' => $email, ':survey_id' => $survey_id, ':invitation_token' => $token]);
+                    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation ($email)" . "\n";
+                    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+                    echo "<script>successfulNotification('Has invitado a $email a una encuesta');</script>";
+
+                } else {
+                    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― ERROR invitation]: Ya existe una invitación para $email\n";
+                    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+                    echo "<script>errorNotification('Ya existe una invitación a esta encuesta para $email.');</script>";
+                }
+            } else {
+                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Invalid mail]: El correo $email no es válido.\n";
+                file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+                echo "<script>errorNotification('El correo $email no es válido.');</script>";
+            }
+        }
+    }
 } catch (Exception $e) {
     echo "ERROR => " . $e->getMessage();
+}
+
+function validarEmail($email)
+{
+    $regex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
+
+    if (preg_match($regex, $email)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 ?>

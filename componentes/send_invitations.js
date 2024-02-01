@@ -1,7 +1,10 @@
 $(document).ready(function(){
+
     $("button.share-button").click(function(e){
         e.preventDefault();
-        $("#modal-share").show();
+        var surveyId = $(this).data('survey-id');
+        $('#survey_id').val(surveyId);
+        $('#modal-share').show();
         $("#overlay").show();
     });
 
