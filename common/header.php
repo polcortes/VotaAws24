@@ -39,8 +39,8 @@ try {
                 echo '<li><a href="create_poll.php">Crear Encuesta</a></li>';
                 echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
             } else {
-                echo '<li><a href="register.php">Acaba de registrarte</a></li>';
-                echo '<li><a href="login.php">Iniciar Sesión</a></li>';
+                echo '<li><a href="mail_verification.php">Acaba de registrarte</a></li>';
+                echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
             }
         } else {
             echo '<li><a href="register.php">Registrarse</a></li>';

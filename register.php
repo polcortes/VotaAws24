@@ -1,7 +1,6 @@
 <?php
 try {
     require 'data/dbAccess.php';
-
     $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
     if (!file_exists(dirname($logFilePath))) {
         mkdir(dirname($logFilePath), 0755, true);
@@ -33,38 +32,6 @@ try {
 
 
     $conn = null;
-    ?>
-    <!DOCTYPE html>
-    <html lang="es">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Crear una nueva cuenta | Vota!</title>
-        <meta name="description"
-            content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
-        <link rel="stylesheet" href="styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="register.js"></script>
-    </head>
-
-    <body id="crear-cuenta">
-        <main>
-            <?php
-            echo "<input type='hidden' name='countries' id='jsoncountry' value='" . json_encode($country_names, JSON_UNESCAPED_UNICODE) . "'>";
-            ?>
-            <a href="index.php" class="backhome">Volver a Inicio</a>
-            <h1>Crear una cuenta</h1>
-        </main>
-
-        <ul id="notification__list">
-            <!-- todas las notificaciones -->
-        </ul>
-        <script src="componentes/notificationHandler.js"></script>
-    </body>
-
-    </html>
-    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $nombre = $_POST['register_name'];
@@ -140,7 +107,7 @@ try {
             $query = $conn->prepare("SELECT user_mail,customer_name FROM User");
             $query->execute();
 
-            $new_register = 0;
+            $new_register = true;
 
             while ($row = $query->fetch()) {
                 if ($email == $row[0] && $row[1] == "") {
@@ -149,6 +116,7 @@ try {
                 }
             }
             if ($new_register) {
+                echo "ga";
                 $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
                 $stmt_insert = $conn->prepare($sql_insert);
                 $stmt_insert->bindParam(':nombre', $nombre);
@@ -169,8 +137,8 @@ try {
                 $query->execute();
 
                 $row = $query->fetch();
-                $conn = null;
             } else {
+                echo "gas";
                 $sql_update = "UPDATE User SET customer_name = :nombre, user_country_id = :paisid, user_city = :ciudad, user_cp = :cp, user_tel = :tel, user_tel_prefix = :prefix, user_pass = :pass WHERE user_mail = :email";
                 $stmt_insert = $conn->prepare($sql_update);
                 $stmt_insert->bindParam(':nombre', $nombre);
@@ -185,25 +153,24 @@ try {
 
                 $stmt_insert->execute();
 
-                $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
 
-                $query->bindParam(':email', $email, PDO::PARAM_STR);
-                $query->execute();
-
-                $row = $query->fetch();
-                $conn = null;
             }
 
+            $query = $conn->prepare("SELECT user_id FROM User WHERE user_mail = :email");
+
+            $query->bindParam(':email', $email, PDO::PARAM_STR);
+            $query->execute();
+            $row = $query->fetch();
             if ($row) {
-                // session_start();
-                // $_SESSION["usuario"] = $row["user_id"];
-                // $_SESSION['nombre'] = $nombre;
-                // header("Location: dashboard.php?succ=1");
-                // exit();
+                session_start();
+                $_SESSION["usuario"] = $row["user_id"];
+                $_SESSION['nombre'] = $nombre;
+                header("Location: dashboard.php?succ=1");
+                exit();
             } else {
                 $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.\n";
                 file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-                echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.')</script>";
+                echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tardeeee.')</script>";
             }
         }
     }
@@ -305,3 +272,33 @@ function getCountryId($pais, $listapaises)
     }
 }
 ?>
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear una nueva cuenta | Vota!</title>
+        <meta name="description"
+            content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="register.js"></script>
+    </head>
+
+    <body id="crear-cuenta">
+        <main>
+            <?php
+            echo "<input type='hidden' name='countries' id='jsoncountry' value='" . json_encode($country_names, JSON_UNESCAPED_UNICODE) . "'>";
+            ?>
+            <a href="index.php" class="backhome">Volver a Inicio</a>
+            <h1>Crear una cuenta</h1>
+        </main>
+
+        <ul id="notification__list">
+            <!-- todas las notificaciones -->
+        </ul>
+        <script src="componentes/notificationHandler.js"></script>
+    </body>
+
+    </html>

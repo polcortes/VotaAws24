@@ -210,3 +210,49 @@
 [mail_verification.php ― 06:30:02 ― TOKEN ERROR]: No se ha encontrado ningún token.
 
 [register.php ― 06:39:58 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:12:13 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:12:36 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:12:36 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:12:37 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:13:09 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:13:09 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:13:27 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:15:52 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:17:38 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:18:51 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:19:00 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:19:11 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:19:20 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:20:11 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 09:21:29 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 09:49:13 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[mail_verification.php ― 10:02:10 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 10:04:17 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'pppedro@gmail.com' for key 'user_mail'
+
+[register.php ― 10:06:24 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 10:10:06 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 10:16:06 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[list_polls.php ― 10:17:17 ― ERROR user not verified]: El usuario no está verificado
+
+[mail_verification.php ― 10:18:42 ― TOKEN ERROR]: No se ha encontrado ningún token.
