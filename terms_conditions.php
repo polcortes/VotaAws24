@@ -47,8 +47,8 @@ try {
                 </head>
 
                 <body id="conditions">
-                    <h1>Términos y Condiciones - Vota!</h1>
                     <main>
+                        <h1>Términos y Condiciones - Vota!</h1>
                         <div id="terms">
                             <p>
                                 Bienvenido al portal de votaciones. Antes de utilizar nuestros servicios, lea detenidamente los
@@ -90,18 +90,15 @@ try {
                                 <p><span>Al utilizar nuestro portal de votaciones, usted acepta cumplir con estos términos y
                                         condiciones.</span></p>
                                 <label for="acceptCheckbox">
-                                    <input type="checkbox" id="acceptCheckbox" name="acceptCheckbox" required>
+                                    <input type="checkbox" id="acceptCheckbox" name="acceptCheckbox">
                                     Acepto las condiciones establecidas
                                 </label>
                                 <input type="submit" value="Enviar">
                             </form>
                         </div>
-
-                        <ul id="notification__list">
-                            <!-- todas las notificaciones -->
-                        </ul>
                     </main>
 
+                    <ul id="notification__list"></ul>
                     <div class="footer">
                         <?php include_once("common/footer.php") ?>
                     </div>

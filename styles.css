@@ -49,24 +49,30 @@ body {
     margin: 0;
 }
 
-/* Login */ 
-#login {
+/* Login */
+#login main {
+    height: 100dvh;
+    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
-    margin: 90px auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#login .footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 #login h1 {
     font-size: 75px;
-    margin: 35px auto;
 }
 
 #login form {
-    margin: 25px auto;
     width: 20%;
+    display: flex;
+    flex-direction: column;
 }
 
 #login input {
@@ -189,7 +195,7 @@ body {
     color: var(--gris-oscuro);
 }
 
-/* create_poll */ 
+/* create_poll */
 #createPoll {
     display: flex;
     align-items: center;
@@ -595,6 +601,28 @@ footer {
 
 
 /* Notificaciones */
+#mailVerification {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#mailVerification main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#mailVerification footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
 #notification__list {
     position: fixed;
     left: 5px;
@@ -782,28 +810,27 @@ footer {
     background-color: gray;
 }
 
-#mailVerification {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    min-height: 100vh;
-}
-
-#mailVerification .footer {
-    margin-top: auto;
-}
-
 #conditions {
-    flex-direction: column;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #conditions main {
+    flex: 1;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+#conditions footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
 }
 
 #conditions h1 {
@@ -812,10 +839,6 @@ footer {
     margin-right: auto;
     margin-bottom: 50px;
     margin-top: 20px;
-}
-
-#conditions .footer {
-    margin-top: auto;
 }
 
 #conditions #terms {
@@ -841,6 +864,28 @@ footer {
 
 #conditions #terms p#check {
     margin-top: 50px;
+}
+
+#conditions form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#conditions input {
+    border: 2px solid var(--gris-oscuro);
+    color: var(--gris-oscuro);
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .2s, background-color .2s;
+}
+
+#conditions input:hover {
+    color: var(--gris-claro)!important;
+    background-color: var(--gris-oscuro);
 }
 
 #list_polls #modal-share {
@@ -929,4 +974,26 @@ footer {
     height: 100%;
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
+}
+
+#vote {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#vote main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#vote footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
 }
