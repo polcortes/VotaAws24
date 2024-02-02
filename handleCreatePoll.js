@@ -9,23 +9,38 @@ $(function(){
     $('body').on('focusout', '#quest', function(){
         checkAns();
     });
+    
+    $('body').on('input', '#question', function(){
+        deleteNext($(this))
+    });
+
+
+    $('body').on('input', '#quest', function(){
+        deleteNext($('#deleteButton'))
+    });
 
     $('body').on('change', '#start_date', function(){
         fillDate();
         checkDate();
-
     });
 
     $('body').on('change', '#end_date', function(){
         fillDate();
         checkDate();
+    });
 
+    $('body').on('input', '#start_date', function(){
+        deleteNext($('#end_date'));
+    });
+
+    $('body').on('input', '#end_date', function(){
+        deleteNext($('#end_date'));
     });
 
     $("body").on('click', '#addButton', function(){
         numeroinput++;
         addOption(numeroinput);
-        deleteDate();
+        deleteNext($('#deleteButton'))
     });
 
     $("body").on('click', '#deleteButton', function(){
@@ -57,6 +72,7 @@ $(function(){
 function createQuestion(){
     $('h1').after(`
     <form method="post" enctype="multipart/form-data">
+    <input name="img_quest" type="file" class="imagen" accept="image/*">
     <input type="text" id="question" name="question" placeholder="Pregunta de la encuesta" required>
     <br>`);
 }
@@ -98,21 +114,9 @@ function createStartDate(){
 
 
 
-function deleteDate(){
-    if ($("#datepoll").length != 0) {
-        $('#datepoll').remove();
-    }
-
-}
-
-function deleteQuests(){
-    
-    if ($("#optionsContainer").length != 0) {
-        $('#optionsContainer').remove();
-    }
 
 
-}
+
 
 function createPoll(){
     if ($("#create").length === 0) {
@@ -122,27 +126,14 @@ function createPoll(){
     `)}
 }
 
-function deletePoll(){
-    if ($("#create").length !== 0) {
-        $('#create').remove()}
-}
 
-function deleteButtons(){
-    if ($("#addButton").length !== 0 && $("#deleteButton").length !== 0 ) {
-        $('#deleteButton').remove()
-        $('#addButton').remove();
-}
-}
+
+
 
 
 function checkQuest(question){
     if (question !== null && question.trim() !== '') {
         createOriginalAns();
-    }else{
-        deleteDate();
-        deletePoll();
-        deleteQuests();
-        deleteButtons();
     }
 }
 
@@ -162,11 +153,11 @@ function checkDate(){
     var hoy = new Date();
     if(fechaFin < fechaInicio){
         errorNotification('La fecha de final no puede ser menor a la de inicio ');
-        deletePoll()
+        deleteNext($('#end_date'));
         return false;
     }else if(fechaInicio < hoy){
         errorNotification('La fecha de inicio no puede ser menor a la actual ');
-        deletePoll()
+        deleteNext($('#end_date'));
         return false;
     }else{
         return true;
@@ -190,11 +181,15 @@ function checkAns(){
     })
     if(complete){
         createStartDate();
-    }else{
-        deleteDate();
-        deletePoll();
     }
 }
+
+
+
+function deleteNext(input){
+    input.nextAll().remove()
+}
+
 
 
 function addOption(i){

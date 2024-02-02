@@ -116,7 +116,6 @@ try {
                 }
             }
             if ($new_register) {
-                echo "ga";
                 $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
                 $stmt_insert = $conn->prepare($sql_insert);
                 $stmt_insert->bindParam(':nombre', $nombre);
@@ -138,7 +137,6 @@ try {
 
                 $row = $query->fetch();
             } else {
-                echo "gas";
                 $sql_update = "UPDATE User SET customer_name = :nombre, user_country_id = :paisid, user_city = :ciudad, user_cp = :cp, user_tel = :tel, user_tel_prefix = :prefix, user_pass = :pass WHERE user_mail = :email";
                 $stmt_insert = $conn->prepare($sql_update);
                 $stmt_insert->bindParam(':nombre', $nombre);

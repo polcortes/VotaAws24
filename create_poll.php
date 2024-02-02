@@ -82,7 +82,6 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
             $query_options->bindParam(':survey_id', $survey_id);
             $query_options->execute();
             $answerId = $pdo->lastInsertId();
-            echo $answerId;
           
                 if (!empty($_FILES['img_ans']['name'][$index][$answerIndex])) {
                     $directorioDestino = 'uploads/';
@@ -107,11 +106,36 @@ if (isset($_POST['options']) && isset($_POST['question'])) {
         
     }
 
+    if (!empty($_FILES['img_quest']['name'])) {
+        $user_id =  $_SESSION['usuario'];
+        $query = $pdo->prepare("SELECT survey_id FROM Survey WHERE user_id = :owner_id ORDER BY survey_id DESC LIMIT 1");
+        $query->bindParam(':owner_id', $user_id);
+        $query->execute();
+        $row = $query->fetch();
+
+        $directorioDestino = 'uploads/';
+        $fileType = $_FILES['img_quest']['type'];
+        $fileName = $_FILES['img_quest']['name'];
+        $nombreImagenUnico = generarNombreUnico($fileName);
+
+        $newFileName = $nombreImagenUnico;
+        $targetPath = $directorioDestino . $newFileName;
+        
+        if (move_uploaded_file($_FILES['img_quest']['tmp_name'], $targetPath)) {
+            $queryInsertImagen = $pdo->prepare("UPDATE Survey SET imag = :imgurl where survey_id = :survey_id");
+            $queryInsertImagen->bindParam(':imgurl', $targetPath);
+            $queryInsertImagen->bindParam(':survey_id', $row[0]);
+            $queryInsertImagen->execute();
+        } else {
+            echo "no";
+        }
+    }
+        
         $pdo->commit();
 
         echo "<script>successfulNotification('Tu encuesta se ha creado correctamente.');</script>";
 
-        header("Location: dashboard.php");
+        // header("Location: dashboard.php");
         exit();
     } catch (PDOException $e) {
         //$pdo->rollBack();
