@@ -1,10 +1,7 @@
 <?php
 try {
     session_start();
-    if (!isset($_SESSION["usuario"])) {
-        header("Location: login.php");
-        exit();
-    }
+    
     require 'data/dbAccess.php';
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 

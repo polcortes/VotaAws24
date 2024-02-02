@@ -1,3 +1,6 @@
+<section id="promotional-section">
+    <img src="../imgs/gif.gif" alt="Vota! Ya!" title="Vota! Ya!" width="970" height="250">
+</section>
 <footer>
     <div class="authors">
         <!--<div class="continfo">

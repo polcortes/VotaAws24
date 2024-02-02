@@ -12,7 +12,7 @@ html{
     --amarillo: #FFCD1D;
     --verde: #21FF2A;
     --gris-oscuro: #272727;
-    --gris-claro: #D9D9D9;
+    --gris-claro: #d9d9d9;
 }
 
 * {
@@ -61,7 +61,7 @@ body {
 
 #login .footer {
     width: 100%;
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
 }
 
@@ -334,6 +334,10 @@ a:hover { color: var(--azul); }
     color: var(--azul);
 }
 
+#crear-cuenta {
+    overflow-x: hidden;
+}
+
 #crear-cuenta main {
     min-height: 100vh;
     width: 100vw;
@@ -572,6 +576,15 @@ a:hover { color: var(--azul); }
     font-size: large;
 }
 
+#promotional-section {
+    display: flex;
+    justify-content: center;
+}
+
+#promotional-section img {
+    aspect-ratio: 3.88/1;
+}
+
 footer {
     width: 100%;
     align-self: flex-end;
@@ -795,20 +808,174 @@ footer {
 }
 
 /* survey_details.php */
-#survey_details > main {
+#survey_details {
     display: flex;
-    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
+#survey_details > a {
+    position: absolute;
+    font-size: 20px;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#survey_details > main {
+    /*width: 600px;*/
+    display: block;
+}
+
+#survey_details span, #survey_details label { font-size: 20px; }
+
 #survey_details > main > section {
-    width: 70vw;
+    padding: 20px;
+}
+
+#survey_details > main > section > h1 {
+    font-size: 45px;
+    text-align: center;
+}
+
+#survey_details > main > section > h1+span {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 #survey_details > main > aside {
-    width: 30vw;
-    background-color: gray;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
 }
+
+#survey_details > main > aside > div > form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+#survey_details > main > aside > div > form > div {
+    display: flex;
+    gap: 40px;
+}
+
+#survey_details > main > aside > div > form > div > div {
+    width: 300px;
+}
+
+#survey_details > main > aside > div > form div > select + label {
+    margin-top: 40px;
+}
+
+#survey_details > main > aside > div > form div > select {
+    font-size: 20px;
+    color: var(--gris-claro);
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid var(--gris-claro);
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#survey_details > main > aside > div > form div > select > option {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+}
+
+#survey_details > main > aside > div > form > input[type='submit'] {
+    margin-top: 10px;
+    border: 3px solid var(--gris-claro);
+    border-radius: 20px;
+    padding: 15px 20px;
+    background-color: transparent;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    font-weight: 600;
+    transition: color .15s linear, background-color .15s linear, text-decoration-color .15s linear;
+}
+
+#survey_details > main > aside > div > form > input[type='submit']:hover {
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    text-decoration-color: var(--gris-oscuro);
+}
+
+.survey-details-chart {
+    border-right: 2px solid var(--gris-claro);
+    display: none;
+}
+
+.survey-details-chart.active-chart {
+    display: block;
+}
+
+#survey_details > main > section > div {
+    display: flex;
+}
+
+#survey-detils tspan {
+    color: var(--gris-claro)!important;
+}
+
+#survey_details > main > section > div > aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chart-opt {
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid var(--gris-claro);
+    text-align: left;
+    padding: 8px 10px;
+    border-left: none;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    box-sizing: border-box;
+    height: 42px;
+
+    transition: border .2s linear, background-color .1s linear;
+}
+
+
+.chart-opt:hover {
+    background-color: rgb(217, 217, 217, .2);
+}
+
+
+.chart-opt.active-chart-butt {
+    border: 3px solid var(--azul);
+    border-left: none;
+}
+
+
+/* Gráfico: */
+div.apexcharts-legend.apexcharts-align-center.apx-legend-position-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+span.apexcharts-legend-text {color: var(--gris-claro)!important;}
+
 
 #conditions {
     margin: 0;
