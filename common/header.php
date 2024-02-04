@@ -32,6 +32,7 @@
                         if ($row['is_mail_valid'] && $row['conditions_accepted']) {
                             echo "<li><a href='dashboard.php'>DashBoard</a></li>";
                             echo '<li><a href="create_poll.php">Crear Encuesta</a></li>';
+                            echo '<li><a href="list_polls.php">Mis encuestas</a></li>';
                         } else {
                             echo '<li><a href="mail_verification.php">Acaba de registrarte</a></li>';
                         }

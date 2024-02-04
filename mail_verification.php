@@ -126,7 +126,13 @@ try {
             </head>
 
             <body id="mailVerification">
-                <?php include_once("common/header.php"); ?>
+                <?php
+                include_once("common/header.php");
+                if (!isset($_SESSION["usuario"])) {
+                    header("HTTP/1.1 403 Forbidden");
+                    exit();
+                }
+                ?>
                 <main>
                     <h1>Verifica tu dirección de email</h1>
                     <p>Te hemos enviado un email a <b>

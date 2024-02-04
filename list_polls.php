@@ -1,7 +1,6 @@
 <?php
 try {
     require 'data/dbAccess.php';
-    session_start();
 
     $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
     if (!file_exists(dirname($logFilePath))) {
@@ -26,7 +25,13 @@ try {
     </head>
 
     <body id="list_polls">
-        <?php include_once('common/header.php'); ?>
+        <?php
+        include_once("common/header.php");
+        if (!isset($_SESSION["usuario"])) {
+            header("HTTP/1.1 403 Forbidden");
+            exit();
+        }
+        ?>
         <main>
             <ul id="notification__list">
                 <!-- todas las notificaciones -->

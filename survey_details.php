@@ -9,7 +9,6 @@ try {
     require 'data/dbAccess.php';
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
-    session_start();
     if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
 
         $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id AND survey_id = :survey_id");
@@ -59,6 +58,13 @@ try {
 
     <body id="survey_details">
         <main>
+            <?php
+            include_once("common/header.php");
+            if (!isset($_SESSION["usuario"])) {
+                header("HTTP/1.1 403 Forbidden");
+                exit();
+            }
+            ?>
             <section>
 
             </section>

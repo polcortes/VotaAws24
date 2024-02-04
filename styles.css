@@ -1022,24 +1022,65 @@ footer {
 /* -----------------------------------------------------
  * VOTE
  * -----------------------------------------------------*/
-#vote {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+#vote .surveyImag {
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
-#vote main {
-    flex: 1;
+#vote main > div:first-child {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
-#vote footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
+#vote .surveyImag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+
+#vote .optionImag {
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+#vote .optionImag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+
+#vote form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#vote article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#vote input[type="submit"] {
+    border: 2px solid var(--gris-oscuro);
+    color: var(--gris-oscuro);
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .2s, background-color .2s;
 }

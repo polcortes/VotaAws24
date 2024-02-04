@@ -1,6 +1,5 @@
 <?php
 try {
-    session_start();
     if (!isset($_SESSION["usuario"])) {
         header("Location: login.php");
         exit();
@@ -47,7 +46,13 @@ try {
                 </head>
 
                 <body id="conditions">
-                    <?php include_once("common/header.php"); ?>
+                    <?php
+                    include_once("common/header.php");
+                    if (!isset($_SESSION["usuario"])) {
+                        header("HTTP/1.1 403 Forbidden");
+                        exit();
+                    }
+                    ?>
                     <main>
                         <h1>Términos y Condiciones - Vota!</h1>
                         <div id="terms">

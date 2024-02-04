@@ -304,3 +304,77 @@
 [create_poll.php ― 12:32:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 17 en la base de datos (3 de 4)
 
 [create_poll.php ― 12:32:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 17 en la base de datos (4 de 4)
+
+[list_polls.php ― 18:46:00 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eescrichalmagro.cf@iesesteveterradas.cat)
+
+[list_polls.php ― 18:50:45 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eescrichalmaro.cf@iesesteveterradas.cat)
+
+[list_polls.php ― 18:58:04 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eric@escrich.net)
+
+[create_poll.php ― 19:01:10 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 19:01:10 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 19:01:10 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 19:01:10 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 18 en la base de datos (2 de 3)
+
+[create_poll.php ― 19:01:10 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 18 en la base de datos (3 de 3)
+
+[create_poll.php ― 19:05:22 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 19:05:22 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 19:05:22 ― ERROR SURVEY SAVE]: Error al intentar guardar la encuesta 
+
+[create_poll.php ― 19:09:08 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 19:09:08 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 19:09:08 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 19:09:08 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 19 en la base de datos (2 de 3)
+
+[create_poll.php ― 19:09:08 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 19 en la base de datos (3 de 3)
+
+[create_poll.php ― 19:09:22 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 19:09:22 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 19:09:22 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 19:09:22 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 20 en la base de datos (2 de 3)
+
+[create_poll.php ― 19:09:22 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 20 en la base de datos (3 de 3)
+
+[send_invitation.php ― 19:13:30 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 19:13:30 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 19:13:30 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 19:13:32 ― Invitation email]: Envio de invitación a eescrichalmagro.cf@iesesteveterradas.cat exitoso
+
+[send_invitation.php ― 19:13:32 ― Invitation email]: Envio de invitación a eescrichalmagro.cf@iesesteveterradas.cat exitoso
+
+[send_invitation.php ― 19:13:33 ― Invitation email]: Envio de invitación a eescrichalmaro.cf@iesesteveterradas.cat exitoso
+
+[send_invitation.php ― 19:13:33 ― Invitation email]: Envio de invitación a eescrichalmaro.cf@iesesteveterradas.cat exitoso
+
+[send_invitation.php ― 19:13:35 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[list_polls.php ― 19:43:58 ― ERROR user not verified]: El usuario no está verificado
+
+[list_polls.php ― 19:44:54 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eescrichalmagro.cf@iesesteveterradas.cat)
+
+[send_invitation.php ― 19:45:09 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 19:45:09 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 19:45:09 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 19:45:11 ― Invitation email]: Envio de invitación a eescrichalmagro.cf@iesesteveterradas.cat exitoso
+
+[send_invitation.php ― 19:45:20 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 19:45:20 ― PHPMailer OK] PHPMailer OK
