@@ -38,6 +38,7 @@ try {
 </head>
 
 <body id="register">
+    <?php include_once("common/header.php"); ?>
     <ul id="notification__list"></ul>
     <main>
         <?php echo "<input type='hidden' name='countries' id='jsoncountry' value='" . json_encode($countryOptions, JSON_UNESCAPED_UNICODE) . "'>"; ?>
@@ -79,53 +80,64 @@ try {
         $cp = intval($_POST['register_cp']);
         $telefonOK = intval(preg_replace("/[^0-9]/", "", $tel));
 
-        $idpais = getCountryId($pais, $country_names);
+        $idpais = getCountryId($pais, $countryOptions);
 
 
         if (!validarNombre($nombre)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El nombre solo puede contener letras mayúsculas y minúsculas.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El nombre solo puede contener letras mayúsculas y minúsculas.')</script>";
+
         } else if (!validarEmail($email)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El correo no tiene un formato válido.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El correo no tiene un formato válido');</script>";
+
         } elseif (!validarPass($pass)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.')</script>";
+
         } else if ($pass != $passcheck) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: Las contraseñas no coinciden.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('Las contraseñas no coinciden.')</script>";
-        } else if (!validarPais($pais, $country_names)) {
+
+        } else if (!validarPais($pais, $countryOptions)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El páis no está en la lista de paises.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El páis no está en la lista de paises.')</script>";
+
         } else if (strlen($telefonOK) !== 9) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El teléfono no es válido.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El teléfono no es válido.')</script>";
+
         } else if (!validarPrefix($prefix)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El prefijo del teléfono no es válido.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El prefijo del teléfono no es válido.')</script>";
+
         } else if (!validarNombre($ciudad)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: La ciudad que has puesto no es válida.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('La ciudad que has puesto no es válida.')</script>";
+
         } else if (strlen($cp) !== 5) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El código postal no es válido.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El código postal no es válido.')</script>";
+
         } else if (!emailRepetido($email, $correxistente)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El email ya existe en nuestra base de datos.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El email ya existe en nuestra base de datos.')</script>";
+
         } elseif (!telRepetido($telefonOK, $telsexistente)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: El teléfono ya existe en nuestra base de datos.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script>errorNotification('El teléfono ya existe en nuestra base de datos.')</script>";
+
         } elseif (is_null($idpais)) {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Register fail]: País no válido.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
@@ -167,22 +179,19 @@ try {
 
                 $row = $query->fetch();
             } else {
-                echo "gas";
                 $sql_update = "UPDATE User SET customer_name = :nombre, user_country_id = :paisid, user_city = :ciudad, user_cp = :cp, user_tel = :tel, user_tel_prefix = :prefix, user_pass = :pass WHERE user_mail = :email";
-                $stmt_insert = $pdo->prepare($sql_update);
-                $stmt_insert->bindParam(':nombre', $nombre);
-                $stmt_insert->bindParam(':email', $email);
-                $stmt_insert->bindParam(':pass', $passhash);
-                $stmt_insert->bindParam(':tel', $telefonOK);
-                $stmt_insert->bindParam(':prefix', $prefix);
-                $stmt_insert->bindParam(':ciudad', $ciudad);
-                $stmt_insert->bindParam(':paisid', $idpais);
-                $stmt_insert->bindParam(':cp', $cp);
-                // $stmt_insert->bindParam(':token', $token);
+                $stmt_update = $pdo->prepare($sql_update);
+                $stmt_update->bindParam(':nombre', $nombre);
+                $stmt_update->bindParam(':email', $email);
+                $stmt_update->bindParam(':pass', $passhash);
+                $stmt_update->bindParam(':tel', $telefonOK);
+                $stmt_update->bindParam(':prefix', $prefix);
+                $stmt_update->bindParam(':ciudad', $ciudad);
+                $stmt_update->bindParam(':paisid', $idpais);
+                $stmt_update->bindParam(':cp', $cp);
+                // $stmt_update->bindParam(':token', $token);
 
-                $stmt_insert->execute();
-
-
+                $stmt_update->execute();
             }
 
             $query = $pdo->prepare("SELECT user_id FROM User WHERE user_mail = :email");
@@ -190,17 +199,19 @@ try {
             $query->bindParam(':email', $email, PDO::PARAM_STR);
             $query->execute();
             $row = $query->fetch();
+
             if ($row) {
-                session_start();
                 $_SESSION["usuario"] = $row["user_id"];
                 $_SESSION['nombre'] = $nombre;
-                header("Location: dashboard.php?succ=1");
-                exit();
-            } else {
-                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.\n";
-                file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-                echo "<script>errorNotification('Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tardeeee.')</script>";
             }
+
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo '$email'\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+            echo "
+                <script>
+                    window.location.href = 'mail_verification.php';
+                </script>
+            ";
         }
     }
 } catch (PDOException $e) {
@@ -246,7 +257,6 @@ function validarPais($pais, $listapaises)
     foreach ($listapaises as $nombrepais) {
         $nombrepaises[] = $nombrepais['country_name'];
     }
-
     if (!in_array($pais, $nombrepaises)) {
         return false;
     } else {

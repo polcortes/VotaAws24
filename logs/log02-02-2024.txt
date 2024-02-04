@@ -1,0 +1,26 @@
+
+[register.php ― 16:02:38 ― Register fail]: El páis no está en la lista de paises.
+
+[register.php ― 16:08:11 ― Register fail]: El páis no está en la lista de paises.
+
+[register.php ― 16:12:07 ― Register fail]: El páis no está en la lista de paises.
+
+[register.php ― 16:36:46 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 16:38:15 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 18:53:02 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eescrichalmagro.cf@iesesteveterradas.cat'
+
+[register.php ― 18:59:11 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eescrichalmagro.cf@iesesteveterradas.cat'
+
+[list_polls.php ― 19:01:38 ― ERROR user not verified]: El usuario no está verificado
+
+[register.php ― 19:04:44 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eescrichalmagro.cf@iesesteveterradas.cat'
+
+[register.php ― 19:06:29 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 19:07:17 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 19:08:07 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eescrichalmagro.cf@iesesteveterradas.cat'
+
+[register.php ― 19:09:33 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eescrichalmagro.cf@iesesteveterradas.cat'

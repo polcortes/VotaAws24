@@ -126,6 +126,7 @@ try {
             </head>
 
             <body id="mailVerification">
+                <?php include_once("common/header.php"); ?>
                 <main>
                     <h1>Verifica tu dirección de email</h1>
                     <p>Te hemos enviado un email a <b>
@@ -139,6 +140,7 @@ try {
                 <div class="footer">
                     <?php include_once("common/footer.php") ?>
                 </div>
+                <script> successfulNotification('¡Registro completado!'); </script>
             </body>
 
             </html>

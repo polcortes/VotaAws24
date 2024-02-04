@@ -47,6 +47,7 @@ try {
                 </head>
 
                 <body id="conditions">
+                    <?php include_once("common/header.php"); ?>
                     <main>
                         <h1>Términos y Condiciones - Vota!</h1>
                         <div id="terms">
@@ -87,8 +88,8 @@ try {
                             </p>
 
                             <form method="post">
-                                <p><span>Al utilizar nuestro portal de votaciones, usted acepta cumplir con estos términos y
-                                        condiciones.</span></p>
+                                <p>Al utilizar nuestro portal de votaciones, usted acepta cumplir con estos términos y
+                                    condiciones.</p>
                                 <label for="acceptCheckbox">
                                     <input type="checkbox" id="acceptCheckbox" name="acceptCheckbox">
                                     Acepto las condiciones establecidas

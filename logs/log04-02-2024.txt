@@ -1,0 +1,306 @@
+
+[create_poll.php ― 09:41:15 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 09:41:15 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 09:41:15 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 09:41:15 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 6
+
+[create_poll.php ― 09:42:15 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 09:42:15 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 09:42:15 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 09:42:15 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 7
+
+[create_poll.php ― 10:01:43 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:01:43 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:01:43 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:01:43 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 8
+
+[create_poll.php ― 10:02:48 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:02:48 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:02:48 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:02:48 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 9
+
+[create_poll.php ― 10:05:50 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:05:50 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:05:50 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:05:50 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 10
+
+[create_poll.php ― 10:07:16 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:07:16 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:07:16 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:07:16 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 11
+
+[create_poll.php ― 10:08:44 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:08:44 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:08:44 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:08:44 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 12
+
+[create_poll.php ― 10:11:08 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:11:08 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:11:08 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:11:08 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 13
+
+[create_poll.php ― 10:13:59 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:13:59 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:13:59 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:13:59 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen una opcion de la encuesta 14
+
+[create_poll.php ― 10:17:35 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:17:35 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:17:35 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:17:35 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la imagen la opcion 0 de la encuesta 15 (1 de 3
+
+[create_poll.php ― 10:17:35 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 15 en la base de datos (2 de 3
+
+
+
+
+
+[create_poll.php ― 10:28:19 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:28:19 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:28:19 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:28:19 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la opcion 0 de la encuesta 17 (1 de 3)
+
+[create_poll.php ― 10:28:19 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 17 en la base de datos (2 de 3)
+
+[register.php ― 10:32:21 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[register.php ― 10:35:42 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[register.php ― 10:37:14 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[register.php ― 10:38:52 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[register.php ― 10:41:46 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[mail_verification.php ― 10:41:46 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 10:42:26 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 10:43:05 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[mail_verification.php ― 10:43:05 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 10:44:23 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[create_poll.php ― 10:45:45 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:45:45 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:45:45 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:45:45 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la opcion 0 de la encuesta 1 (1 de 3)
+
+[create_poll.php ― 10:45:45 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 1 en la base de datos (2 de 3)
+
+[create_poll.php ― 10:46:43 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:46:43 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:46:43 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:46:43 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la opcion 0 de la encuesta 2 (1 de 3)
+
+[create_poll.php ― 10:46:43 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 2 en la base de datos (2 de 3)
+
+[create_poll.php ― 10:47:49 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 10:47:49 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 10:47:49 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 10:47:49 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la opcion 0 de la encuesta 3 (1 de 3)
+
+[create_poll.php ― 10:47:49 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 3 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:32:06 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:32:06 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:32:06 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:32:06 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la opcion 0 de la encuesta 4 (1 de 3)
+
+[create_poll.php ― 11:32:06 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 4 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:33:16 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:33:16 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:33:16 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:33:16 ― ERROR SURVEY OPTION SAVE]: Error al intentar guardar la opcion 0 de la encuesta 5 (1 de 3)
+
+[create_poll.php ― 11:33:16 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 5 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:35:16 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:35:16 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:35:16 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:35:16 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 6 en la base de datos (2 de 4)
+
+[create_poll.php ― 11:35:16 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 6 en la base de datos (3 de 4)
+
+[create_poll.php ― 11:35:16 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 6 en la base de datos (4 de 4)
+
+[create_poll.php ― 11:37:13 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:37:13 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:37:13 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:37:13 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 7 en la base de datos (2 de 4)
+
+[create_poll.php ― 11:37:13 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 7 en la base de datos (3 de 4)
+
+[create_poll.php ― 11:37:13 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 7 en la base de datos (4 de 4)
+
+[create_poll.php ― 11:48:18 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:48:18 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:48:18 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:48:18 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 8 en la base de datos (2 de 5)
+
+[create_poll.php ― 11:48:18 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 8 en la base de datos (3 de 5)
+
+[create_poll.php ― 11:48:18 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 8 en la base de datos (4 de 5)
+
+[create_poll.php ― 11:48:18 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 4 de la encuesta 8 en la base de datos (5 de 5)
+
+[create_poll.php ― 11:49:28 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:49:28 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:49:28 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:49:28 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 9 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:49:28 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 9 en la base de datos (3 de 3)
+
+[create_poll.php ― 11:53:16 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:53:16 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:53:16 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:53:16 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 10 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:53:16 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 10 en la base de datos (3 de 3)
+
+[create_poll.php ― 11:54:48 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:54:48 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:54:48 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:54:48 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 11 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:54:48 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 11 en la base de datos (3 de 3)
+
+[create_poll.php ― 11:56:26 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 11:56:26 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 11:56:26 ― DIRECTORY CREATED]: Se ha creado el directorio /uploads/survey
+
+[create_poll.php ― 11:56:26 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 11:56:26 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 12 en la base de datos (2 de 3)
+
+[create_poll.php ― 11:56:26 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 12 en la base de datos (3 de 3)
+
+[create_poll.php ― 12:02:51 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 12:02:51 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 12:02:51 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 12:02:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 13 en la base de datos (2 de 3)
+
+[create_poll.php ― 12:02:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 13 en la base de datos (3 de 3)
+
+[create_poll.php ― 12:04:50 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 12:04:50 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 12:04:50 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 12:04:50 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 14 en la base de datos (2 de 3)
+
+[create_poll.php ― 12:04:50 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 14 en la base de datos (3 de 3)
+
+[create_poll.php ― 12:06:24 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 12:06:24 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 12:06:24 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 12:06:24 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 15 en la base de datos (2 de 5)
+
+[create_poll.php ― 12:06:24 ― DIRECTORY CREATED]: Se ha creado el directorio /uploads/option
+
+[create_poll.php ― 12:06:24 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 15 en la base de datos (3 de 5)
+
+[create_poll.php ― 12:06:24 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 15 en la base de datos (4 de 5)
+
+[create_poll.php ― 12:06:24 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 4 de la encuesta 15 en la base de datos (5 de 5)
+
+[create_poll.php ― 12:27:45 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 12:27:45 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 12:27:45 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 12:27:45 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 16 en la base de datos (2 de 4)
+
+[create_poll.php ― 12:27:45 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 16 en la base de datos (3 de 4)
+
+[create_poll.php ― 12:27:45 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 16 en la base de datos (4 de 4)
+
+[create_poll.php ― 12:32:51 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 12:32:51 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 12:32:51 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 12:32:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 17 en la base de datos (2 de 4)
+
+[create_poll.php ― 12:32:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 17 en la base de datos (3 de 4)
+
+[create_poll.php ― 12:32:51 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 17 en la base de datos (4 de 4)

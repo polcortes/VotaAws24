@@ -15,6 +15,8 @@
 </head>
 
 <body id="login">
+    <?php include_once("common/header.php"); ?>
+    <ul id="notification__list"></ul>
     <main>
         <h1>Iniciar sesión</h1>
         <form method="post">
@@ -27,7 +29,6 @@
         <a href="index.php" class="backhome">Volver a Inicio</a>
     </main>
 
-    <ul id="notification__list"></ul>
     <div class="footer">
         <?php include_once("common/footer.php") ?>
     </div>
@@ -53,6 +54,7 @@ try {
 
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->bindParam(':pwd', $passhash, PDO::PARAM_STR);
+        // $query->bindParam(':pwd', $password, PDO::PARAM_STR);
 
         $query->execute();
 

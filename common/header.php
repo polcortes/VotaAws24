@@ -1,25 +1,3 @@
-<?php
-try {
-    session_start();
-    if (!isset($_SESSION["usuario"])) {
-        header("Location: login.php");
-        exit();
-    }
-    require 'data/dbAccess.php';
-    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-
-    $query = $pdo->prepare("SELECT * FROM User WHERE user_id = :id");
-    $query->execute([':id' => $_SESSION["usuario"]]);
-    $row = $query->fetch();
-    // ['is_mail_valid'] && $row['conditions_accepted']
-
-    if ($row) {
-        $validUser = ($row['is_mail_valid'] && $row['conditions_accepted']);
-    }
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-?>
 <nav class="navbar">
     <ul>
         <a href="/index.php"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -32,26 +10,50 @@ try {
             </svg></a>
         <li><a href="index.php">Inicio</a></li>
         <?php
-        session_start();
-        if (isset($_SESSION['usuario'])) {
-            if ($validUser) {
-                echo "<li><a href='dashboard.php'>DashBoard</a></li>";
-                echo '<li><a href="create_poll.php">Crear Encuesta</a></li>';
-                echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
+        try {
+            session_start();
+            require 'data/dbAccess.php';
+
+            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+
+            $saludo = "Bienvenido!";
+
+            if (isset($_SESSION["usuario"])) {
+                $query = $pdo->prepare("SELECT * FROM User WHERE user_id = :id");
+                $query->execute([':id' => $_SESSION["usuario"]]);
+                $row = $query->fetch();
+
+                if ($row) {
+                    if (isset($row['customer_name'])) {
+                        $_SESSION["nombre"] = $row['customer_name'];
+                        $saludo = "Bienvenido " . $row['customer_name'] . "!";
+                    }
+                    if (isset($row['customer_name'])) {
+                        if ($row['is_mail_valid'] && $row['conditions_accepted']) {
+                            echo "<li><a href='dashboard.php'>DashBoard</a></li>";
+                            echo '<li><a href="create_poll.php">Crear Encuesta</a></li>';
+                        } else {
+                            echo '<li><a href="mail_verification.php">Acaba de registrarte</a></li>';
+                        }
+                        echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
+                    } else {
+                        echo '<li><a href="login.php">Iniciar Sesión</a></li>';
+                        echo '<li><a href="register.php">Registrarse</a></li>';
+                    }
+                }
             } else {
-                echo '<li><a href="mail_verification.php">Acaba de registrarte</a></li>';
-                echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
+                echo '<li><a href="login.php">Iniciar Sesión</a></li>';
+                echo '<li><a href="register.php">Registrarse</a></li>';
             }
-        } else {
-            echo '<li><a href="register.php">Registrarse</a></li>';
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
         ?>
     </ul>
     <ul>
-        <?php
-        if (isset($_SESSION['usuario'])) {
-            echo '<li>Bienvenido ' . $_SESSION['nombre'] . '</li>';
-        }
-        ?>
+        <li>
+            <?php echo $saludo ?>
+        </li>
     </ul>
 </nav>
