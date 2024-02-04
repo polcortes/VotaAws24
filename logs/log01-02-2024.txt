@@ -1,0 +1,262 @@
+
+[list_polls.php ― 02:00:46 ― ERROR invitation]: Ya existe una invitación para w
+
+[list_polls.php ― 02:01:19 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (t)
+
+[send_invitation.php ― 02:10:31 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:10:34 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:15:18 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:15:18 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:19:56 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:19:56 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:21:35 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:21:35 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:21:35 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:35:59 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:35:59 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:37:30 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:37:30 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:37:30 ― PHPMailer OK] Array
+
+[send_invitation.php ― 02:39:55 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:39:55 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:44:50 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:44:50 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:44:50 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:44:50 ― Despues
+
+[send_invitation.php ― 02:47:40 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:47:40 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:47:40 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:47:40 ― Despues
+
+[send_invitation.php ― 02:49:15 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:49:15 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:49:15 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:49:15 ― ERROR at sending invitation email]: Envio de invitación a eric@escrich.net erroneo
+
+[send_invitation.php ― 02:49:16 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 02:49:16 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:49:16 ― ERROR at sending invitation email]: Envio de invitación a dsdsdds erroneo
+
+[send_invitation.php ― 02:49:18 ― Invitation email]: Envio de invitación a dsdsdds exitoso
+
+[send_invitation.php ― 02:49:18 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:49:18 ― ERROR at sending invitation email]: Envio de invitación a adwdwa erroneo
+
+[send_invitation.php ― 02:49:19 ― Invitation email]: Envio de invitación a adwdwa exitoso
+
+[send_invitation.php ― 02:49:19 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:49:19 ― ERROR at sending invitation email]: Envio de invitación a eric@escrich.net erroneo
+
+[send_invitation.php ― 02:49:21 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 02:49:21 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:49:21 ― ERROR at sending invitation email]: Envio de invitación a eric.escrich.al@gmail.com erroneo
+
+[send_invitation.php ― 02:49:22 ― Invitation email]: Envio de invitación a eric.escrich.al@gmail.com exitoso
+
+[send_invitation.php ― 02:54:46 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 02:54:46 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 02:54:46 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:54:46 ― ERROR at sending invitation email]: Envio de invitación a adasdasdasd erroneo
+
+[send_invitation.php ― 02:54:46 ― ERROR at sending invitation email]: Envio de invitación a adasdasdasd erroneo: You must provide at least one recipient email address.
+
+[send_invitation.php ― 02:54:46 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:54:46 ― ERROR at sending invitation email]: Envio de invitación a eric@escrich.net erroneo
+
+[send_invitation.php ― 02:54:48 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 02:54:48 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:54:48 ― ERROR at sending invitation email]: Envio de invitación a w erroneo
+
+[send_invitation.php ― 02:54:49 ― Invitation email]: Envio de invitación a w exitoso
+
+[send_invitation.php ― 02:54:49 ― Antes de enviar un mail
+
+[send_invitation.php ― 02:54:49 ― ERROR at sending invitation email]: Envio de invitación a t erroneo
+
+[send_invitation.php ― 02:54:50 ― Invitation email]: Envio de invitación a t exitoso
+
+[list_polls.php ― 03:13:31 ― Invalid mail]: El correo s no es válido.
+
+[list_polls.php ― 03:14:14 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (pepe@gmail.com)
+
+[list_polls.php ― 03:14:14 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (juan@hotmail.com)
+
+[list_polls.php ― 03:14:14 ― Invalid mail]: El correo francis co@co.com no es válido.
+
+[register.php ― 03:39:38 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 03:44:10 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 03:48:28 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [2002] No such file or directory
+
+[mail_verification.php ― 04:04:55 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:05:18 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:05:35 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:05:47 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:09:02 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:10:14 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:11:15 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:11:47 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:12:43 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:13:05 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:13:21 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:13:50 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:14:06 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:29:40 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:30:11 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:31:04 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:33:14 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:33:16 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:36:25 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:40:30 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 04:53:10 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[list_polls.php ― 04:54:31 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eescrichalmagro.cf@iesesteveterradas.cat)
+
+[send_invitation.php ― 04:55:28 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 04:55:28 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 04:55:28 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 04:55:28 ― ERROR at sending invitation email]: Envio de invitación a adasdasdasd erroneo: You must provide at least one recipient email address.
+
+[send_invitation.php ― 04:55:28 ― ERROR at sending invitation email]: Envio de invitación a adasdasdasd erroneo: You must provide at least one recipient email address.
+
+[send_invitation.php ― 04:55:29 ― Invitation email]: Envio de invitación a pepe@gmail.com exitoso
+
+[send_invitation.php ― 04:55:29 ― Invitation email]: Envio de invitación a pepe@gmail.com exitoso
+
+[send_invitation.php ― 04:55:31 ― Invitation email]: Envio de invitación a juan@hotmail.com exitoso
+
+[send_invitation.php ― 04:55:31 ― Invitation email]: Envio de invitación a juan@hotmail.com exitoso
+
+[send_invitation.php ― 04:55:33 ― Invitation email]: Envio de invitación a eescrichalmagro.cf@iesesteveterradas.cat exitoso
+
+[vote.php ― 05:38:07 ― TOKEN ERROR]: El token no es válido
+
+[vote.php ― 05:39:15 ― TOKEN ERROR]: El token no es válido 3
+
+[vote.php ― 05:39:39 ― TOKEN ERROR]: El token no es válido 3
+
+[list_polls.php ― 06:13:37 ― ERROR user not verified]: El usuario no está verificado
+
+[mail_verification.php ― 06:13:47 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 06:26:10 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 06:27:54 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 06:29:33 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 06:30:02 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 06:39:58 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:12:13 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:12:36 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:12:36 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:12:37 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:13:09 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:13:09 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:13:27 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+
+[register.php ― 09:15:52 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:17:38 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:18:51 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:19:00 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:19:11 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:19:20 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde.
+
+[register.php ― 09:20:11 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 09:21:29 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 09:49:13 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[mail_verification.php ― 10:02:10 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 10:04:17 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'pppedro@gmail.com' for key 'user_mail'
+
+[register.php ― 10:06:24 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 10:10:06 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 10:16:06 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[list_polls.php ― 10:17:17 ― ERROR user not verified]: El usuario no está verificado
+
+[mail_verification.php ― 10:18:42 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 19:14:30 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 19:14:33 ― TOKEN ERROR]: No se ha encontrado ningún token.

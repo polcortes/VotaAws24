@@ -14,8 +14,8 @@
     <script src="/componentes/notificationHandler.js"></script>
 </head>
 
-<body>
-    <main id="login">
+<body id="login">
+    <main>
         <h1>Iniciar sesión</h1>
         <form method="post">
             <input type="email" name="email" placeholder="email" required>
@@ -27,12 +27,10 @@
         <a href="index.php" class="backhome">Volver a Inicio</a>
     </main>
 
-    <ul id="notification__list">
-        <!-- todas las notificaciones -->
-    </ul>
-    <?php
-    include_once("common/footer.php")
-        ?>
+    <ul id="notification__list"></ul>
+    <div class="footer">
+        <?php include_once("common/footer.php") ?>
+    </div>
 
 
 </body>
@@ -46,7 +44,7 @@ try {
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = $_POST["email"];
         $password = $_POST["password"];
-
+        $passhash = hash('sha512', $password);
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
     // Cambiar query
@@ -54,7 +52,7 @@ try {
     // $query = $pdo->prepare("SELECT * FROM Users WHERE user_pass = :pwd AND user_mail = :email");
 
         $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':pwd', $password, PDO::PARAM_STR);
+        $query->bindParam(':pwd', $passhash, PDO::PARAM_STR);
 
         $query->execute();
 
