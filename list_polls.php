@@ -162,7 +162,6 @@ try {
     if (isset($_POST['invite-area'], $_POST['survey_id'])) {
         $emails = explode(',', $_POST['invite-area']);
         $survey_id = $_POST['survey_id'];
-        echo "1";
         foreach ($emails as $email) {
             $email = trim($email);
 

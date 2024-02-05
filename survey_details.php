@@ -8,36 +8,6 @@ try {
 
     require 'data/dbAccess.php';
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-
-    if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
-
-        $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id AND survey_id = :survey_id");
-
-        $query->bindParam(':user_id', $_SESSION["usuario"], PDO::PARAM_INT);
-        $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
-        $query->execute();
-
-        $row = $query->fetch();
-
-        $question_text;
-        $start_time;
-        $end_time;
-        $is_published;
-
-        // Cambiar parámetro dentro de $row
-        if ($row) {
-            $question_text = $row["survey_title"];
-            $start_time = $row["start_date"];
-            $end_time = $row["end_date"];
-            $is_published = $row["public_title"];
-        } else {
-            // Añadir las notificaciones
-            echo "<script> errorNotification('No tienes una encuesta con esa ID.'); </script>";
-        }
-    } else {
-        header("HTTP/1.1 403 Forbidden");
-        exit();
-    }
     ?>
 
     <!DOCTYPE html>
@@ -61,6 +31,35 @@ try {
             <?php
             include_once("common/header.php");
             if (!isset($_SESSION["usuario"])) {
+                header("HTTP/1.1 403 Forbidden");
+                exit();
+            }
+            if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
+
+                $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id AND survey_id = :survey_id");
+
+                $query->bindParam(':user_id', $_SESSION["usuario"], PDO::PARAM_INT);
+                $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+                $query->execute();
+
+                $row = $query->fetch();
+
+                $question_text;
+                $start_time;
+                $end_time;
+                $is_published;
+
+                // Cambiar parámetro dentro de $row
+                if ($row) {
+                    $question_text = $row["survey_title"];
+                    $start_time = $row["start_date"];
+                    $end_time = $row["end_date"];
+                    $is_published = $row["public_title"];
+                } else {
+                    // Añadir las notificaciones
+                    echo "<script> errorNotification('No tienes una encuesta con esa ID.'); </script>";
+                }
+            } else {
                 header("HTTP/1.1 403 Forbidden");
                 exit();
             }

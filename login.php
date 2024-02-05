@@ -60,8 +60,10 @@ try {
 
         $row = $query->fetch();
         if ($row) {
-            session_start();
             $_SESSION["usuario"] = $row['user_id'];
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― LOGIN SUCCESFULL]: El usuario $email ha iniciado sesión.\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+            echo "<script> successfulNotification('Has iniciado sesión con éxito.'); </script>";
 
             if (!$row['is_mail_valid']) {
                 header("Location: mail_verification.php");
@@ -76,13 +78,14 @@ try {
             exit();
         } else {
             // Añadir las notificaciones
+            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― LOGIN ERROR]: los datos introducidos son erroneos o no existen\n";
+            file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script> errorNotification('Los datos no coinciden en nuestra base de datos o no existen.'); </script>";
         }
     }
-
-
-
 } catch (PDOException $e) {
-    echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
+    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― DB ERROR]: Ha habido un error al conectarse a la base de datos: " . $e->getMessage() . "\n";
+    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+    echo "<script>errorNotification('Ha habido un error al conectarse a la base de datos.')</script>";
 }
 ?>

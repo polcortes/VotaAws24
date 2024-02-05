@@ -378,3 +378,45 @@
 [send_invitation.php ― 19:45:20 ― BD CONNECTION] Conexión con la db establecida
 
 [send_invitation.php ― 19:45:20 ― PHPMailer OK] PHPMailer OK
+
+[register.php ― 21:19:48 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 21:20:49 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eescrichalmagro.cf@iesesteveterradas.cat'
+
+[mail_verification.php ― 21:20:49 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 21:23:42 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 21:49:47 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'dunkanescrich@gmail.com'
+
+[mail_verification.php ― 21:49:47 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[mail_verification.php ― 22:02:42 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 22:07:11 ― Register fail]: El email ya existe en nuestra base de datos.
+
+[register.php ― 22:09:26 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'dunkanescrich@gmail.com'
+
+[mail_verification.php ― 22:09:26 ― TOKEN ERROR]: No se ha encontrado ningún token.
+
+[register.php ― 22:45:24 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'dunkanescrich@gmail.com'
+
+[register.php ― 22:59:36 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'dunkanescrich@gmail.com'
+
+[register.php ― 23:01:51 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'dunkanescrich@gmail.com'
+
+[mail_verification.php ― 23:01:53 ― MAIL SEND]: Se ha enviado un email de verificacion al correo dunkanescrich@gmail.com.
+
+[mail_verification.php ― 23:02:22 ― MAIL VAERIFICATEDSe ha verificado el email.
+
+[create_poll.php ― 23:03:14 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 23:03:14 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 23:03:14 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 23:03:14 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 21 en la base de datos (2 de 3)
+
+[create_poll.php ― 23:03:14 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 21 en la base de datos (3 de 3)
+
+[list_polls.php ― 23:07:26 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eric@escrich.net)

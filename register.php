@@ -42,7 +42,6 @@ try {
     <ul id="notification__list"></ul>
     <main>
         <?php echo "<input type='hidden' name='countries' id='jsoncountry' value='" . json_encode($countryOptions, JSON_UNESCAPED_UNICODE) . "'>"; ?>
-        <a href="index.php" class="backhome">Volver a Inicio</a>
         <h1>Crear una cuenta</h1>
     </main>
     <div class="footer">
@@ -209,6 +208,7 @@ try {
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "
                 <script>
+                    successfulNotification('¡Registro completado! Por favor, verifica tu correo para activar tu cuenta.');
                     window.location.href = 'mail_verification.php';
                 </script>
             ";
