@@ -34,7 +34,20 @@ try {
                 header("HTTP/1.1 403 Forbidden");
                 exit();
             }
-            if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST['blocked'])){
+        $query = $pdo->prepare("UPDATE Survey SET survey_blocked = 1 WHERE survey_id = :survey_id");
+
+        $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+        $query->execute();
+    }else{
+        $query = $pdo->prepare("UPDATE Survey SET survey_blocked = 0 WHERE survey_id = :survey_id");
+
+        $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+        $query->execute();
+    }
+}
+    if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
 
                 $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id AND survey_id = :survey_id");
 
@@ -48,24 +61,49 @@ try {
                 $start_time;
                 $end_time;
                 $is_published;
-
                 // Cambiar parámetro dentro de $row
                 if ($row) {
                     $question_text = $row["survey_title"];
                     $start_time = $row["start_date"];
                     $end_time = $row["end_date"];
                     $is_published = $row["public_title"];
-                } else {
+                    $survey_status = $row['survey_blocked'];
+        } else {
                     // Añadir las notificaciones
                     echo "<script> errorNotification('No tienes una encuesta con esa ID.'); </script>";
                 }
-            } else {
+        
+
+    } else {
                 header("HTTP/1.1 403 Forbidden");
                 exit();
             }
             ?>
             <section>
-
+                <?php
+                echo $question_text;
+                ?>
+                <form action="" method="post">
+                    <?php
+                    echo $survey_status;
+                    if($survey_status == 0){
+                        echo '<div class="container">';
+                        echo '<label class="switch" for="checkbox">';
+                        echo '<input type="checkbox" id="checkbox" name="blocked"/>';
+                        echo '<div class="slider"></div>';
+                        echo '</label>';
+                        echo '</div>';
+                    }else{
+                        echo '<div class="container">';
+                        echo '<label class="switch" for="checkbox">';
+                        echo '<input type="checkbox" id="checkbox" name="blocked" checked/>';
+                        echo '<div class="slider"></div>';
+                        echo '</label>';
+                        echo '</div>';
+                    }
+                    ?>
+                    <input type="submit" value="Cambio">
+                </form>
             </section>
             <aside>
 
