@@ -1,7 +1,6 @@
 <?php
 try {
     require 'data/dbAccess.php';
-    session_start();
 
     $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
     if (!file_exists(dirname($logFilePath))) {
@@ -26,13 +25,31 @@ try {
     </head>
 
     <body id="list_polls">
-        <?php include_once('common/header.php'); ?>
+        <?php
+        include_once("common/header.php");
+        if (!isset($_SESSION["usuario"])) {
+            header("HTTP/1.1 403 Forbidden");
+            exit();
+        }
+        ?>
         <main>
             <ul id="notification__list">
                 <!-- todas las notificaciones -->
             </ul>
             <h1>Tus encuestas</h1>
-            <span>Haz clic para ver los detalles de las encuestas</span>
+
+            <?php
+            $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :id");
+            $query->execute([':id' => $_SESSION["usuario"]]);
+            $row = $query->fetch();
+
+            if ($query->rowCount() > 0) {
+                echo "<h3>Haz clic para ver los detalles de las encuestas</h3>";
+            } else {
+                echo "<h3>No tienes encuestas creadas.</h3>";
+            }
+            ?>
+
             <section class="grid-polls">
                 <?php
                 try {
@@ -86,7 +103,16 @@ try {
                                                 <?php echo $_SESSION["nombre"]; ?>
                                             </div>
                                         </div>
-
+                                        <?php
+                                        if ($row["imag"] != null) {
+                                            $survey_image = $row["imag"];
+                                            echo "
+                                                <div class='surveyImg'>
+                                                    <img src='uploads/survey/$survey_image' alt='Imagen de la encuesta'>
+                                                </div>
+                                            ";
+                                        }
+                                        ?>
                                         <footer>
                                             <div class="poll-is-published <?php echo ($row["is_published"] ? " publicada" : ""); ?>">
                                                 Encuesta
@@ -102,8 +128,6 @@ try {
                                 </article>
                                 <?php
                             }
-                        } else {
-                            echo "<article><div><h2>No tienes encuestas creadas.</h2></div></article>";
                         }
                         ?>
                         <div id="overlay" style="display: none;"></div>
@@ -138,7 +162,6 @@ try {
     if (isset($_POST['invite-area'], $_POST['survey_id'])) {
         $emails = explode(',', $_POST['invite-area']);
         $survey_id = $_POST['survey_id'];
-        echo "1";
         foreach ($emails as $email) {
             $email = trim($email);
 

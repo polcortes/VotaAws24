@@ -257,6 +257,42 @@
 
 [mail_verification.php ― 10:18:42 ― TOKEN ERROR]: No se ha encontrado ningún token.
 
+[register.php ― 18:53:44 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+
+[register.php ― 18:54:25 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+
+[register.php ― 18:54:32 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+
+[register.php ― 19:21:31 ― DB ERROR]: Error al conectarse a la base de datos. ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php:15
+Stack trace:
+#0 /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php(15): PDO->__construct()
+#1 {main}
+
+[register.php ― 19:21:46 ― DB ERROR]: Error al conectarse a la base de datos. ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php:15
+Stack trace:
+#0 /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php(15): PDO->__construct()
+#1 {main}
+
+[register.php ― 19:24:33 ― DB ERROR]: Error al conectarse a la base de datos. ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php:15
+Stack trace:
+#0 /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php(15): PDO->__construct()
+#1 {main}
+
+[register.php ― 19:26:11 ― DB ERROR]: Error al conectarse a la base de datos. ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php:15
+Stack trace:
+#0 /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php(15): PDO->__construct()
+#1 {main}
+
+[register.php ― 19:27:58 ― DB ERROR]: Error al conectarse a la base de datos. ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php:15
+Stack trace:
+#0 /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php(15): PDO->__construct()
+#1 {main}
+
+[register.php ― 19:29:12 ― DB ERROR]: Error al conectarse a la base de datos. ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php:15
+Stack trace:
+#0 /home/eric_escrich/Documents/VotaAWS2/VotaAws24/register.php(15): PDO->__construct()
+#1 {main}
+
 [mail_verification.php ― 19:14:30 ― TOKEN ERROR]: No se ha encontrado ningún token.
 
 [mail_verification.php ― 19:14:33 ― TOKEN ERROR]: No se ha encontrado ningún token.

@@ -26,16 +26,21 @@ $(function(){
                 $("#register_repeat_pass").prop("disabled", false);
                 $("#labelrepeat").removeClass("dis");
             }
-            $("body").on('focusout', '#register_repeat_pass', function(){
-                var input = $("#register_pass").val();
-                passIgual(input);
-            });
         }else{
             if (!$("#register_repeat_pass").prop("disabled") && !$("#labelrepeat").hasClass("dis")) {
                 $("#register_repeat_pass").prop("disabled", true);
                 $("#labelrepeat").addClass("dis");
             }
         }
+    });
+    
+    $("body").on('focusout', '#register_repeat_pass', function(){
+        var input = $("#register_pass").val();
+        passIgual(input);
+    });
+
+    $("body").on('input', '#register_repeat_pass', function(){
+        deleteNext($('.passdiv'))
     });
 
     $("body").on('change', '#register_pais', function(){
@@ -50,6 +55,25 @@ $(function(){
             }
     });
 
+    $('body').on('input', '#register_name', function(){
+        deleteNext($(this))
+    });
+    $('body').on('input', '#register_email', function(){
+        deleteNext($(this))
+    });
+
+    $('body').on('input', '#register_pass', function(){
+        deleteNext($('.passdiv'))
+    });
+
+    $('body').on('input', '#register_tel', function(){
+        deleteNext($('#tel'))
+    });
+
+    $('body').on('input', '#register_ciudad', function(){
+        deleteNext($('.divciudad'))
+    });
+    
     $("body").on('input', '#register_tel', function(){
         var phoneNumber = $(this).val();
                 
@@ -61,6 +85,7 @@ $(function(){
 
         // Actualizar el valor del campo de entrada
         $(this).val(phoneNumber);
+        deleteNext($(this));
     })
 
     $("body").on('focusout', '#register_tel', function(){
@@ -221,12 +246,6 @@ function validacionNombres(nombre){
         creacionMail();
     } else {
         errorNotification('El nombre solo puede contener letras mayúsculas y minúsculas.');
-        removeMail();
-        removeButt();
-        removePais();
-        removeTel();
-        removeCity();
-        removePass();
         $("#register_name").css('border-bottom', '3px solid var(--rojo)');
     }
 }
@@ -238,11 +257,6 @@ function validacionMail(mail){
         creacionPassword();
     } else {
         errorNotification('El correo no tiene un formato válido.');
-        removeButt();
-        removePais();
-        removeTel();
-        removeCity();
-        removePass();
         $("#register_email").css('border-bottom', '3px solid var(--rojo)');
     }
 }
@@ -256,10 +270,6 @@ function validacionPass(pass){
         $("#register_pass").css('border-bottom', '3px solid var(--verde)');
         return true
     } else {
-        removeButt();
-        removeTel();
-        removeCity();
-        removePais();
         errorNotification('La contraseña no tiene un formato válido. Debe contener al menos 8 carácteres, al menos 1 letra mínusculas y mayuscula y al menos un número.');
         $("#register_pass").css('border-bottom', '3px solid var(--rojo)');
         return false
@@ -272,10 +282,6 @@ function passIgual(pass){
         $("#register_repeat_pass").css('border-bottom', '3px solid var(--verde)');
         creacionPais();
     }else{
-        removeButt();
-        removeTel();
-        removeCity();
-        removePais();
         errorNotification("Las contraseñas no coinciden.");
         $("#register_repeat_pass").css('border-bottom', '3px solid var(--rojo)');
     }
@@ -290,8 +296,6 @@ function validacionTel(tel){
         $("#register_tel").css('border-bottom', '3px solid var(--verde)');
         creacionCiudad();
     }else{
-        removeButt();
-        removeCity();
         errorNotification("El teléfono no es válido.");
         $("#register_tel").css('border-bottom', '3px solid var(--rojo)');
     }
@@ -312,55 +316,63 @@ function validacionCiudad(ciudad){
     } else {
         errorNotification("La ciudad que has proporcionado no parece válida.");
         $("#register_ciudad").css('border-bottom', '3px solid var(--rojo)');
+        deleteNext($('.divciudad'))
     }
 }
 
-function removeMail(){
-    if ($("#register_email").length != 0) {
-        $("#register_email").remove();
-        $("label[for='register_email']").remove();
-    }
-}
-function removePass(){
-    if ($("#register_pass").length != 0) {
-        $("#register_pass").remove();
-        $("label[for='register_pass']").remove();
-        $("#register_repeat_pass").remove();
-        $("label[for='register_repeat_pass']").remove();
-        $('.passdiv').remove()
-        $('.divisor').remove()
-    }
-}
-function removePais(){
-    if ($("#register_pais").length != 0) {
-        $("#register_pais").remove();
-        $("label[for='register_pais']").remove();
-    }
-}
-function removeTel(){
-    if ($("#register_tel").length != 0) {
-        $("#register_tel").remove();
-        $("#prefixtel").remove();
-        $("label[for='register_tel']").remove();
-        $('#tel').remove();
-    }
+
+
+function deleteNext(input){
+    input.nextAll().remove()
 }
 
-function removeCity(){
-    if ($(".divciudad").length != 0) {
-        $(".divciudad").remove();
-    }
-}
 
-function removeButt(){
-    if ($("#submit").length != 0) {
-        $("#submit").remove();
-    }
-}
+// function removeMail(){
+//     if ($("#register_email").length != 0) {
+//         $("#register_email").remove();
+//         $("label[for='register_email']").remove();
+//     }
+// }
+// function removePass(){
+//     if ($("#register_pass").length != 0) {
+//         $("#register_pass").remove();
+//         $("label[for='register_pass']").remove();
+//         $("#register_repeat_pass").remove();
+//         $("label[for='register_repeat_pass']").remove();
+//         $('.passdiv').remove()
+//         $('.divisor').remove()
+//     }
+// }
+// function removePais(){
+//     if ($("#register_pais").length != 0) {
+//         $("#register_pais").remove();
+//         $("label[for='register_pais']").remove();
+//     }
+// }
+// function removeTel(){
+//     if ($("#register_tel").length != 0) {
+//         $("#register_tel").remove();
+//         $("#prefixtel").remove();
+//         $("label[for='register_tel']").remove();
+//         $('#tel').remove();
+//     }
+// }
 
-function deleteDate(){
-    if ($("#datepoll").length != 0) {
-        $('#datepoll').remove();
-    }
+// function removeCity(){
+//     if ($(".divciudad").length != 0) {
+//         $(".divciudad").remove();
+//     }
+// }
 
-}
+// function removeButt(){
+//     if ($("#submit").length != 0) {
+//         $("#submit").remove();
+//     }
+// }
+
+// function deleteDate(){
+//     if ($("#datepoll").length != 0) {
+//         $('#datepoll').remove();
+//     }
+
+// }
