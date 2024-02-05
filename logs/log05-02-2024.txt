@@ -30,3 +30,5 @@
 [send_invitation.php ― 17:55:17 ― BD CONNECTION] Conexión con la db establecida
 
 [send_invitation.php ― 17:55:17 ― PHPMailer OK] PHPMailer OK
+
+[login.php ― 18:13:33 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
