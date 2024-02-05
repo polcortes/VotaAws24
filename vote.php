@@ -84,16 +84,16 @@ try {
             exit();
         }
     }
-    $query = $pdo->prepare("SELECT survey_id, survey_title, imag FROM Survey WHERE survey_id = :survey_id;");
-
     // $query = $pdo -> prepare(
     //   "SELECT s.survey_title, s.imag, so.option_text, so.imag 
     //   FROM survey AS s 
     //   INNER JOIN surveyoption AS so ON so.survey_id = s.survey_id 
     //   WHERE s.survey_id = :survey_id;"
     // );
+    $query = $pdo->prepare("SELECT `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
 
-    $query->bindParam(":survey_id", $_GET['survey_id']);
+
+    $query->bindParam(":invitation_token", $_GET['token']);
     $query->execute();
 
     $row = $query->fetch();
@@ -101,7 +101,7 @@ try {
     if (!$query->rowCount() == 0) {
         $surveyID = $row["survey_id"];
         $surveyTitle = $row["survey_title"];
-        $surveyImg = $row["survey_img"];
+        $surveyImg = $row["imag"];
     }
     ?>
     <!DOCTYPE html>
@@ -114,7 +114,7 @@ try {
         <link rel="stylesheet" href="styles.css">
         <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-        <script src="vote.js"></script>
+        <script src="componentes/vote.js"></script>
         <script src="componentes/notificationHandler.js"></script>
     </head>
 
@@ -141,22 +141,23 @@ try {
                 $querydos->execute();
 
                 $rows = $querydos->fetchAll();
-
+                ?> <section> <?php
                 foreach ($rows as $row) {
                     ?>
                     <article>
-                        <?php if (isset($row["imag"])): ?>
-                            <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
-                                alt="Imagen de la opción.">
-                        <?php endif ?>
+                        
                         <label>
+                            <?php if (isset($row["imag"])): ?>
+                                <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
+                                    alt="Imagen de la opción.">
+                            <?php endif ?>
                             <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
                             <?php echo $row["option_text"]; ?>
                         </label>
                     </article>
                     <?php
                 }
-                ?>
+                ?> </section>
                 <input type="submit" value="Enviar voto" id="submit-vote">
             </form>
         </main>

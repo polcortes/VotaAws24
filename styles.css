@@ -1022,6 +1022,13 @@ footer {
 /* -----------------------------------------------------
  * VOTE
  * -----------------------------------------------------*/
+#vote main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #vote .surveyImag {
     width: 700px;
     height: 400px;
@@ -1046,7 +1053,7 @@ footer {
     border-radius: 20px;
 }
 
-#vote .optionImag {
+/*#vote .optionImag {
     width: 400px;
     height: 250px;
     overflow: hidden;
@@ -1059,20 +1066,58 @@ footer {
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
-}
+}*/
 
 #vote form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
 }
 
-#vote article {
-    display: flex;
+#vote form > section {
+    /*flex-direction: column;*/
+    /*gap: 20px;*/
+    width: fit-content!important;
+    column-count: 3;
+    gap: 20px;
+
+    min-height: 50vh;
+}
+
+#vote form > section > article {
+    /*display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 5px;*/
+    min-height: 20px;
+    width: 300px;
+    margin: 0;
+    display: block;
+    border: 2px solid var(--gris-claro);
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+#vote form > section > article > label {
+    /*display: block;
+    height: max-content;*/
+    display: block;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+#vote form > section > article:not(:has(label > img)) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding-top: 10px;
+}
+
+#vote article img {
+    width: 300px;
+    padding-bottom: 10px;
 }
 
 #vote input[type="submit"] {
