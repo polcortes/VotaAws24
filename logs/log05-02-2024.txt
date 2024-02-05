@@ -1,0 +1,32 @@
+
+[login.php ― 16:01:53 ― LOGIN SUCCESFULL]: El usuario dunkanescrich@gmail.com ha iniciado sesión.
+
+[login.php ― 16:06:04 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[list_polls.php ― 16:07:31 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eric@escrich.net)
+
+[login.php ― 17:49:16 ― LOGIN SUCCESFULL]: El usuario eescrichalmagro.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[login.php ― 17:50:57 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[list_polls.php ― 17:53:33 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (eric@escrich.net)
+
+[send_invitation.php ― 17:53:51 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 17:53:51 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 17:53:51 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 17:54:21 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 17:54:21 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 17:54:34 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 17:54:34 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 17:54:48 ― Invitation email]: Envio de invitación a eric@escrich.net exitoso
+
+[send_invitation.php ― 17:55:17 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 17:55:17 ― PHPMailer OK] PHPMailer OK

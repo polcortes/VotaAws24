@@ -119,13 +119,20 @@ try {
     </head>
 
     <body id="vote">
+        <?php
+        include_once("common/header.php");
+        ?>
         <main>
-            <h1>
-                <?php echo $surveyTitle; ?>
-            </h1>
-            <?php if (isset($surveyImg)): ?>
-                <img src=<?php echo "'" . $surveyImg . "'" ?> alt="Imagen de la encuesta.">
-            <?php endif ?>
+
+            <div>
+                <h1>
+                    <?php echo $surveyTitle; ?>
+                </h1>
+                <?php if (isset($surveyImg)): ?>
+                    <img class="surveyImag" src=<?php echo "'uploads/survey/" . $surveyImg . "'" ?>
+                        alt="Imagen de la encuesta.">
+                <?php endif ?>
+            </div>
 
             <form id="vote-form" method="POST">
                 <?php
@@ -138,9 +145,9 @@ try {
                 foreach ($rows as $row) {
                     ?>
                     <article>
-                        <!--<img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="">-->
                         <?php if (isset($row["imag"])): ?>
-                            <img src=<?php echo "'" . $row["imag"] . "'" ?> alt="Imagen de la opción.">
+                            <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
+                                alt="Imagen de la opción.">
                         <?php endif ?>
                         <label>
                             <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
