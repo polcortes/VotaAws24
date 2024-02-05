@@ -1,3 +1,15 @@
+<?php
+try {
+    $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
+    if (!file_exists(dirname($logFilePath))) {
+        mkdir(dirname($logFilePath), 0755, true);
+    }
+    $filePathParts = explode("/", __FILE__);
+} catch (Exception $e) {
+    echo "<script>errorNotification('Ha habido un error al crear el archivo de logs: $e')</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -63,12 +75,10 @@ try {
             $_SESSION["usuario"] = $row['user_id'];
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― LOGIN SUCCESFULL]: El usuario $email ha iniciado sesión.\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-            echo "<script> successfulNotification('Has iniciado sesión con éxito.'); </script>";
 
             if (!$row['is_mail_valid']) {
                 header("Location: mail_verification.php");
                 exit();
-
             }
             if (!$row['conditions_accepted']) {
                 header("Location: terms_conditions.php");
@@ -82,6 +92,8 @@ try {
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             echo "<script> errorNotification('Los datos no coinciden en nuestra base de datos o no existen.'); </script>";
         }
+    } else {
+        echo "no va";
     }
 } catch (PDOException $e) {
     $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― DB ERROR]: Ha habido un error al conectarse a la base de datos: " . $e->getMessage() . "\n";

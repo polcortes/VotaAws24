@@ -90,6 +90,9 @@ try {
                     $mail->IsSMTP();
                     $mail->Mailer = "smtp";
                     $mail->IsSMTP();
+                    $mail->CharSet = 'UTF-8';
+                    $mail->Encoding = 'base64';
+
 
                     // $mail->SMTPDebug = 1;
                     $mail->SMTPAuth = TRUE;
@@ -121,25 +124,25 @@ try {
                     echo "<script>errorNotification('Ha surgido un error al enviar el email de verificacion al email " . $row['user_mail'] . "')</script>";
                 }
                 ?>
-        <main>
-            <h1>Verifica tu dirección de email</h1>
-            <p>Te hemos enviado un email a <b>
-                    <?php echo $row['user_mail'] ?>
-                </b> con un enlace para verificar tu dirección de email.</p>
-            <p>Si no lo encuentras, revisa la carpeta de spam.</p>
-            <a href="https://mail.google.com/mail" target="_blank">Ir al correo</a>
-        </main>
+                <main>
+                    <h1>Verifica tu dirección de email</h1>
+                    <p>Te hemos enviado un email a <b>
+                            <?php echo $row['user_mail'] ?>
+                        </b> con un enlace para verificar tu dirección de email.</p>
+                    <p>Si no lo encuentras, revisa la carpeta de spam.</p>
+                    <a href="https://mail.google.com/mail" target="_blank">Ir al correo</a>
+                </main>
 
-        <ul id="notification__list"></ul>
-        <div class="footer">
-            <?php include_once("common/footer.php") ?>
-        </div>
-        <script> successfulNotification('¡Registro completado!'); </script>
-    </body>
+                <ul id="notification__list"></ul>
+                <div class="footer">
+                    <?php include_once("common/footer.php") ?>
+                </div>
+                <script> successfulNotification('¡Registro completado!'); </script>
+            </body>
 
-    </html>
-                    <?php
-                    }
+            </html>
+            <?php
+            }
         } else {
             echo "<script>errorNotification('ERROR al consultar la base de datos.')</script>";
         }
