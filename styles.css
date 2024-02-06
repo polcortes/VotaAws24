@@ -1045,28 +1045,13 @@ footer {
     margin-bottom: 40px;
 }
 
-#vote .surveyImag img {
-    width: 100%;
-    height: 100%;
+#vote .surveyImag {
+    width: 500px;
+    height: auto;
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
 }
-
-/*#vote .optionImag {
-    width: 400px;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 20px;
-}
-
-#vote .optionImag img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 20px;
-}*/
 
 #vote form {
     display: flex;
@@ -1120,14 +1105,42 @@ footer {
     padding-bottom: 10px;
 }
 
-#vote input[type="submit"] {
-    border: 2px solid var(--gris-oscuro);
-    color: var(--gris-oscuro);
+#vote label[for="pass-check"] {
+    margin-top: 50px;
+}
+
+#vote #pass-check {
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 30px;
+    width: 200px;
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
+    transition: border-color 0.3s;
+    outline: none;
+    font-family: 'Montserrat';
     font-weight: 600;
-    padding: 8px 10px;
-    border-radius: 10px;
+}
+
+#vote input[type="submit"] {
+    border: 3px solid var(--gris-claro);
+    color: var(--gris-claro);
+    background-color: transparent;
+    text-decoration: underline 3px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 12px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: color .2s, background-color .2s;
+    transition: color .2s, background-color .2s, text-decoration-color .2s;
+}
+
+#vote input[type="submit"]:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+    text-decoration-color: var(--gris-oscuro);
 }
 
 .switch {

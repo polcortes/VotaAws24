@@ -90,18 +90,29 @@ try {
     //   INNER JOIN surveyoption AS so ON so.survey_id = s.survey_id 
     //   WHERE s.survey_id = :survey_id;"
     // );
-    $query = $pdo->prepare("SELECT `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
-
+    $query = $pdo->prepare("SELECT `i`.`mail_to`, `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
+    $query2 = $pdo->prepare("SELECT user_id from User where user_mail = :user_mail");
 
     $query->bindParam(":invitation_token", $_GET['token']);
+    
     $query->execute();
-
+    
     $row = $query->fetch();
+    
+    $canVote = false;
 
     if (!$query->rowCount() == 0) {
-        $surveyID = $row["survey_id"];
-        $surveyTitle = $row["survey_title"];
-        $surveyImg = $row["imag"];
+        $query2->bindParam(":user_mail", $row["mail_to"]);
+        $query2->execute();
+
+        $row2 = $query2->fetch();
+        if (!$query2->rowCount() == 0) {
+            $surveyID = $row["survey_id"];
+            $surveyTitle = $row["survey_title"];
+            $surveyImg = $row["imag"];
+            $canVote = true;
+        }
+
     }
     ?>
     <!DOCTYPE html>
@@ -122,46 +133,64 @@ try {
         <?php
         include_once("common/header.php");
         ?>
-        <main>
-
-            <div>
-                <h1>
-                    <?php echo $surveyTitle; ?>
-                </h1>
-                <?php if (isset($surveyImg)): ?>
-                    <img class="surveyImag" src=<?php echo "'uploads/survey/" . $surveyImg . "'" ?>
-                        alt="Imagen de la encuesta.">
-                <?php endif ?>
-            </div>
-
-            <form id="vote-form" method="POST">
-                <?php
-                $querydos = $pdo->prepare("SELECT * FROM SurveyOption WHERE survey_id = :survey_id;");
-                $querydos->bindParam(":survey_id", $surveyID);
-                $querydos->execute();
-
-                $rows = $querydos->fetchAll();
-                ?> <section> <?php
-                foreach ($rows as $row) {
-                    ?>
-                    <article>
-                        
-                        <label>
-                            <?php if (isset($row["imag"])): ?>
-                                <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
-                                    alt="Imagen de la opción.">
-                            <?php endif ?>
-                            <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
-                            <?php echo $row["option_text"]; ?>
-                        </label>
-                    </article>
-                    <?php
-                }
-                ?> </section>
-                <input type="submit" value="Enviar voto" id="submit-vote">
-            </form>
-        </main>
         <ul id="notification__list"></ul>
+        <main>
+            <?php if (isset($_POST["answer"])): ?>
+                <section>
+                    <h1>¡Tu respuesta ha sido enviada!</h1>
+                    <span style="display: flex; justify-content: space-between;">
+                        <a href="index.php">Ir a inicio</a>
+                        <a href="dashboard.php">Ir al dashboard</a>
+                    </span>
+                    <?php echo "<script>successfulNotification('¡Tu resputesta ha sido enviada exitosamente!')</script>"; ?>
+                </section>
+            <?php elseif (!$canVote): ?>
+                <section id="cant-vote">
+                    <h1>No has sido invitado para participar en esta encuesta.</h1>
+                    <p>Parece que no has sido invitado para participar en esta encuesta... ¡Pero puedes crear la tuya!</p>
+                    <a href="create_poll.php">Haz click en este enlace para crear tu encuesta</a>
+                </section>
+            <?php else: ?>
+                <div>
+                    <h1>
+                        <?php echo $surveyTitle; ?>
+                    </h1>
+                    <?php if (isset($surveyImg)): ?>
+                        <img class="surveyImag" src=<?php echo "'uploads/survey/" . $surveyImg . "'" ?>
+                            alt="Imagen de la encuesta.">
+                    <?php endif ?>
+                </div>
+
+                <form id="vote-form" method="POST">
+                    <?php
+                    $querydos = $pdo->prepare("SELECT * FROM SurveyOption WHERE survey_id = :survey_id;");
+                    $querydos->bindParam(":survey_id", $surveyID);
+                    $querydos->execute();
+
+                    $rows = $querydos->fetchAll();
+                    ?> <section> <?php
+                    foreach ($rows as $row) {
+                        ?>
+                        <article>
+                            
+                            <label>
+                                <?php if (isset($row["imag"])): ?>
+                                    <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
+                                        alt="Imagen de la opción.">
+                                <?php endif ?>
+                                <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
+                                <?php echo $row["option_text"]; ?>
+                            </label>
+                        </article>
+                        <?php
+                    }
+                    ?> </section>
+                    <label for="pass-check">Confirma tu contraseña:</label>
+                    <input type="password" name="pass-check" id="pass-check" placeholder="Contraseña..." required>
+                    <input type="submit" value="Enviar voto" id="submit-vote">
+                </form>
+            <?php endif ?>
+        </main>
         <div class="footer">
             <?php include_once("common/footer.php") ?>
         </div>
