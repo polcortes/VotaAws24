@@ -138,31 +138,66 @@ try {
             
             <?php if (isset($_POST["answer"]) && isset($_POST["pass-check"])): ?>
                 <?php
+                $wasSend = false;
                 $query = $pdo->prepare("SELECT mail_to FROM Invitation WHERE invitation_token = :token;");
                 $query->bindParam(":token", $_GET["token"]);
                 $query->execute();
 
                 $userMail = $query->fetch()["mail_to"];
 
-                $query = $pdo->prepare("SELECT `i`.`mail_to`, `u`.`customer_name`, `u`.`user_mail` FROM User u, Invitation i WHERE `u`.`user_mail` = :mail;");
+                $query = $pdo->prepare("SELECT `i`.`invitation_id`, `i`.`mail_to`, `u`.`customer_name`, `u`.`user_mail`, `u`.`user_pass` FROM User u, Invitation i WHERE `u`.`user_mail` = :mail;");
                 $query->execute([":mail" => $userMail]);
 
-                if ($query->rowCount() != 0 && $query->fetch()["name"] != null) {
+                $row = $query->fetch();
+
+                //echo "<h1>".$row != false and isset($row["name"])."</h1>";
+                //echo "<h1>".hash("sha512", $_POST["pass-check"]) != $row["user_pass"]."</h1>";
+
+                if ($row != false && isset($row["customer_name"])) {
+                    $userData = $row;
                     // Qué hacer si es usuario registrado:
-                    $query = $pdo->prepare("SELECT cast(aes_decrypt(encryptString, @pass)AS CHAR) FROM user WHERE user_id = :user_id;");
-                    $query->bindParam(":user_id", $_SESSION["usuario"]);
+                    if (hash("sha512", $_POST["pass-check"]) === $userData["user_pass"]) {
+                        $decryptStringQuery = $pdo->prepare("SELECT encryptString FROM User WHERE user_id = :user_id;");
+                        $decryptStringQuery->execute([":user_id" => $_SESSION["usuario"]]);
+                        $encryptedString = $decryptStringQuery->fetch();
+                        
+                        $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", $_POST["pass-check"]);
+
+                        // insert into uservote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(2, char), @decryptString), @pass), 2 );
+
+                        $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :invitation_id_dos);");
+                        $query->execute([
+                            ":invitation_id_uno" => $row["invitation_id"], 
+                            ":decryptString" => $decryptString, 
+                            ":pass" => $_POST["pass-check"], 
+                            ":invitation_id_dos" => $userData["invitation_id"]
+                        ]);
+
+                        $wasSend = true;
+                    }
+
                 } else {
                     // Qué hacer si es anónimo:
+                    
                 }
                 ?>
-                <section>
-                    <h1>¡Tu respuesta ha sido enviada!</h1>
-                    <span style="display: flex; justify-content: space-between;">
-                        <a href="index.php">Ir a inicio</a>
-                        <a href="dashboard.php">Ir al dashboard</a>
-                    </span>
-                    <?php echo "<script>successfulNotification('¡Tu resputesta ha sido enviada exitosamente!')</script>"; ?>
-                </section>
+                <?php if ($wasSend): ?>
+                    <section>
+                        <h1>¡Tu respuesta ha sido enviada!</h1>
+                        <span style="display: flex; justify-content: space-between;">
+                            <a href="index.php">Ir a inicio</a>
+                            <a href="dashboard.php">Ir al dashboard</a>
+                        </span>
+                        <?php echo "<script>successfulNotification('¡Tu respuesta ha sido enviada exitosamente!')</script>"; ?>
+                    </section>
+
+                <?php else: ?>
+                    <section style="position: relative;">
+                        <h1>Tu contraseña no parece ser correcta...</h1>
+                        <a style="position: absolute;left: 50%;transform: translateX(-50%);" href=<?php echo "'vote.php?".$_SERVER["QUERY_STRING"]."'"; ?> >¡Vuelve a intentarlo!</a>
+                    </section>
+
+                <?php endif; ?>
 
             <?php elseif ($isBlocked): ?>
                 <section>
@@ -215,9 +250,12 @@ try {
                         <?php
                     }
                     ?> </section>
-                    <label for="pass-check">Confirma tu contraseña:</label>
-                    <input type="password" name="pass-check" id="pass-check" placeholder="Contraseña..." required>
-                    <input type="submit" value="Enviar voto" id="submit-vote">
+
+                    <?php if (isset($_SESSION["usuario"])): ?>
+                        <label for="pass-check">Confirma tu contraseña:</label>
+                        <input type="password" name="pass-check" id="pass-check" placeholder="Contraseña..." required>
+                        <input type="submit" value="Enviar voto" id="submit-vote">
+                    <?php endif ?>
                 </form>
             <?php endif ?>
         </main>

@@ -4,7 +4,7 @@ addEventListener('load', () => {
     const form = document.getElementById('vote-form');
     const pass = document.getElementById('pass-check');
 
-    submit.addEventListener('click', (e) => {
+    submit?.addEventListener('click', (e) => {
         e.preventDefault();
         let isOptionMarked = false;
         let isPassWritten = false;
