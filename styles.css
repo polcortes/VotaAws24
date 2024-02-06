@@ -566,12 +566,7 @@ a:hover { color: var(--azul); }
     margin-bottom: 5%;
     z-index: 3;
     font-size: 3rem;
-    transform: translateY(0); /* Configuración inicial de transformación */
-    transition: transform 0.3s ease;
-}
-
-#index .godown:hover {
-    transform: translateY(-9px); /* Transformación al pasar el ratón sobre el elemento */
+    animation: upDown 2s infinite;
 }
 
 #index .godown > a > svg {
@@ -580,6 +575,24 @@ a:hover { color: var(--azul); }
 
 #index .godown:hover > a > svg {
     filter: invert(60%) sepia(73%) saturate(410%) hue-rotate(133deg) brightness(110%) contrast(110%);
+}
+
+@keyframes upDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    }
+    100% {
+        filter: invert(60%) sepia(73%) saturate(410%) hue-rotate(133deg) brightness(110%) contrast(110%);
+    }
 }
 
 #index .maintext {
