@@ -1,4 +1,6 @@
 
+[login.php ― 21:10:47 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
 [login.php ― 10:10:20 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
 
 [login.php ― 11:48:03 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
