@@ -170,8 +170,8 @@ try {
                 $checkUserQuery->execute([':user_mail' => $email]);
 
                 if ($checkUserQuery->rowCount() == 0) {
-                    $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail) VALUES (:user_mail)");
-                    $insertUserQuery->execute([':user_mail' => $email]);
+                    $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail, encryptString) VALUES (:user_mail, :encryptString)");
+                    $insertUserQuery->execute([':user_mail' => $email, ':encryptString' => bin2hex(random_bytes(50))]);
                 }
 
                 $checkInvitationQuery = $pdo->prepare("SELECT * FROM Invitation WHERE mail_to = :mail_to AND survey_id = :survey_id");

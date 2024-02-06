@@ -1,0 +1,6 @@
+
+[login.php ― 10:10:20 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 11:48:03 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[list_polls.php ― 12:49:19 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (pol2@gmail.com)

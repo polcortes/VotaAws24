@@ -135,7 +135,25 @@ try {
         ?>
         <ul id="notification__list"></ul>
         <main>
-            <?php if (isset($_POST["answer"])): ?>
+            <?php if (isset($_POST["answer"]) && isset($_POST["pass-check"])): ?>
+                <?php
+                $query = $pdo->prepare("SELECT mail_to FROM Invitation WHERE invitation_token = :token;");
+                $query->bindParam(":token", $_GET["token"]);
+                $query->execute();
+
+                $userMail = $query->fetch()["mail_to"];
+
+                $query = $pdo->prepare("SELECT `i`.`mail_to`, `u`.`customer_name`, `u`.`user_mail` FROM User u, Invitation i WHERE `u`.`user_mail` = :mail;");
+                $query->execute([":mail" => $userMail]);
+
+                if ($query->rowCount() != 0 && $query->fetch()["name"] != null) {
+                    // Qué hacer si es usuario registrado:
+                    $query = $pdo->prepare("SELECT cast(aes_decrypt(encryptString, @pass)AS CHAR) FROM user WHERE user_id = :user_id;");
+                    $query->bindParam(":user_id", $_SESSION["usuario"]);
+                } else {
+                    // Qué hacer si es anónimo:
+                }
+                ?>
                 <section>
                     <h1>¡Tu respuesta ha sido enviada!</h1>
                     <span style="display: flex; justify-content: space-between;">
@@ -200,6 +218,14 @@ try {
     </html>
     <?php
 } catch (PDOException $e) {
-    echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
+    //echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
+    $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
+    if (!file_exists(dirname($logFilePath))) {
+        mkdir(dirname($logFilePath), 0755, true);
+    }
+    $filePathParts = explode("/", __FILE__);
+
+    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― DB ERROR]: ERROR al conectarse con la base de datos -> " . $e->getMessage() . "\n";
+    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 }
 ?>
