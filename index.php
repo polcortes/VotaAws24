@@ -21,7 +21,7 @@
         <div class="bodytext">
             <div class="title">
                 <h1>VOTA</h1>
-                <span class="subtitle">Tu pagina de confianza para votar</span>
+                <span class="subtitle">¡Tu voto más seguro que nunca en un click!</span>
             </div>
         </div>
         <div class="godown">
