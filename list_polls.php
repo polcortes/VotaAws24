@@ -114,9 +114,9 @@ try {
                                         }
                                         ?>
                                         <footer>
-                                            <div class="poll-is-published <?php echo ($row["is_published"] ? " publicada" : ""); ?>">
+                                            <div class="poll-is-published <?php echo ($row["public_title"] ? " publicada" : ""); ?>">
                                                 Encuesta
-                                                <?php echo ($row["is_published"] ? "publicada" : "no publicada"); ?>
+                                                <?php echo ($row["public_title"] ? "publicada" : "no publicada"); ?>
                                             </div>
                                             <div class="poll-is-online <?php echo $isOnlineClass; ?>">
                                                 <?php echo $isOnline; ?>
@@ -169,8 +169,10 @@ try {
                 $checkUserQuery = $pdo->prepare("SELECT * FROM User WHERE user_mail = :user_mail");
                 $checkUserQuery->execute([':user_mail' => $email]);
 
+                print_r($checkUserQuery->fetch());
+
                 if ($checkUserQuery->rowCount() == 0) {
-                    $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail, encryptString) VALUES (:user_mail, :encryptString)");
+                    $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail, encryptString) VALUES (:user_mail, aes_encrypt(:encryptString, 'aaaaAaa1'));");
                     $insertUserQuery->execute([':user_mail' => $email, ':encryptString' => bin2hex(random_bytes(50))]);
                 }
 
@@ -207,6 +209,7 @@ function validarEmail($email)
     $regex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 
     if (preg_match($regex, $email)) {
+        echo $email;
         return true;
     } else {
         return false;

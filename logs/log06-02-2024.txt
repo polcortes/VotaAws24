@@ -4,3 +4,21 @@
 [login.php ― 11:48:03 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
 
 [list_polls.php ― 12:49:19 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (pol2@gmail.com)
+
+[login.php ― 15:41:51 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 16:45:53 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 18:01:22 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[list_polls.php ― 18:23:41 ― ERROR user not verified]: El usuario no está verificado
+
+[list_polls.php ― 18:39:04 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (poldos@gmail.com)
+
+[vote.php ― 19:08:09 ― TOKEN ERROR]: El token no es válido 4
+
+[vote.php ― 19:11:27 ― TOKEN ERROR]: El token no es válido 4
+
+[vote.php ― 19:23:09 ― TOKEN ERROR]: El token no es válido 4
+
+[vote.php ― 19:23:58 ― TOKEN ERROR]: El token no es válido 4

@@ -27,43 +27,42 @@ try {
                     $row = $query->fetch();
 
                     if (!$query->rowCount() == 0) {
-                        if ($row['user_id']) {
-                            $_SESSION["usuario"] = $row['user_id'];
-                            header("Location: vote.php?survey_id=" . $surveyID);
+                        /*if ($row['user_id']) {
+                            //$_SESSION["usuario"] = $row['user_id'];
+                            //header("Location: vote.php?survey_id=" . $surveyID);
                         } else {
                             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 1\n";
                             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                            header("Location: login.php");
-                            exit();
-                        }
+                            //exit();
+                        }*/
                     } else {
                         $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 2\n";
                         file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                        header("Location: login.php");
-                        exit();
+                        //header("Location: login.php");
+                       // exit();
                     }
                 } else {
                     $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 3\n";
                     file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                    header("Location: login.php");
-                    exit();
+                    //header("Location: login.php");
+                    //exit();
                 }
             } else {
                 $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 4\n";
                 file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                header("Location: login.php");
-                exit();
+                //header("Location: login.php");
+                //exit();
             }
         } else {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 5\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-            header("Location: login.php");
-            exit();
+            //header("Location: login.php");
+            //exit();
         }
     } else {
         if (isset($_POST['submit-vote']) && isset($_POST['answer'])) {
@@ -80,8 +79,8 @@ try {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― VOTE OK]: Se ha realizado una votación\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-            header("Location: index.php");
-            exit();
+            // header("Location: index.php");
+            //exit();
         }
     }
     // $query = $pdo -> prepare(
@@ -111,6 +110,7 @@ try {
             $surveyTitle = $row["survey_title"];
             $surveyImg = $row["imag"];
             $canVote = true;
+            $isBlocked = false;
         }
 
     }
@@ -135,6 +135,7 @@ try {
         ?>
         <ul id="notification__list"></ul>
         <main>
+            
             <?php if (isset($_POST["answer"]) && isset($_POST["pass-check"])): ?>
                 <?php
                 $query = $pdo->prepare("SELECT mail_to FROM Invitation WHERE invitation_token = :token;");
@@ -162,6 +163,17 @@ try {
                     </span>
                     <?php echo "<script>successfulNotification('¡Tu resputesta ha sido enviada exitosamente!')</script>"; ?>
                 </section>
+
+            <?php elseif ($isBlocked): ?>
+                <section>
+                    <h1>⚠️¡Esta encuesta está bloqueada!⚠️</h1>
+                    <p>Esta encuesta ha sido bloqueada por su creador.</p>
+                    <span style="display: flex; justify-content: space-between;">
+                        <a href="index.php">Ir a inicio</a>
+                        <a href="dashboard.php">Ir al dashboard</a>
+                    </span>
+                </section>
+            
             <?php elseif (!$canVote): ?>
                 <section id="cant-vote">
                     <h1>No has sido invitado para participar en esta encuesta.</h1>
