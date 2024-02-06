@@ -27,43 +27,42 @@ try {
                     $row = $query->fetch();
 
                     if (!$query->rowCount() == 0) {
-                        if ($row['user_id']) {
-                            $_SESSION["usuario"] = $row['user_id'];
-                            header("Location: vote.php?survey_id=" . $surveyID);
+                        /*if ($row['user_id']) {
+                            //$_SESSION["usuario"] = $row['user_id'];
+                            //header("Location: vote.php?survey_id=" . $surveyID);
                         } else {
                             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 1\n";
                             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                            header("Location: login.php");
-                            exit();
-                        }
+                            //exit();
+                        }*/
                     } else {
                         $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 2\n";
                         file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                        header("Location: login.php");
-                        exit();
+                        //header("Location: login.php");
+                       // exit();
                     }
                 } else {
                     $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 3\n";
                     file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                    header("Location: login.php");
-                    exit();
+                    //header("Location: login.php");
+                    //exit();
                 }
             } else {
                 $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 4\n";
                 file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-                header("Location: login.php");
-                exit();
+                //header("Location: login.php");
+                //exit();
             }
         } else {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN ERROR]: El token no es válido 5\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-            header("Location: login.php");
-            exit();
+            //header("Location: login.php");
+            //exit();
         }
     } else {
         if (isset($_POST['submit-vote']) && isset($_POST['answer'])) {
@@ -80,28 +79,40 @@ try {
             $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― VOTE OK]: Se ha realizado una votación\n";
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 
-            header("Location: index.php");
-            exit();
+            // header("Location: index.php");
+            //exit();
         }
     }
-    $query = $pdo->prepare("SELECT survey_id, survey_title, imag FROM Survey WHERE survey_id = :survey_id;");
-
     // $query = $pdo -> prepare(
     //   "SELECT s.survey_title, s.imag, so.option_text, so.imag 
     //   FROM survey AS s 
     //   INNER JOIN surveyoption AS so ON so.survey_id = s.survey_id 
     //   WHERE s.survey_id = :survey_id;"
     // );
+    $query = $pdo->prepare("SELECT `i`.`mail_to`, `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
+    $query2 = $pdo->prepare("SELECT user_id from User where user_mail = :user_mail");
 
-    $query->bindParam(":survey_id", $_GET['survey_id']);
+    $query->bindParam(":invitation_token", $_GET['token']);
+    
     $query->execute();
-
+    
     $row = $query->fetch();
+    
+    $canVote = false;
 
     if (!$query->rowCount() == 0) {
-        $surveyID = $row["survey_id"];
-        $surveyTitle = $row["survey_title"];
-        $surveyImg = $row["survey_img"];
+        $query2->bindParam(":user_mail", $row["mail_to"]);
+        $query2->execute();
+
+        $row2 = $query2->fetch();
+        if (!$query2->rowCount() == 0) {
+            $surveyID = $row["survey_id"];
+            $surveyTitle = $row["survey_title"];
+            $surveyImg = $row["imag"];
+            $canVote = true;
+            $isBlocked = false;
+        }
+
     }
     ?>
     <!DOCTYPE html>
@@ -114,7 +125,7 @@ try {
         <link rel="stylesheet" href="styles.css">
         <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-        <script src="vote.js"></script>
+        <script src="componentes/vote.js"></script>
         <script src="componentes/notificationHandler.js"></script>
     </head>
 
@@ -122,45 +133,94 @@ try {
         <?php
         include_once("common/header.php");
         ?>
+        <ul id="notification__list"></ul>
         <main>
-
-            <div>
-                <h1>
-                    <?php echo $surveyTitle; ?>
-                </h1>
-                <?php if (isset($surveyImg)): ?>
-                    <img class="surveyImag" src=<?php echo "'uploads/survey/" . $surveyImg . "'" ?>
-                        alt="Imagen de la encuesta.">
-                <?php endif ?>
-            </div>
-
-            <form id="vote-form" method="POST">
+            
+            <?php if (isset($_POST["answer"]) && isset($_POST["pass-check"])): ?>
                 <?php
-                $querydos = $pdo->prepare("SELECT * FROM SurveyOption WHERE survey_id = :survey_id;");
-                $querydos->bindParam(":survey_id", $surveyID);
-                $querydos->execute();
+                $query = $pdo->prepare("SELECT mail_to FROM Invitation WHERE invitation_token = :token;");
+                $query->bindParam(":token", $_GET["token"]);
+                $query->execute();
 
-                $rows = $querydos->fetchAll();
+                $userMail = $query->fetch()["mail_to"];
 
-                foreach ($rows as $row) {
-                    ?>
-                    <article>
-                        <?php if (isset($row["imag"])): ?>
-                            <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
-                                alt="Imagen de la opción.">
-                        <?php endif ?>
-                        <label>
-                            <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
-                            <?php echo $row["option_text"]; ?>
-                        </label>
-                    </article>
-                    <?php
+                $query = $pdo->prepare("SELECT `i`.`mail_to`, `u`.`customer_name`, `u`.`user_mail` FROM User u, Invitation i WHERE `u`.`user_mail` = :mail;");
+                $query->execute([":mail" => $userMail]);
+
+                if ($query->rowCount() != 0 && $query->fetch()["name"] != null) {
+                    // Qué hacer si es usuario registrado:
+                    $query = $pdo->prepare("SELECT cast(aes_decrypt(encryptString, @pass)AS CHAR) FROM user WHERE user_id = :user_id;");
+                    $query->bindParam(":user_id", $_SESSION["usuario"]);
+                } else {
+                    // Qué hacer si es anónimo:
                 }
                 ?>
-                <input type="submit" value="Enviar voto" id="submit-vote">
-            </form>
+                <section>
+                    <h1>¡Tu respuesta ha sido enviada!</h1>
+                    <span style="display: flex; justify-content: space-between;">
+                        <a href="index.php">Ir a inicio</a>
+                        <a href="dashboard.php">Ir al dashboard</a>
+                    </span>
+                    <?php echo "<script>successfulNotification('¡Tu resputesta ha sido enviada exitosamente!')</script>"; ?>
+                </section>
+
+            <?php elseif ($isBlocked): ?>
+                <section>
+                    <h1>⚠️¡Esta encuesta está bloqueada!⚠️</h1>
+                    <p>Esta encuesta ha sido bloqueada por su creador.</p>
+                    <span style="display: flex; justify-content: space-between;">
+                        <a href="index.php">Ir a inicio</a>
+                        <a href="dashboard.php">Ir al dashboard</a>
+                    </span>
+                </section>
+            
+            <?php elseif (!$canVote): ?>
+                <section id="cant-vote">
+                    <h1>No has sido invitado para participar en esta encuesta.</h1>
+                    <p>Parece que no has sido invitado para participar en esta encuesta... ¡Pero puedes crear la tuya!</p>
+                    <a href="create_poll.php">Haz click en este enlace para crear tu encuesta</a>
+                </section>
+            <?php else: ?>
+                <div>
+                    <h1>
+                        <?php echo $surveyTitle; ?>
+                    </h1>
+                    <?php if (isset($surveyImg)): ?>
+                        <img class="surveyImag" src=<?php echo "'uploads/survey/" . $surveyImg . "'" ?>
+                            alt="Imagen de la encuesta.">
+                    <?php endif ?>
+                </div>
+
+                <form id="vote-form" method="POST">
+                    <?php
+                    $querydos = $pdo->prepare("SELECT * FROM SurveyOption WHERE survey_id = :survey_id;");
+                    $querydos->bindParam(":survey_id", $surveyID);
+                    $querydos->execute();
+
+                    $rows = $querydos->fetchAll();
+                    ?> <section> <?php
+                    foreach ($rows as $row) {
+                        ?>
+                        <article>
+                            
+                            <label>
+                                <?php if (isset($row["imag"])): ?>
+                                    <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
+                                        alt="Imagen de la opción.">
+                                <?php endif ?>
+                                <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
+                                <?php echo $row["option_text"]; ?>
+                            </label>
+                        </article>
+                        <?php
+                    }
+                    ?> </section>
+                    <label for="pass-check">Confirma tu contraseña:</label>
+                    <input type="password" name="pass-check" id="pass-check" placeholder="Contraseña..." required>
+                    <input type="submit" value="Enviar voto" id="submit-vote">
+                </form>
+            <?php endif ?>
         </main>
-        <ul id="notification__list"></ul>
         <div class="footer">
             <?php include_once("common/footer.php") ?>
         </div>
@@ -170,6 +230,14 @@ try {
     </html>
     <?php
 } catch (PDOException $e) {
-    echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
+    //echo "<script>errorNotification('ERROR al conectarse con la base de datos -> " . $e->getMessage() . "')</script>";
+    $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
+    if (!file_exists(dirname($logFilePath))) {
+        mkdir(dirname($logFilePath), 0755, true);
+    }
+    $filePathParts = explode("/", __FILE__);
+
+    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― DB ERROR]: ERROR al conectarse con la base de datos -> " . $e->getMessage() . "\n";
+    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
 }
 ?>
