@@ -16,7 +16,9 @@ addEventListener('load', () => {
             }
         }
 
-        if (pass.value.trim().length !== 0) {
+        if (pass != null && pass.value.trim().length !== 0) {
+            isPassWritten = true;
+        } else if (pass == null) {
             isPassWritten = true;
         }
 

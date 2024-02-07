@@ -22,19 +22,31 @@ if (isset($_POST["actual-pass"]) && isset($_POST["new-pass"]) && isset($_POST["r
         $decryptStringQuery->execute([":user_id" => $_SESSION["usuario"]]);
         $encryptedString = $decryptStringQuery->fetch();
         
-        $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", $_POST["actual_pass"]);
+        $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", $_POST["actual-pass"]);
 
         $query = $pdo->prepare(
-            "select `i`.`mail_to`, `i`.`survey_id`, `v`.`option_id`
-            from UserVote v, Invitation i
-            where `i`.`mail_to` = (select user_mail from User where user_id = :user_id) 
-            and v.invitation_id_enc = aes_encrypt(concat(convert(`i`.`invitation_id`, char), :decryptString), :pass);"
+            "SELECT `i`.`mail_to`, `i`.`survey_id`, `v`.`option_id`, `i`.`invitation_id`
+            FROM UserVote v
+            INNER JOIN Invitation i ON `v`.`invitation_id_enc` = aes_encrypt(concat(convert(`i`.`invitation_id`, char), :decryptString), :pass)
+            WHERE `i`.`mail_to` = (SELECT user_mail FROM User WHERE user_id = :user_id);"
         );
         $query->execute([":user_id" => $_SESSION["usuario"], ":decryptString" => $decryptString, ":pass" => $_POST["actual-pass"]]);
 
         $rows = $query->fetchAll();
 
-        print_r($rows);
+        foreach ($rows as $row) {
+            $insert = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (:enc_id, :option_id);");
+            $insert->execute([
+                ":enc_id"    => openssl_encrypt($row["invitation_id"].$decryptString, "AES-256-CTR", $_POST["new-pass"]),
+                ":option_id" => $row["option_id"]
+            ]);
+        }
+
+        $update = $pdo->prepare("UPDATE User SET user_pass = sha2(:pass, 512);");
+        $update->execute([":pass" => $_POST["new-pass"]]);
+
+        $isPassUpdated = true;
+        // echo "<h1>".print_r($rows, true)."</h1>";
         
     } else {
 
@@ -51,6 +63,7 @@ if (isset($_POST["actual-pass"]) && isset($_POST["new-pass"]) && isset($_POST["r
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="change_pass.js"></script>
     <script src="/componentes/notificationHandler.js"></script>
 </head>
 <body id="change-pass">
@@ -59,7 +72,7 @@ if (isset($_POST["actual-pass"]) && isset($_POST["new-pass"]) && isset($_POST["r
     <main>
         <h1>Cambiar la contraseña:</h1>
 
-        <form method="POST">
+        <form method="POST" id="change-pass-form">
             <label for="actual-pass">Contraseña actual:</label>
             <input type="password" name="actual-pass" id="actual-pass" placeholder="Contraseña..." required>
 
@@ -69,7 +82,7 @@ if (isset($_POST["actual-pass"]) && isset($_POST["new-pass"]) && isset($_POST["r
             <label for="repeat-new-pass">Repite la contraseña nueva:</label>
             <input type="password" name="repeat-new-pass" id="repeat-new-pass" placeholder="Contraseña..." required>
 
-            <input type="submit" value="Cambiar">
+            <input type="submit" value="Cambiar" disabled>
         </form>
     </main>
     <?php if (isset($isPassUpdated) and $isPassUpdated) {

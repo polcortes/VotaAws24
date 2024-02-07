@@ -1428,11 +1428,22 @@ span.apexcharts-legend-text {
     font-size: 18px;
     font-weight: 600;
     text-decoration: underline 2px var(--gris-claro);
-    transition: color .2s, background-color .2s, text-decoration-color .2s;
+    transition: color .2s, background-color .2s, text-decoration-color .2s, opacity .2s;
 }
 
 #change-pass > main > form input[type="submit"]:hover {
     color: var(--gris-oscuro);
     background-color: var(--gris-claro);
     text-decoration-color: var(--gris-oscuro);
+}
+
+#change-pass-form input[type="submit"]:disabled {
+    opacity: .4;
+}
+
+#change-pass-form input[type="submit"]:disabled:hover {
+    background-color: transparent;
+    color: var(--gris-claro);
+    text-decoration: underline 2px var(--gris-claro);
+    cursor: not-allowed;
 }
