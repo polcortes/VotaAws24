@@ -1,2 +1,56 @@
 
 [login.php ― 21:10:47 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[login.php ― 10:10:20 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 11:48:03 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[list_polls.php ― 12:49:19 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (pol2@gmail.com)
+
+[login.php ― 15:41:51 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 16:45:53 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 18:01:22 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[list_polls.php ― 18:23:41 ― ERROR user not verified]: El usuario no está verificado
+
+[list_polls.php ― 18:39:04 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (poldos@gmail.com)
+
+[vote.php ― 19:08:09 ― TOKEN ERROR]: El token no es válido 4
+
+[vote.php ― 19:11:27 ― TOKEN ERROR]: El token no es válido 4
+
+[vote.php ― 19:23:09 ― TOKEN ERROR]: El token no es válido 4
+
+[vote.php ― 19:23:58 ― TOKEN ERROR]: El token no es válido 4
+
+[login.php ― 22:20:32 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 22:25:13 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 22:52:01 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[vote.php ― 23:43:57 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:45:56 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:46:25 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:47:24 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:49:24 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:49:42 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:53:56 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:54:30 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:55:01 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:58:02 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:58:08 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist
+
+[vote.php ― 23:58:50 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'votadb.user' doesn't exist

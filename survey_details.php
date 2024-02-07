@@ -6,9 +6,37 @@ session_start();
 
     $query = $pdo->prepare("UPDATE Surveys SET public_results");
 }*/
-
+$pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
-    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['blocked'])){
+            $query = $pdo->prepare("UPDATE Survey SET survey_block = 1 WHERE survey_id = :survey_id");
+    
+            $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+            $query->execute();
+        }else{
+            $query = $pdo->prepare("UPDATE Survey SET survey_block = 0 WHERE survey_id = :survey_id");
+    
+            $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+            $query->execute();
+        }
+        $title_privacity = $_POST['title-visibility'];
+        $quest_privacity = $_POST['results-visibility'];
+        if (isset($_POST["results-visibility"])) {
+            $query = $pdo->prepare("UPDATE Survey SET public_title = :tit_priv  WHERE survey_id = :survey_id");
+            $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+            $query->bindParam(':tit_priv', $title_privacity, PDO::PARAM_STR);
+            $query->execute();
+        }
+        
+        if (isset($_POST["title-visibility"])) {        
+            $query = $pdo->prepare("UPDATE Survey SET public_results = :quest_priv  WHERE survey_id = :survey_id ");
+            $query->bindParam(':survey_id', $_GET["id"], PDO::PARAM_INT);
+            $query->bindParam(':quest_priv', $quest_privacity, PDO::PARAM_STR);
+            $query->execute();
+        }
+    }
+   
 
     $query = $pdo->prepare("SELECT * FROM Survey WHERE user_id = :user_id AND survey_id = :survey_id");
 
@@ -29,6 +57,9 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
         $start_time = $row["start_date"];
         $end_time = $row["end_date"];
         $is_published = $row["public_title"];
+        $survey_status = $row['survey_block'];
+        $title_status = $row['public_title'];
+        $quest_status = $row['public_results'];
     } else {
         // Añadir las notificaciones
         echo "<script> errorNotification('No tienes una encuesta con esa ID.'); </script>";
@@ -70,6 +101,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
     header("HTTP/1.1 403 Forbidden");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -152,21 +184,47 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
                         <div>
                             <label for="results-visibility">Visibilidad de los resultados:</label>
                             <select name="results-visibility" id="results-visibility">
-                                <option value="oculto">Oculto</option>
-                                <option value="privado">Privado</option>
-                                <option value="publico">Público</option>
+                                <option value="hidden">Oculto</option>
+                                <option value="private">Privado</option>
+                                <option value="public">Público</option>
                             </select>
                         </div>
                         <div>
                             <label for="title-visibility">Visibilidad del título:</label>
+                            <?php
+                            echo $titl1e_status;
+                            ?>
                             <select name="title-visibility" id="title-visibility">
-                                <option value="oculto">Oculto</option>
-                                <option value="privado">Privado</option>
-                                <option value="publico">Público</option>
+                            <option value="hidden" <?php echo ($title_status == 'hidden') ? 'selected' : ''; ?>>Oculto</option>
+                                <option value="private" <?php echo ($title_status == 'private') ? 'selected' : ''; ?>>Privado</option>
+                                <option value="public" <?php echo ($title_status == 'public') ? 'selected' : ''; ?>>Público</option>
                             </select>
                         </div>
+                        
                     </div>
-
+                    <?php
+                    if($survey_status == 0){
+                        echo '<div id="button_block">';
+                        echo '<label>Bloquear Encuesta</label>';
+                        echo '<div class="container">';
+                        echo '<label class="switch" for="checkbox">';
+                        echo '<input type="checkbox" id="checkbox" name="blocked"/>';
+                        echo '<div class="slider"></div>';
+                        echo '</label>';
+                        echo '</div>';
+                        echo '</div>';
+                    }else{
+                        echo '<div id="button_block">';
+                        echo '<label>Bloquear Encuesta</label>';
+                        echo '<div class="container">';
+                        echo '<label class="switch" for="checkbox">';
+                        echo '<input type="checkbox" id="checkbox" name="blocked" checked/>';
+                        echo '<div class="slider"></div>';
+                        echo '</label>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    ?>
                     <input type="submit" value="Cambiar visibilidad">
                 </form>
             </div>
@@ -179,5 +237,36 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
 
     </ul>
 </body>
+<script>
+    $(document).ready(function() {
+        // Valor por defecto obtenido desde PHP
+        var valorPorDefecto = "<?php echo $quest_status; ?>";
+        // Establecer la opción seleccionada por defecto en el segundo select solo al cargar la página
+        $("#results-visibility").val(valorPorDefecto);
+    });
+
+    // Escuchar el evento change en el segundo select
+    $("#title-visibility").on("change", function() {
+        // Obtener el valor seleccionado del segundo select
+        var secondSelectValue = $(this).val();
+
+        // Limpiar opciones del primer select
+        $("#results-visibility").empty();
+
+        // Crear las opciones del primer select basado en el valor del segundo select
+        if (secondSelectValue === "hidden") {
+            $("#results-visibility").append('<option value="hidden" selected>Oculto</option>');
+        } else if (secondSelectValue === "private") {
+            $("#results-visibility").append('<option value="hidden" >Oculto</option>');
+            $("#results-visibility").append('<option value="private" selected>Privado</option>');
+        } else if (secondSelectValue === "public") {
+            $("#results-visibility").append('<option value="hidden" selected>Oculto</option>');
+            $("#results-visibility").append('<option value="private" selected>Privado</option>');
+            $("#results-visibility").append('<option value="public" selected>Público</option>');
+        }
+    });
+</script>
+
+
 
 </html>
