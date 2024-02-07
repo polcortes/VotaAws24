@@ -36,7 +36,8 @@ CREATE TABLE `Survey` (
   `end_date` datetime NOT NULL,
   `public_title` ENUM('public', 'private', 'hidden') NOT NULL DEFAULT 'hidden',
   `public_results` ENUM('public', 'private', 'hidden') NOT NULL DEFAULT 'hidden',
-  `imag` varchar(255)
+  `imag` varchar(255),
+  `survey_block` boolean
 );
 
 CREATE TABLE `SurveyOption` (
