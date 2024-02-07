@@ -158,3 +158,39 @@
 [login.php ― 23:54:22 ― LOGIN SUCCESFULL]: El usuario dunkanescrich@gmail.com ha iniciado sesión.
 
 [myVotes.php ― 23:54:41 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)
+
+[login.php ― 16:53:47 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 17:35:44 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 18:28:21 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 19:12:31 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 21:20:58 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[create_poll.php ― 21:34:00 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 21:34:00 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 21:34:00 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 21:34:00 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 7 en la base de datos (2 de 3)
+
+[create_poll.php ― 21:34:00 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 7 en la base de datos (3 de 3)
+
+[vote.php ― 21:37:55 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.survey_block' in 'field list'
+
+[vote.php ― 21:38:06 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.survey_block' in 'field list'
+
+[vote.php ― 21:38:28 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.survey_block' in 'field list'
+
+[vote.php ― 21:38:42 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.survey_block' in 'field list'
+
+[vote.php ― 21:38:54 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.survey_block' in 'field list'
+
+[vote.php ― 21:39:43 ― TOKEN ERROR]: El token no es válido 4
+
+[login.php ― 21:39:51 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 23:10:15 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.

@@ -6,12 +6,18 @@ addEventListener('load', () => {
     const pieChartCont = document.querySelector("#pie-chart-cont")
     const columnChartCont = document.querySelector("#column-chart-cont")
 
-    series = [1, 2, 3,3,3,3,3,3,3,3]
-    labels = ["opcion","opcion","opcion","opcion","opcion","opcion","opcion","opcion","opcion","opcion"]
+    let series = []
+    let labels = []
+
+    let columnData = []
   
     for (const question of questions) {
-      /*series.push(question.countOfVotes)
-      labels.push(question.optionText)*/
+      series.push(question.countOfVotes)
+      labels.push(question.optionText)
+      columnData.push({
+        x: question.optionText,
+        y: question.countOfVotes
+      })
     }
 
     let pieOptions = {
@@ -61,16 +67,7 @@ addEventListener('load', () => {
             }
         },
         series: [{
-            data: [{
-                x: 'category A',
-                y: 10
-            }, {
-                x: 'category B',
-                y: 18
-            }, {
-                x: 'category C',
-                y: 13
-            }]
+            data: columnData
         }],
         xaxis: {
             labels: {
