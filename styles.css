@@ -137,7 +137,7 @@ footer {
     width: 50%;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
     justify-content: space-around;
     color: var(--gris-oscuro);
@@ -154,12 +154,20 @@ footer {
     transform: scale(1.05);
 }
 
+#dashboard main li {
+    grid-column: span 2;
+}
+
 #dashboard main li:first-child {
-    grid-column: span 1;
+    grid-column: span 2;
     grid-row: span 2;
     font-size: 18px;
     height: 450px;
     /* padding: 100px; */
+}
+
+#dashboard main li.grid-little-item {
+    grid-column: span 1;
 }
 
 /* Centra todo el contenido dentro de los elementos <li> */
@@ -169,7 +177,7 @@ footer {
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding: 10px;
+    /*padding: 10px;*/
     color: var(--gris-oscuro);
     text-decoration: none;
     font-weight: bold;
@@ -1374,3 +1382,57 @@ span.apexcharts-legend-text {
     transform: translateX(26px);
   }
   
+
+/* -----------------------------------------------------
+ * CHANGE PASS:
+ * -----------------------------------------------------*/
+
+#change-pass > main {
+    gap: 30px;
+}
+
+#change-pass > main > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#change-pass > main > form input+label {
+    margin-top: 20px;
+}
+
+#change-pass > main > form label {
+    font-size: 18px;
+}
+
+#change-pass > main > form input:not([type="submit"]) {
+    width: 100%;
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 40px;
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
+    font-size: 18px;
+    outline: none;
+}
+
+#change-pass > main > form input[type="submit"] {
+    background-color: transparent;
+    border: 2px solid var(--gris-claro);
+    color: var(--gris-claro);
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: underline 2px var(--gris-claro);
+    transition: color .2s, background-color .2s, text-decoration-color .2s;
+}
+
+#change-pass > main > form input[type="submit"]:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+    text-decoration-color: var(--gris-oscuro);
+}

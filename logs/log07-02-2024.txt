@@ -26,3 +26,9 @@
 [vote.php ― 00:17:43 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'invitation_id_enc' cannot be null
 
 [vote.php ― 00:33:31 ― DB ERROR]: ERROR al conectarse con la base de datos -> SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'invitation_id_enc' cannot be null
+
+[login.php ― 00:46:57 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 01:01:11 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 01:40:03 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
