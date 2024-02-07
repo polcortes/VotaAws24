@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION[""]))
+if (isset($_SESSION["usuario"])) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +25,11 @@ if (!isset($_SESSION[""]))
                 <p>Te enviaremos un correo con indicaciones para poder cambiar tu contraseña. Aún así, te tenemos que advertir de lo siguiente:</p>
                 <p>Al restablecer tu contraseña, perderás por completo el acceso a la lista de encuestas en las que has participado.</p>
             </div>
-            <form method="POST">
+            <form method="POST" id="forgot-form">
                 <label for="email-forgot">Email:</label>
                 <input type="email" name="email-forgot" id="email-forgot" placeholder="ejemplo@dominio.com">
 
-                <input type="submit" value="Enviar ">
+                <input type="submit" value="Enviar">
             </form>
         </main>
     <?php else: ?>
