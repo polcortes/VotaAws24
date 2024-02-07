@@ -1295,3 +1295,11 @@ span.apexcharts-legend-text {
     transform: translateX(26px);
   }
   
+
+#button_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px !important;
+    text-align: center;
+}
