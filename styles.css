@@ -137,7 +137,7 @@ footer {
     width: 50%;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
     justify-content: space-around;
     color: var(--gris-oscuro);
@@ -154,12 +154,20 @@ footer {
     transform: scale(1.05);
 }
 
+#dashboard main li {
+    grid-column: span 2;
+}
+
 #dashboard main li:first-child {
-    grid-column: span 1;
+    grid-column: span 2;
     grid-row: span 2;
     font-size: 18px;
     height: 450px;
     /* padding: 100px; */
+}
+
+#dashboard main li.grid-little-item {
+    grid-column: span 1;
 }
 
 /* Centra todo el contenido dentro de los elementos <li> */
@@ -169,7 +177,7 @@ footer {
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding: 10px;
+    /*padding: 10px;*/
     color: var(--gris-oscuro);
     text-decoration: none;
     font-weight: bold;
@@ -566,12 +574,7 @@ a:hover { color: var(--azul); }
     margin-bottom: 5%;
     z-index: 3;
     font-size: 3rem;
-    transform: translateY(0); /* Configuración inicial de transformación */
-    transition: transform 0.3s ease;
-}
-
-#index .godown:hover {
-    transform: translateY(-9px); /* Transformación al pasar el ratón sobre el elemento */
+    animation: upDown 2s infinite;
 }
 
 #index .godown > a > svg {
@@ -580,6 +583,24 @@ a:hover { color: var(--azul); }
 
 #index .godown:hover > a > svg {
     filter: invert(60%) sepia(73%) saturate(410%) hue-rotate(133deg) brightness(110%) contrast(110%);
+}
+
+@keyframes upDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    }
+    100% {
+        filter: invert(60%) sepia(73%) saturate(410%) hue-rotate(133deg) brightness(110%) contrast(110%);
+    }
 }
 
 #index .maintext {
@@ -740,7 +761,7 @@ footer {
 
 #list_polls > main .surveyImg {
     width: 100%;
-    height: 250px;
+    height: auto;
     overflow: hidden;
     border-radius: 20px;
 }
@@ -749,7 +770,6 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
 }
 
 #list_polls h3 {
@@ -761,10 +781,16 @@ footer {
 }
 
 #list_polls > main section.grid-polls {
+    column-count: 2;
+    column-gap: 20px 20px;
     width: 900px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+}
+
+#list_polls > main section.grid-polls > article.grid-poll-item {
+    margin: 0;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
 }
 
 #list_polls > main section.grid-polls > article.grid-poll-item a {
@@ -1187,6 +1213,13 @@ span.apexcharts-legend-text {
 /* -----------------------------------------------------
  * VOTE
  * -----------------------------------------------------*/
+#vote main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #vote .surveyImag {
     width: 700px;
     height: 400px;
@@ -1203,24 +1236,9 @@ span.apexcharts-legend-text {
     margin-bottom: 40px;
 }
 
-#vote .surveyImag img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 20px;
-}
-
-#vote .optionImag {
-    width: 400px;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 20px;
-}
-
-#vote .optionImag img {
-    width: 100%;
-    height: 100%;
+#vote .surveyImag {
+    width: 500px;
+    height: auto;
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
@@ -1230,24 +1248,93 @@ span.apexcharts-legend-text {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
 }
 
-#vote article {
-    display: flex;
+#vote form > section {
+    /*flex-direction: column;*/
+    /*gap: 20px;*/
+    width: fit-content!important;
+    column-count: 3;
+    gap: 20px;
+
+    min-height: 50vh;
+}
+
+#vote form > section > article {
+    /*display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 5px;*/
+    display: inline-block;
+    width: 300px;
+    border: 2px solid var(--gris-claro);
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0;
+    margin-bottom: 0px;
+    margin-bottom: 20px;
+}
+
+#vote form > section > article > label {
+    /*display: block;
+    height: max-content;*/
+    display: block;
+    cursor: pointer;
+    padding-bottom: 13px;
+}
+
+#vote form > section > article:not(:has(label > img)) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#vote form > section > article label:not(:has(img)) {
+    padding-top: 13px;
+}
+
+#vote article img {
+    width: 300px;
+    padding-bottom: 10px;
+}
+
+#vote label[for="pass-check"] {
+    margin-top: 50px;
+}
+
+#vote #pass-check {
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 30px;
+    width: 200px;
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
+    transition: border-color 0.3s;
+    outline: none;
+    font-family: 'Montserrat';
+    font-weight: 600;
 }
 
 #vote input[type="submit"] {
-    border: 2px solid var(--gris-oscuro);
-    color: var(--gris-oscuro);
+    border: 3px solid var(--gris-claro);
+    color: var(--gris-claro);
+    background-color: transparent;
+    text-decoration: underline 3px;
     font-weight: 600;
-    padding: 8px 10px;
-    border-radius: 10px;
+    font-size: 18px;
+    padding: 10px 12px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: color .2s, background-color .2s;
+    transition: color .2s, background-color .2s, text-decoration-color .2s;
+}
+
+#vote input[type="submit"]:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+    text-decoration-color: var(--gris-oscuro);
 }
 
 .switch {
@@ -1295,6 +1382,71 @@ span.apexcharts-legend-text {
     transform: translateX(26px);
   }
   
+
+/* -----------------------------------------------------
+ * CHANGE PASS:
+ * -----------------------------------------------------*/
+
+#change-pass > main {
+    gap: 30px;
+}
+
+#change-pass > main > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#change-pass > main > form input+label {
+    margin-top: 20px;
+}
+
+#change-pass > main > form label {
+    font-size: 18px;
+}
+
+#change-pass > main > form input:not([type="submit"]) {
+    width: 100%;
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 40px;
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
+    font-size: 18px;
+    outline: none;
+}
+
+#change-pass > main > form input[type="submit"] {
+    background-color: transparent;
+    border: 2px solid var(--gris-claro);
+    color: var(--gris-claro);
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: underline 2px var(--gris-claro);
+    transition: color .2s, background-color .2s, text-decoration-color .2s, opacity .2s;
+}
+
+#change-pass > main > form input[type="submit"]:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+    text-decoration-color: var(--gris-oscuro);
+}
+
+#change-pass-form input[type="submit"]:disabled {
+    opacity: .4;
+}
+
+#change-pass-form input[type="submit"]:disabled:hover {
+    background-color: transparent;
+    color: var(--gris-claro);
+    text-decoration: underline 2px var(--gris-claro);
+    cursor: not-allowed;
+}
 
 #button_block{
     display: flex;

@@ -29,7 +29,8 @@
         <ul>
             <li><a href="list_polls.php">Ver mis encuestas</a></li>
             <li><a href="create_poll.php">Crear encuestas</a></li>
-            <li><a href="#">Ver todas las encuestas</a></li>
+            <li class="grid-little-item"><a href="#">Ver todas las encuestas</a></li>
+            <li class="grid-little-item"><a href="change_pass.php">Canviar contraseña</a></li>
         </ul>
     </main>
 

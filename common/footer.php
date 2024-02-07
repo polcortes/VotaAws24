@@ -1,5 +1,5 @@
 <section id="promotional-section">
-    <img src="../imgs/gif.gif" alt="Vota! Ya!" title="Vota! Ya!" width="970" height="250">
+    <img src="../imgs/vota_banner.gif" alt="Vota! Ya!" title="Vota! Ya!" width="970" height="250">
 </section>
 <footer>
     <div class="authors">
@@ -20,8 +20,10 @@
             <p class="mail">ffloresgarcia.cf@iesesteverradas.cat</p>
         </div>
         <div class="links">
-            <div class="ieti">&copy <a href="https://www.iesesteveterradas.cat/" target="_blank">IES Esteve Terradas i Illa</a></div>
-            <div class="github"><a href="https://github.com/Barney2500/VotaAws24" target="_blank" >GitHub Grupal</a></div>
+            <div class="ieti">&copy <a href="https://www.iesesteveterradas.cat/" target="_blank">IES Esteve Terradas i
+                    Illa</a></div>
+            <div class="github"><a href="https://github.com/Barney2500/VotaAws24" target="_blank">GitHub Grupal</a>
+            </div>
         </div>
     </div>
 </footer>

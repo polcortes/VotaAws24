@@ -32,3 +32,15 @@
 [send_invitation.php ― 17:55:17 ― PHPMailer OK] PHPMailer OK
 
 [login.php ― 18:13:33 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[login.php ― 16:25:34 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 17:47:51 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 18:02:01 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 20:53:53 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 23:57:55 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 23:59:00 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
