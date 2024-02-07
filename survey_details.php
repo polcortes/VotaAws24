@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="componentes/notificationHandler.js"></script>
+    <script src="./survey_details.js"></script>
 <?php
 include 'data/dbAccess.php';
 session_start();
@@ -35,6 +42,8 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
             $query->bindParam(':quest_priv', $quest_privacity, PDO::PARAM_STR);
             $query->execute();
         }
+    
+        echo "<ul id='notification__list'></ul><script>successfulNotification('Los cambios se han guardado correctamente.')</script>";
     }
    
 
@@ -104,10 +113,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de "
@@ -116,12 +122,10 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <meta name="description" content="Crea una encuesta para obtener las respuestas de todo el mundo!">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
-    <script src="componentes/notificationHandler.js"></script>
-    <script src="./survey_details.js"></script>
+
 </head>
 
 <body id="survey_details">
@@ -233,9 +237,6 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
         </aside>
     </main>
 
-    <ul id="notification__list">
-
-    </ul>
 </body>
 <script>
     $(document).ready(function() {

@@ -122,6 +122,14 @@ footer {
     margin: 20px auto;
 }
 
+#login input[type="password"] {
+    margin-bottom: 10px;
+}
+
+#login .forgot-pass-link {
+    margin: 0 0 40px 0;
+}
+
 /* -----------------------------------------------------
  * DASHBOARD
  * -----------------------------------------------------*/
@@ -1454,4 +1462,33 @@ span.apexcharts-legend-text {
     justify-content: center;
     gap: 20px !important;
     text-align: center;
+}
+
+/* -----------------------------------------------------
+ * FORGOT PASS:
+ * -----------------------------------------------------*/
+
+#forgot-pass > main > h1 {
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+#forgot-pass > main p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+    max-width: 700px;
+}
+
+#forgot-pass > main p+p {
+    margin-top: 7px;
+}
+
+#forgot-pass > main > form {
+display: flex;
+flex-direction: column;
+}
+
+#forgot-pass > main > form > label {
+    margin-top: 40px;
 }

@@ -89,7 +89,7 @@ try {
     //   INNER JOIN surveyoption AS so ON so.survey_id = s.survey_id 
     //   WHERE s.survey_id = :survey_id;"
     // );
-    $query = $pdo->prepare("SELECT `i`.`is_survey_done`, `i`.`mail_to`, `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
+    $query = $pdo->prepare("SELECT `s`.`survey_block`, `i`.`is_survey_done`, `i`.`mail_to`, `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
     $query2 = $pdo->prepare("SELECT user_id from User where user_mail = :user_mail");
 
     $query->bindParam(":invitation_token", $_GET['token']);
@@ -110,7 +110,7 @@ try {
             $surveyTitle = $row["survey_title"];
             $surveyImg = $row["imag"];
             $canVote = true;
-            $isBlocked = false;
+            $isBlocked = $row["survey_block"];
             $isSurveyDone = $row["is_survey_done"];
         }
 
@@ -160,8 +160,6 @@ try {
                         $encryptedString = $decryptStringQuery->fetch();
                         
                         $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", $_POST["pass-check"]);
-
-                        // insert into uservote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(2, char), @decryptString), @pass), 2 );
 
                         $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :invitation_id_dos);");
                         $query->execute([
