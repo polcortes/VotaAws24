@@ -99,7 +99,7 @@ $(function(){
     })
 
     $("body").on('keydown', 'input', function(event) {
-    if (event.keyCode === 13) { 
+    if (event.keyCode === 13 || event.keyCode === 9) { 
         event.preventDefault();
         $(this).blur(); 
 
