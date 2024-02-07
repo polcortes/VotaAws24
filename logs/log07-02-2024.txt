@@ -80,3 +80,81 @@
 [login.php ― 13:18:55 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
 
 [login.php ― 14:16:26 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[login.php ― 19:05:07 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[myVotes.php ― 19:06:03 ― ERROR db connect]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'v.invitation_id_enc' in 'where clause'
+
+[myVotes.php ― 19:06:11 ― ERROR db connect]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'v.invitation_id_enc' in 'where clause'
+
+[login.php ― 19:24:03 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[myVotes.php ― 20:04:57 ― ERROR db connect]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'v.invitation_id_enc' in 'where clause'
+
+[myVotes.php ― 20:10:27 ― ERROR db connect]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'v.invitation_id_enc' in 'where clause'
+
+[myVotes.php ― 20:11:25 ― ERROR db connect]: ERROR al conectarse con la base de datos -> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'v.invitation_id_enc' in 'where clause'
+
+[register.php ― 20:15:48 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000]: General error: 1364 Field 'encryptString' doesn't have a default value
+
+[register.php ― 20:45:25 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000]: General error: 1364 Field 'encryptString' doesn't have a default value
+
+[register.php ― 20:55:16 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'eric@escrich.net'
+
+[mail_verification.php ― 20:55:18 ― MAIL SEND]: Se ha enviado un email de verificacion al correo eric@escrich.net.
+
+[mail_verification.php ― 20:55:56 ― MAIL VAERIFICATEDSe ha verificado el email.
+
+[create_poll.php ― 20:57:32 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 20:57:32 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 20:57:32 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 20:57:32 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 1 en la base de datos (2 de 4)
+
+[create_poll.php ― 20:57:32 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 1 en la base de datos (3 de 4)
+
+[create_poll.php ― 20:57:32 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 1 en la base de datos (4 de 4)
+
+[list_polls.php ― 20:59:41 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (dunkanescrich@gmail.com)
+
+[send_invitation.php ― 21:00:14 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 21:00:14 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 21:00:14 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 21:00:15 ― Invitation email]: Envio de invitación a dunkanescrich@gmail.com exitoso
+
+[send_invitation.php ― 21:00:15 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 21:00:15 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 21:00:34 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 21:00:34 ― PHPMailer OK] PHPMailer OK
+
+[login.php ― 22:12:29 ― LOGIN SUCCESFULL]: El usuario eric@escrich.net ha iniciado sesión.
+
+[register.php ― 22:14:19 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'dunkanescrich@gmail.com'
+
+[mail_verification.php ― 22:14:21 ― MAIL SEND]: Se ha enviado un email de verificacion al correo dunkanescrich@gmail.com.
+
+[mail_verification.php ― 22:14:50 ― MAIL VAERIFICATEDSe ha verificado el email.
+
+[myVotes.php ― 22:15:12 ― NO SURVEY]: No se ha encontrado la encuesta con id= 
+
+[myVotes.php ― 22:24:25 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta con id= 
+
+[myVotes.php ― 22:31:46 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta con id= Como se llama sancho panza?
+
+[myVotes.php ― 22:35:40 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)
+
+[myVotes.php ― 22:40:49 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)
+
+[myVotes.php ― 22:48:45 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)
+
+[login.php ― 23:54:22 ― LOGIN SUCCESFULL]: El usuario dunkanescrich@gmail.com ha iniciado sesión.
+
+[myVotes.php ― 23:54:41 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)

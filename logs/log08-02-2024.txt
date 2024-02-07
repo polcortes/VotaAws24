@@ -1,0 +1,2 @@
+
+[myVotes.php ― 00:00:02 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)
