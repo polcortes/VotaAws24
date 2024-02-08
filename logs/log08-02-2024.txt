@@ -6,3 +6,7 @@
 [myVotes.php ― 00:30:44 ― PASSWORD INCORRECT]: El usuario con user_id= 1 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
 
 [myVotes.php ― 00:30:51 ― PASSWORD INCORRECT]: El usuario con user_id= 1 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
+
+[register.php ― 02:15:13 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000]: General error: 1364 Field 'encryptString' doesn't have a default value
+
+[register.php ― 02:18:19 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'testertester@gmail.com'

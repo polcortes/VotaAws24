@@ -157,7 +157,7 @@ try {
                 }
             }
             if ($new_register) {
-                $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
+                $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass, encryptString) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass, :encryptString)";
                 $stmt_insert = $pdo->prepare($sql_insert);
                 $stmt_insert->bindParam(':nombre', $nombre);
                 $stmt_insert->bindParam(':email', $email);
@@ -167,6 +167,7 @@ try {
                 $stmt_insert->bindParam(':ciudad', $ciudad);
                 $stmt_insert->bindParam(':paisid', $idpais);
                 $stmt_insert->bindParam(':cp', $cp);
+                $stmt_insert->bindParam(':encryptString', bin2hex(random_bytes(50)));
                 // $stmt_insert->bindParam(':token', $token);
 
                 $stmt_insert->execute();
