@@ -49,7 +49,7 @@ try {
             if ($row && $row['user_id'] && $row['user_id'] === $_SESSION["usuario"]) {
                 $query = $pdo->prepare("UPDATE User SET is_mail_valid = true WHERE user_id = :id");
                 $query->execute([':id' => $_SESSION["usuario"]]);
-                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― MAIL VAERIFICATEDSe ha verificado el email.\n";
+                $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― MAIL VAERIFICATED]: Se ha verificado el email.\n";
                 file_put_contents($logFilePath, $logTxt, FILE_APPEND);
                 if ($row['conditions_accepted']) {
                     header("Location: dashboard.php?succ=1");
@@ -109,6 +109,8 @@ try {
                     $content = "Haz clic en este enlace para verificar tu correo electrónico: $link";
 
                     $mail->MsgHTML($content);
+                    $mail->CharSet = 'UTF-8';
+                    $mail->Send();
                     if (!$mail->Send()) {
                         $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― MAIL ERROR]: Ha habido un error al enviarle un email al correo " . $row['user_mail'] . ".\n";
                         file_put_contents($logFilePath, $logTxt, FILE_APPEND);
