@@ -1536,3 +1536,104 @@ flex-direction: column;
     text-decoration: underline 2px var(--gris-claro);
     cursor: not-allowed;
 }
+
+
+/* -----------------------------------------------------
+ * FORGOT PASS:
+ * -----------------------------------------------------*/
+
+#my-votes > main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#my-votes > main > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#my-votes > main ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 20px;
+}
+
+#my-votes > main ul > li {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--gris-claro);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#my-votes > main > form > label {
+    margin-top: 40px;
+}
+
+#my-votes > main > form input:not([type="submit"]) {
+    width: 100%;
+    background-color: var(--gris-oscuro);
+    border: none;
+    padding: 10px;
+    margin-bottom: 40px;
+    box-sizing: border-box; 
+    border-bottom: 3px solid var(--gris-claro);
+    font-size: large;
+    font-size: 18px;
+    outline: none;
+}
+
+#my-votes > main > form input[type="submit"] {
+    background-color: transparent;
+    border: 2px solid var(--gris-claro);
+    color: var(--gris-claro);
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: underline 2px var(--gris-claro);
+    transition: color .2s, background-color .2s, text-decoration-color .2s, opacity .2s;
+}
+
+#my-votes > main > form input[type="submit"]:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+    text-decoration-color: var(--gris-oscuro);
+}
+
+#my-votes-form input[type="submit"]:disabled {
+    opacity: .4;
+}
+
+#my-votes-form input[type="submit"]:disabled:hover {
+    background-color: transparent;
+    color: var(--gris-claro);
+    text-decoration: underline 2px var(--gris-claro);
+    cursor: not-allowed;
+}
+
+#my-votes .mostrar-ocultar-respuesta {
+    margin-top: 10px;
+    background-color: transparent;
+    border: 2px solid var(--gris-claro);
+    color: var(--gris-claro);
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: 600;
+    text-decoration: underline 2px var(--gris-claro);
+    transition: color .2s, background-color .2s, text-decoration-color .2s, opacity .2s;
+}
+
+#my-votes .mostrar-ocultar-respuesta:hover {
+    color: var(--gris-oscuro);
+    background-color: var(--gris-claro);
+    text-decoration-color: var(--gris-oscuro);
+}

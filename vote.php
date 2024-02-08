@@ -165,12 +165,12 @@ try {
 
                         // insert into uservote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(2, char), @decryptString), @pass), 2 );
 
-                        $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :invitation_id_dos);");
+                        $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :option_id);");
                         $query->execute([
                             ":invitation_id_uno" => $row["invitation_id"], 
                             ":decryptString" => $decryptString, 
                             ":pass" => $_POST["pass-check"], 
-                            ":invitation_id_dos" => $userData["invitation_id"]
+                            ":option_id" => $_POST["answer"]
                         ]);
 
 
@@ -224,12 +224,12 @@ try {
                 
                 $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", "aaaaAaa1");
 
-                $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :invitation_id_dos);");
+                $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :option_id);");
                 $query->execute([
                     ":invitation_id_uno" => $row["invitation_id"], 
                     ":decryptString" => $decryptString, 
                     ":pass" => "aaaaAaa1", 
-                    ":invitation_id_dos" => $row["invitation_id"]
+                    ":option_id" => $_POST["answer"]
                 ]);
 
 

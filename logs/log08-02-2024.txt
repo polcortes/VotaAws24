@@ -1,0 +1,8 @@
+
+[login.php ― 00:11:47 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[myVotes.php ― 00:12:38 ― NO VOTES]: El usuario pol@gmail.com no ha votado en la encuesta '¡Pregunta nueva!' (survey_id = 7)
+
+[myVotes.php ― 00:30:44 ― PASSWORD INCORRECT]: El usuario con user_id= 1 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
+
+[myVotes.php ― 00:30:51 ― PASSWORD INCORRECT]: El usuario con user_id= 1 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
