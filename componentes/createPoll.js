@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     $('#question').on('blur', function() {
         if ($(this).val().length === 0) {
-            $('#question').nextAll().remove();
+            $('#surveyImage').nextAll().remove();
             optionNumber = 1;
         }
     });
@@ -70,16 +70,20 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '#addButton', function() {
-        if (optionNumber <= 100) {
-            createOption(optionNumber);
+        if ($('.option:last').val().length > 0) {
+            if (optionNumber <= 100) {
+                createOption(optionNumber);
+            } else {
+                $('#addButton').prop('disabled', true);
+                alertNotification("No puedes crear más de 100 respuestas");
+            }
         } else {
-            $('#addButton').prop('disabled', true);
-            alertNotification("No puedes crear más de 100 respuestas");
+            alertNotification("Debes rellenar la última respuesta antes de añadir una nueva");
         }
     });
 
     $(document).on('click', '#deleteButton', function() {
-        if (optionNumber > 2) {
+        if (optionNumber > 3) {
             $('#optionsContainer input.option:last').remove();
             $('#optionsContainer input.image:last').remove();
             optionNumber--;
@@ -129,7 +133,7 @@ $(document).ready(function() {
             alertNotification("La fecha de inicio no puede ser anterior a la fecha y hora actuales");
         } else if (endDate <= startDate) {
             alertNotification("La fecha final no puede ser anterior o igual que la fecha de inicio");
-        } else if (optionNumber >= 2) {
+        } else if (optionNumber >= 2 && $('#start_date').val() && $('#end_date').val()) {
             if ($('#create').length === 0) {
                 $('form').append('<input type="submit" id="create" value="Crear encuesta">');
             }
