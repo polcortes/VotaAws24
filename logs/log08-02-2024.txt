@@ -1,0 +1,76 @@
+
+[login.php ― 00:11:47 ― LOGIN SUCCESFULL]: El usuario pol@gmail.com ha iniciado sesión.
+
+[myVotes.php ― 00:12:38 ― NO VOTES]: El usuario pol@gmail.com no ha votado en la encuesta '¡Pregunta nueva!' (survey_id = 7)
+
+[myVotes.php ― 00:30:44 ― PASSWORD INCORRECT]: El usuario con user_id= 1 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
+
+[myVotes.php ― 00:30:51 ― PASSWORD INCORRECT]: El usuario con user_id= 1 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
+
+[myVotes.php ― 00:00:02 ― NO VOTES]: El usuario dunkanescrich@gmail.com no ha votado en la encuesta 'Como se llama sancho panza?' (survey_id = 1)
+
+[forgot_pass.php ― 01:24:38 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[login.php ― 01:26:09 ― LOGIN ERROR]: los datos introducidos son erroneos o no existen
+
+[forgot_pass.php ― 01:38:29 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 01:49:02 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 01:50:46 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[login.php ― 01:52:59 ― LOGIN ERROR]: los datos introducidos son erroneos o no existen
+
+[login.php ― 01:53:09 ― LOGIN SUCCESFULL]: El usuario dunkanescrich@gmail.com ha iniciado sesión.
+
+[forgot_pass.php ― 01:56:57 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:07:55 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:09:19 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:11:22 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:12:37 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:14:27 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:14:43 ― POST]: Hemos recibido el post.
+
+[forgot_pass.php ― 02:16:25 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[forgot_pass.php ― 02:16:58 ― POST]: Hemos recibido el post.
+
+[forgot_pass.php ― 02:22:19 ― POST]: Hemos recibido el post.
+
+[forgot_pass.php ― 02:23:26 ― POST]: Hemos recibido el post.
+
+[forgot_pass.php ― 02:27:43 ― POST]: Hemos recibido el post.
+
+[forgot_pass.php ― 02:27:43 ― PASSWORD UPDATE]: Se ha actualizado la contraseña del usuario dunkanescrich@gmail.com.
+
+[forgot_pass.php ― 02:34:20 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a dunkanescrich@gmail.com exitoso
+
+[create_poll.php ― 02:49:41 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 02:49:41 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 02:49:41 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 02:49:41 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 2 en la base de datos (2 de 3)
+
+[create_poll.php ― 02:49:41 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 2 en la base de datos (3 de 3)
+
+[create_poll.php ― 02:50:06 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 02:50:06 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 02:50:06 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 02:50:06 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 3 en la base de datos (2 de 3)
+
+[create_poll.php ― 02:50:06 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 3 en la base de datos (3 de 3)
+
+[register.php ― 02:15:13 ― Un error inesperado ha sucedido. Por favor, vuelva a intentarlo más tarde: SQLSTATE[HY000]: General error: 1364 Field 'encryptString' doesn't have a default value
+
+[register.php ― 02:18:19 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'testertester@gmail.com'

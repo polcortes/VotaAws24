@@ -82,8 +82,11 @@ try {
                                 $isOnline;
                                 $isOnlineClass;
 
-                                if ($current_date >= $end_date && $current_date > $start_date) {
+                                if (($current_date >= $end_date && $current_date > $start_date)) {
                                     $isOnline = "Finalizada";
+                                    $isOnlineClass = "finalizada";
+                                } else if ($row["survey_block"] == true) {
+                                    $isOnline = "Bloqueada";
                                     $isOnlineClass = "finalizada";
                                 } else if ($current_date < $end_date && $current_date < $start_date) {
                                     $isOnline = "Programada";
@@ -92,6 +95,12 @@ try {
                                     $isOnline = "En proceso";
                                     $isOnlineClass = "en-proceso";
                                 }
+
+                                $resultsVisibility;
+                                if ($row["public_results"] === "public") {
+                                    
+                                }
+
                                 ?>
                                 <article class="grid-poll-item">
                                     <a href="/survey_details.php?id=<?php echo $row["survey_id"]; ?>">
@@ -114,10 +123,16 @@ try {
                                         }
                                         ?>
                                         <footer>
-                                            <div class="poll-is-published <?php echo ($row["public_title"] ? " publicada" : ""); ?>">
+                                            <div class="poll-is-published <?php echo ($row["public_title"] === "public" ? " publicada" : ""); ?>">
                                                 Encuesta
-                                                <?php echo ($row["public_title"] ? "publicada" : "no publicada"); ?>
+                                                <?php echo ($row["public_title"] === "public" ? "publicada" : "no publicada"); ?>
                                             </div>
+
+                                            <div class="poll-is-published <?php echo ($row["public_results"] === "public" ? " publicada" : ""); ?>">
+                                                Encuesta
+                                                <?php echo ($row["public_results"] === "public" ? "publicada" : "no publicada"); ?>
+                                            </div>
+
                                             <div class="poll-is-online <?php echo $isOnlineClass; ?>">
                                                 <?php echo $isOnline; ?>
                                             </div>

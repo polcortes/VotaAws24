@@ -156,8 +156,11 @@ try {
                     break;
                 }
             }
+
+            $token = bin2hex(random_bytes(50));
+
             if ($new_register) {
-                $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass )";
+                $sql_insert = "INSERT INTO User (customer_name, user_mail, user_country_id, user_city, user_cp, user_tel, user_tel_prefix, user_pass, token, encryptString) VALUES (:nombre, :email, :paisid, :ciudad, :cp, :tel, :prefix, :pass, :token, :encryptString)";
                 $stmt_insert = $pdo->prepare($sql_insert);
                 $stmt_insert->bindParam(':nombre', $nombre);
                 $stmt_insert->bindParam(':email', $email);
@@ -167,7 +170,8 @@ try {
                 $stmt_insert->bindParam(':ciudad', $ciudad);
                 $stmt_insert->bindParam(':paisid', $idpais);
                 $stmt_insert->bindParam(':cp', $cp);
-                // $stmt_insert->bindParam(':token', $token);
+                $stmt_insert->bindParam(':encryptString', bin2hex(random_bytes(50)));
+                $stmt_insert->bindParam(':token', $token);
 
                 $stmt_insert->execute();
 
@@ -178,7 +182,7 @@ try {
 
                 $row = $query->fetch();
             } else {
-                $sql_update = "UPDATE User SET customer_name = :nombre, user_country_id = :paisid, user_city = :ciudad, user_cp = :cp, user_tel = :tel, user_tel_prefix = :prefix, user_pass = :pass WHERE user_mail = :email";
+                $sql_update = "UPDATE User SET customer_name = :nombre, user_country_id = :paisid, user_city = :ciudad, user_cp = :cp, user_tel = :tel, user_tel_prefix = :prefix, user_pass = :pass, encryptString = :token WHERE user_mail = :email";
                 $stmt_update = $pdo->prepare($sql_update);
                 $stmt_update->bindParam(':nombre', $nombre);
                 $stmt_update->bindParam(':email', $email);
@@ -188,7 +192,7 @@ try {
                 $stmt_update->bindParam(':ciudad', $ciudad);
                 $stmt_update->bindParam(':paisid', $idpais);
                 $stmt_update->bindParam(':cp', $cp);
-                // $stmt_update->bindParam(':token', $token);
+                $stmt_update->bindParam(':token', $token);
 
                 $stmt_update->execute();
             }

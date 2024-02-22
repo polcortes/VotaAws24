@@ -1,5 +1,7 @@
 <?php
 try {
+    $surveyID = null;
+
     $logFilePath = "logs/log" . date("d-m-Y") . ".txt";
     if (!file_exists(dirname($logFilePath))) {
         mkdir(dirname($logFilePath), 0755, true);
@@ -17,7 +19,7 @@ try {
             $query->execute([':token' => $_GET['token']]);
             $row = $query->fetch();
 
-            if (!$query->rowCount() == 0) {
+            if ($query->rowCount() != 0) {
                 if ($row['mail_to'] && $row['survey_id']) {
                     $userMail = $row['mail_to'];
                     $surveyID = $row['survey_id'];
@@ -89,29 +91,29 @@ try {
     //   INNER JOIN surveyoption AS so ON so.survey_id = s.survey_id 
     //   WHERE s.survey_id = :survey_id;"
     // );
-    $query = $pdo->prepare("SELECT `s`.`survey_block`, `i`.`is_survey_done`, `i`.`mail_to`, `i`.`invitation_token`, `s`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
+    $query = $pdo->prepare("SELECT `i`.`is_survey_done`, `i`.`mail_to`, `i`.`invitation_token`, `i`.`survey_id`, `s`.`survey_title`, `s`.`imag` FROM Survey `s`, Invitation `i` WHERE `i`.`invitation_token` = :invitation_token");
     $query2 = $pdo->prepare("SELECT user_id from User where user_mail = :user_mail");
 
     $query->bindParam(":invitation_token", $_GET['token']);
-    
     $query->execute();
-    
+
     $row = $query->fetch();
-    
+
     $canVote = false;
 
-    if (!$query->rowCount() == 0) {
+    if ($query->rowCount() != 0) {
         $query2->bindParam(":user_mail", $row["mail_to"]);
         $query2->execute();
 
         $row2 = $query2->fetch();
-        if (!$query2->rowCount() == 0) {
+        if ($query2->rowCount() != 0) {
             $surveyID = $row["survey_id"];
             $surveyTitle = $row["survey_title"];
             $surveyImg = $row["imag"];
             $canVote = true;
-            $isBlocked = $row["survey_block"];
+            $isBlocked = false;
             $isSurveyDone = $row["is_survey_done"];
+
         }
 
     }
@@ -161,12 +163,14 @@ try {
                         
                         $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", $_POST["pass-check"]);
 
-                        $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :invitation_id_dos);");
+                        // insert into uservote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(2, char), @decryptString), @pass), 2 );
+
+                        $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :option_id);");
                         $query->execute([
                             ":invitation_id_uno" => $row["invitation_id"], 
                             ":decryptString" => $decryptString, 
                             ":pass" => $_POST["pass-check"], 
-                            ":invitation_id_dos" => $userData["invitation_id"]
+                            ":option_id" => $_POST["answer"]
                         ]);
 
 
@@ -220,12 +224,12 @@ try {
                 
                 $decryptString = openssl_decrypt($encryptedString["encryptString"], "AES-256-CTR", "aaaaAaa1");
 
-                $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :invitation_id_dos);");
+                $query = $pdo->prepare("INSERT INTO UserVote (invitation_id_enc, option_id) VALUES (aes_encrypt(concat(convert(:invitation_id_uno, char), :decryptString), :pass), :option_id);");
                 $query->execute([
                     ":invitation_id_uno" => $row["invitation_id"], 
                     ":decryptString" => $decryptString, 
                     ":pass" => "aaaaAaa1", 
-                    ":invitation_id_dos" => $row["invitation_id"]
+                    ":option_id" => $_POST["answer"]
                 ]);
 
 
@@ -259,7 +263,7 @@ try {
                 <section style="position: relative;">
                     <h1>¡Ya has completado esta encuesta!</h1>
                     <?php if (isset($_SESSION["usuario"])): ?>
-                        <p>Puedes consultar las encuestas en las que has participado <a href="#">haciendo click aquí</a></p>
+                        <p>Puedes consultar las encuestas en las que has participado <a href="myVotes.php">haciendo click aquí</a></p>
                     <?php else: ?>
                         <p>Para consultar las encuestas en las que has participado, puedes registrarte <a href="register.php">haciendo click aquí</a></p>
                     <?php endif; ?>
@@ -308,7 +312,7 @@ try {
                                 <?php if (isset($row["imag"])): ?>
                                     <img class="optionImag" src=<?php echo "'uploads/option/" . $row["imag"] . "'" ?>
                                         alt="Imagen de la opción.">
-                                <?php endif ?>
+                                <?php endif; ?>
                                 <input type="radio" name="answer" value="<?php echo $row['option_id']; ?>">
                                 <?php echo $row["option_text"]; ?>
                             </label>

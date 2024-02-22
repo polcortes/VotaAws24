@@ -1,0 +1,14 @@
+
+[register.php ― 16:40:17 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'pruebaincreible@gmail.com'
+
+[mail_verification.php ― 16:43:51 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pruebaincreible@gmail.com.
+
+[register.php ― 17:06:04 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'selenium@test.com'
+
+[mail_verification.php ― 17:06:05 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo selenium@test.com.
+
+[register.php ― 19:03:52 ― Register fail]: El teléfono ya existe en nuestra base de datos.
+
+[register.php ― 19:07:30 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'selenium2@test.com'
+
+[mail_verification.php ― 19:07:32 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo selenium2@test.com.
