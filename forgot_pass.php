@@ -116,7 +116,7 @@ try {
                     $mail->Username = $emailUsername;
                     $mail->Password = $emailPassword;
 
-                    $link = "https://aws24.ieti.site/vote.php?token=" . $row['token'];
+                    $link = "https://aws24.ieti.site/forgot_pass.php?token=" . $row['token'];
                     $mail->IsHTML(true);
                     $mail->AddAddress($_POST["email-forgot"]);
                     $mail->SetFrom($emailUsername);
@@ -125,8 +125,7 @@ try {
                     $content = "Haz clic en este enlace para cambiar tu contraseña: $link";
                     $mail->MsgHTML($content);
                     $mail->CharSet = 'UTF-8';
-                    $mail->Send();
-
+                    // $mail->Send();
                     if (!$mail->Send()) {
                         $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― ERROR MAIL SENDING]: Envio de correo de recuperacion de contraseña a " . $_POST["email-forgot"] . " erroneo.\n";
                         file_put_contents($logFilePath, $logTxt, FILE_APPEND);
@@ -153,7 +152,7 @@ try {
             if ($query->rowCount() === 0) {
                 $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― TOKEN NOT FOUND]: No hemos encontrado ningun usuario con el token " . $_GET['token'] . ".\n";
                 file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-                echo "<script>errorNotification('No hemos encontrado ningún usuario con ese token. Por favor, inténtalo de nuevo.')</scrip>";
+                echo "<script>errorNotification('No hemos encontrado ningún usuario con ese token. Por favor, inténtalo de nuevo.')</script>";
             } else {
                 $row = $query->fetch();
                 $_SESSION["usuario"] = $row['user_id']; ?>

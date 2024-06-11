@@ -17,9 +17,39 @@ html{
     --gris-claro: #d9d9d9;
 }
 
+@media (prefers-color-scheme: light) {
+    :root {
+        --azul: #32b9be;
+        --rojo: #FF2525;
+        --amarillo: #FFCD1D;
+        --verde: #21FF2A;
+        --gris-oscuro: #d9d9d9;
+        --gris-claro: #272727;
+    }
+
+    .share-button {
+        color: #272727 !important;
+    }
+
+    footer .links .ieti,
+    footer .links .ieti a,
+    footer .links .github,
+    footer .links .github a {
+        color: #d9d9d9;
+    }
+
+    #pie-chart-cont, #column-chart-cont {
+        background-color: #272727;
+    }
+
+    #pie-chart-cont, #column-chart-cont,
+    #pie-chart-cont [class~="apexcharts"], #column-chart-cont [class~="apexcharts"] {
+        color: #d9d9d9;
+    }
+}
+
 * {
     font-family: 'Montserrat', sans-serif;
-    color: var(--gris-claro);
     color: var(--gris-claro);
 }
 
@@ -64,7 +94,7 @@ main {
 
 footer {
     background-color: #333;
-    color: white;
+    color: white !important;
     text-align: center;
 }
 
@@ -333,7 +363,7 @@ footer {
 }
 
 
-a:hover { color: var(--azul); }
+a:hover { color: var(--azul) !important; }
 
 /* -----------------------------------------------------
  * ERRORES
@@ -555,12 +585,15 @@ a:hover { color: var(--azul); }
     flex-direction: column;
     align-items: center;
 
+    color: #d9d9d9 !important;
+
     .bodytext{
         margin: auto;
         padding-bottom: 15%;
         *{
             z-index: 3;
-            color: var(--gris-claro);
+            /* color: var(--gris-claro); */
+            color: #d9d9d9;
         }
     }
 }
@@ -625,7 +658,7 @@ a:hover { color: var(--azul); }
 /* -----------------------------------------------------
  * FOOTER
  * -----------------------------------------------------*/
- #promotional-section {
+#promotional-section {
     display: flex;
     justify-content: center;
 }
@@ -639,12 +672,22 @@ footer {
     align-self: flex-end;
     padding: 2vh 0 ;
 }
+
+footer > .authors > .continfo > p,
+footer > .links > .ieti,
+footer > .links > .ieti > a,
+footer > .links > .github,
+footer > .links > .github > a {
+    color: white;
+}
+
 .authors {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
+    color: #d9d9d9;
 }
 .continfo p {
     margin: 5%;
@@ -655,6 +698,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    color: #d9d9d9;
 }
 
 .links a {
@@ -677,6 +721,7 @@ footer {
     overflow-y: auto;
     margin: 0;
     padding: 0;
+    z-index: 9999;
 }
 
 #notification__list::-webkit-scrollbar {
@@ -877,6 +922,11 @@ footer {
 #list_polls > main section.grid-polls > article.grid-poll-item a > footer > div.poll-is-online.en-proceso::before {
     background-color: var(--verde);
 }
+
+#list_polls #modal-share form input[type="submit"] {
+    color: #272727;
+}
+
 /* -----------------------------------------------------
  * SURVEY DETAILS
  * -----------------------------------------------------*/
@@ -1217,6 +1267,10 @@ span.apexcharts-legend-text {
     height: 100%;
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
+}
+
+#list_polls #invite-area {
+    color: #272727 !important;
 }
 
 /* -----------------------------------------------------

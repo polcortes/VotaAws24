@@ -1,0 +1,66 @@
+
+[register.php ― 18:52:49 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'testset@gmail.com'
+
+[mail_verification.php ― 19:04:29 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo testset@gmail.com.
+
+[register.php ― 19:07:44 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'pcortesgarcia.cf@iesesteveterradas.cat'
+
+[mail_verification.php ― 19:07:45 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:15:12 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:16:18 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:35:11 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:47:05 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:53:09 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:55:48 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:56:42 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:58:41 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 19:59:36 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:06:13 ― MAIL SEND]: Se ha enviado un email de verificacion al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:07:05 ― MAIL SEND]: Se ha enviado un email de verificacion al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:08:53 ― MAIL SEND]: Se ha enviado un email de verificacion al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:09:27 ― MAIL SEND]: Se ha enviado un email de verificacion al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:10:29 ― MAIL SEND]: Se ha enviado un email de verificacion al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:15:01 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:15:24 ― MAIL ERROR]: Ha habido un error al enviarle un email al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:16:02 ― MAIL SEND]: Se ha enviado un email de verificacion al correo pcortesgarcia.cf@iesesteveterradas.cat.
+
+[mail_verification.php ― 20:19:03 ― MAIL VAERIFICATED]: Se ha verificado el email.
+
+[myVotes.php ― 20:20:29 ― NO INVITATIONS]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no tiene votaciones
+
+[create_poll.php ― 20:22:03 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 20:22:03 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 20:22:03 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 20:22:03 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 8 en la base de datos (2 de 3)
+
+[create_poll.php ― 20:22:03 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 8 en la base de datos (3 de 3)
+
+[forgot_pass.php ― 20:24:20 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a pcortesgarcia.cf@iesesteveterradas.cat exitoso
+
+[forgot_pass.php ― 20:27:44 ― MAIL SENDIT]: Envio de email de recuperación de contraseña a pcortesgarcia.cf@iesesteveterradas.cat exitoso
+
+[forgot_pass.php ― 20:28:11 ― POST]: Hemos recibido el post.
+
+[forgot_pass.php ― 20:28:11 ― PASSWORD UPDATE]: Se ha actualizado la contraseña del usuario pcortesgarcia.cf@iesesteveterradas.cat.
+
+[login.php ― 20:28:17 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.

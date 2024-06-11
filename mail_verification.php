@@ -67,6 +67,7 @@ try {
         $row = $query->fetch();
 
         if ($row) {
+            echo "<script>alertNotification('Va a intentar enviar un mail...')</script>";
             if ($row['is_mail_valid']) {
                 if ($row['conditions_accepted']) {
                     header("Location: dashboard.php");
@@ -84,18 +85,19 @@ try {
                     $query->execute([':token' => $token, ':user_id' => $_SESSION["usuario"]]);
                 }
 
-                $link = "https://aws24.ieti.site/mail_verification.php?token=$token";
+                // aws24.ieti.site
+                $link = "https://localhost:8080/mail_verification.php?token=$token";
                 try {
                     $mail = new PHPMailer();
-                    $mail->IsSMTP();
+                    // $mail->IsSMTP();
                     $mail->Mailer = "smtp";
                     $mail->IsSMTP();
                     $mail->CharSet = 'UTF-8';
                     $mail->Encoding = 'base64';
 
 
-                    // $mail->SMTPDebug = 1;
-                    $mail->SMTPAuth = TRUE;
+                    $mail->SMTPDebug = 0;
+                    $mail->SMTPAuth = true;
                     $mail->SMTPSecure = "tls";
                     $mail->Port = 587;
                     $mail->Host = "smtp.gmail.com";
@@ -110,7 +112,7 @@ try {
 
                     $mail->MsgHTML($content);
                     $mail->CharSet = 'UTF-8';
-                    $mail->Send();
+                    // $mail->Send();
                     if (!$mail->Send()) {
                         $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― MAIL ERROR]: Ha habido un error al enviarle un email al correo " . $row['user_mail'] . ".\n";
                         file_put_contents($logFilePath, $logTxt, FILE_APPEND);
