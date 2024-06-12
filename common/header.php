@@ -55,7 +55,12 @@
     </ul>
     <ul>
         <li>
+            <button id="toggle-theme"></button>
+        </li>
+        <li>
             <?php echo $saludo ?>
         </li>
     </ul>
 </nav>
+
+<script src="../componentes/handleTheme.js"></script>

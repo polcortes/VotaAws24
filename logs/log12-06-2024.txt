@@ -1,0 +1,8 @@
+
+[login.php ― 12:45:14 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[myVotes.php ― 13:08:33 ― NO INVITATIONS]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no tiene votaciones
+
+[myVotes.php ― 13:59:25 ― NO INVITATIONS]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no tiene votaciones
+
+[login.php ― 14:00:13 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.

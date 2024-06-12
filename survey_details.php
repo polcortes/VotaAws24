@@ -236,7 +236,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
 
         </aside>
     </main>
-
+    <script src="componentes/handleTheme.js"></script>
 </body>
 <script>
     $(document).ready(function() {
