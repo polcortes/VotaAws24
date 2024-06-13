@@ -37,9 +37,8 @@ try {
             <input type="password" name="password" placeholder="contraseña" required>
             <br>
             <a href="forgot_pass.php" class="forgot-pass-link">¿Has olvidado tu contraseña?</a>
-            <button type="submit">Iniciar sesión</button>
+            <button id="login-btn" type="submit">Iniciar sesión</button>
         </form>
-        <a href="index.php" class="backhome">Volver a Inicio</a>
     </main>
 
     <div class="footer">

@@ -21,8 +21,8 @@ html {
     :root {
         --azul: #32b9be;
         --rojo: #FF2525;
-        --amarillo: #FFCD1D;
-        --verde: #21FF2A;
+        --amarillo: #d8b123;
+        --verde: #1ed424;
         --gris-oscuro: #d9d9d9;
         --gris-claro: #272727;
     }
@@ -48,6 +48,11 @@ html {
     #notification__list li:hover {
         background-color: #fff !important;
     }
+
+    #nav-mobile #close:hover,
+    #toggle-menu {
+        background-color: rgba(39, 39, 39, .2) !important;
+    }
 }
 
 [data-theme="dark"] {
@@ -56,6 +61,8 @@ html {
 }
 
 [data-theme="light"] {
+    --verde: #1ed424;
+    --amarillo: #d8b123;
     --gris-oscuro: #d9d9d9;
     --gris-claro: #272727;
 
@@ -80,6 +87,11 @@ html {
     #notification__list li:hover {
         background-color: #fff !important;
     }
+
+    #nav-mobile #close:hover,
+    #toggle-menu {
+        background-color: rgba(39, 39, 39, .2) !important;
+    }   
 }
 
 * {
@@ -117,6 +129,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    scrollbar-gutter: stable;
 }
 
 main {
@@ -137,21 +150,23 @@ footer {
  * LOGIN
  * -----------------------------------------------------*/
 #login h1 {
-    font-size: 75px;
+    font-size: 60px;
+    margin-bottom: 20px;
 }
 
 #login form {
-    width: 20%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #login input {
     background-color: var(--gris-oscuro);
     border: none;
     padding: 10px;
-    margin-bottom: 40px;
-    width: 100%;
+    margin-bottom: 20px;
+    width: 400px;
     box-sizing: border-box; 
     border-bottom: 3px solid var(--gris-claro);
     font-size: large;
@@ -162,7 +177,7 @@ footer {
     color: var(--gris-claro);
 }
 
-#login button {
+#login #login-btn {
     background-color: var(--gris-oscuro);
     border: var(--gris-claro) 3px solid;
     text-align: center;
@@ -173,27 +188,14 @@ footer {
     margin: 30px auto;
     font-weight: bold;
     font-size: larger;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-#login button:hover {
+#login #login-btn:hover {
     background-color: var(--gris-claro);
     color: var(--gris-oscuro);
 }
 
-#login a {
-    margin: 20px auto;
-}
-
-#login input[type="password"] {
-    margin-bottom: 10px;
-}
-
-#login .forgot-pass-link {
-    margin: 0 0 40px 0;
-}
 
 /* -----------------------------------------------------
  * DASHBOARD
@@ -339,7 +341,7 @@ footer {
 }
 
 #createPoll input[type="datetime-local"] {
-    width: 90%;
+    /* width: 90%; */
     margin: 0;
 }
 
@@ -351,7 +353,7 @@ footer {
 }
 
 #optionsContainer > input {
-    width: 90%;
+    /* width: 90%; */
     margin: 10px auto;
     border-bottom: 3px solid var(--gris-claro);
 }
@@ -363,14 +365,16 @@ footer {
 
 }
 
-#createPoll button {
+#createPoll #addButton,
+#createPoll #deleteButton {
     background-color: var(--gris-oscuro);
     border: var(--gris-claro) 3px solid;
     text-align: center;
     cursor: pointer;
     padding: 15px 30px;
     border-radius: 20px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin: 20px 15px;
     font-size: larger;
     transition: background-color 0.3s, color 0.3s;
@@ -462,12 +466,15 @@ a:hover { color: var(--azul) !important; }
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 500px;
+    align-items: center;
 }
 
 #register label {
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 600;
+    width: 100%;
 }
 
 #register form > input + label,
@@ -477,13 +484,14 @@ a:hover { color: var(--azul) !important; }
 
 #register input:not([type="submit"]),
 #register select {
-    width: 500px;
+    /* width: 500px; */
     font-size: 20px;
     background-color: transparent;
     border: none;
     border-bottom: solid 3px var(--gris-claro);
     outline: none;
     transition: border-bottom .3s linear;
+    width: 100%;
 }
 
 #register input:not([type="submit"]):focus {
@@ -504,7 +512,7 @@ a:hover { color: var(--azul) !important; }
 }
 
 #register input[type="submit"] {
-    margin-top: 50px;
+    margin-block: 50px;
     width: 200px;
     color: var(--gris-claro);
     background-color: transparent;
@@ -551,6 +559,7 @@ a:hover { color: var(--azul) !important; }
     gap: 35px;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 #register form > div.divisor span {
@@ -560,10 +569,6 @@ a:hover { color: var(--azul) !important; }
 
 #register form > div.divisor span > label {
     display: flex;
-}
-
-#register form > div.divisor span > input {
-    width: 230px;
 }
 
 #prefixtel {
@@ -577,12 +582,13 @@ a:hover { color: var(--azul) !important; }
 /* -----------------------------------------------------
  * HEADER
  * -----------------------------------------------------*/
- .navbar {
+.navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0 5%;
 }
+
 .navbar ul {
     display: flex;
     flex-direction: row;
@@ -1762,10 +1768,18 @@ flex-direction: column;
     width: fit-content!important;
     height: fit-content!important;
     padding: 5px !important;
-    margin: auto 0;
-    background: transparent!important;
+    margin: auto 0 !important;
+    background: transparent !important;
+    border-radius: 8px;
     border: none!important;
     cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#toggle-menu:hover {
+    background-color: rgba(217, 217, 217, .2) !important;
 }
 
 #nav-mobile {
@@ -1824,6 +1838,10 @@ body:has(#nav-mobile.active) {
     top: 30px;
     right: 30px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
     width: fit-content!important;
     height: fit-content!important;
     padding: 5px;
@@ -1831,6 +1849,10 @@ body:has(#nav-mobile.active) {
     background: transparent!important;
     border: none!important;
     cursor: pointer;
+}
+
+#nav-mobile #close:hover {
+    background-color: rgba(217, 217, 217, .2) !important;
 }
 
 /** ****************************************************
@@ -1845,6 +1867,10 @@ body:has(#nav-mobile.active) {
         display: none;
     }
 
+    #toggle-menu {
+        display: flex;
+    }
+
     .navbar > ul {
         gap: 20px;
     }
@@ -1857,6 +1883,22 @@ body:has(#nav-mobile.active) {
 }
 
 @media (max-width: 970px) {
+    /** NOTIFICATIONS */
+    #notification__list {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    /** LOGIN */
+    #login h1 {
+        font-size: 40px;
+    }
+
+    /** REGISTER */
+    #register h1 {
+        font-size: 40px;
+    }
+
     /** DASHBOARD */
     #dashboard main ul {
         width: 550px;
@@ -1870,6 +1912,36 @@ body:has(#nav-mobile.active) {
 
     #list_polls .grid-polls {
         width: 100%!important;
+    }
+
+    /** CREATE_POLL */
+    #createPoll h1 {
+        font-size: 40px;
+    }
+
+    #createPoll form {
+        padding-inline: 20px;
+    }
+
+    #createPoll form #optionsContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    #createPoll form #datePoll,
+    #createPoll form #butonsContainer {
+        flex-direction: column;
+    }
+
+    #createPoll form .dateFormDiv {
+        width: 100%;
+    }
+
+    #createPoll #addButton,
+    #createPoll #deleteButton {
+        width: 100%;
+        margin-inline: 0;
+        justify-content: center;
     }
 
     /** SURVEY_DETAILS */
@@ -1937,6 +2009,27 @@ body:has(#nav-mobile.active) {
         padding-left: 20px;
     }
 
+    /** REGISTER */
+    #register form {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    #register form > div.divisor {
+        flex-direction: column;
+    }
+
+    #register #tel [type="tel"] {
+        width: 100% !important;
+    }
+
+    #register #tel {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
     /** DASHBOARD */
     #dashboard h1 {
         font-size: 40px;
@@ -1982,5 +2075,24 @@ body:has(#nav-mobile.active) {
 
     #promotional-section + footer > .authors .continfo p.mail {
         overflow-x: auto;
+    }
+}
+
+@media (max-width: 550px) {
+    /** NOTIFICATIONS */
+    #notification__list {
+        width: 100%;
+        padding-inline: 20px;
+        box-sizing: border-box;
+    }
+
+    /** LOGIN */
+    #login form {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    #login form input:not([type="submit"]) {
+        width: 100%;
     }
 }
