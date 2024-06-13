@@ -94,7 +94,7 @@ try {
             echo "<script> errorNotification('Los datos no coinciden en nuestra base de datos o no existen.'); </script>";
         }
     } else {
-        echo "no va";
+        // echo "no va";
     }
 } catch (PDOException $e) {
     $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― DB ERROR]: Ha habido un error al conectarse a la base de datos: " . $e->getMessage() . "\n";
