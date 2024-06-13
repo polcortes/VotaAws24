@@ -34,6 +34,8 @@
         </ul>
     </main>
 
+    
+
     <ul id="notification__list"></ul>
     <?php
     if (isset($_GET["succ"])) {

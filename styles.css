@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -38,9 +38,7 @@ html{
         color: #d9d9d9;
     }
 
-    #pie-chart-cont, #column-chart-cont {
-        background-color: #272727;
-    }
+    
 
     #pie-chart-cont, #column-chart-cont,
     #pie-chart-cont [class~="apexcharts"], #column-chart-cont [class~="apexcharts"] {
@@ -72,9 +70,7 @@ html{
         color: #d9d9d9;
     }
 
-    #pie-chart-cont, #column-chart-cont {
-        background-color: #272727;
-    }
+   
 
     #pie-chart-cont, #column-chart-cont,
     #pie-chart-cont [class~="apexcharts"], #column-chart-cont [class~="apexcharts"] {
@@ -114,6 +110,7 @@ a {
 }
 
 body {
+    position: relative;
     background-color: var(--gris-oscuro);
     margin: 0;
     padding: 0;
@@ -1758,6 +1755,84 @@ flex-direction: column;
     text-decoration-color: var(--gris-oscuro);
 }
 
+/* -----------------------------------------------------
+ * NAV MOBILE:
+ * -----------------------------------------------------*/
+#toggle-menu {
+    width: fit-content!important;
+    height: fit-content!important;
+    padding: 5px !important;
+    margin: auto 0;
+    background: transparent!important;
+    border: none!important;
+    cursor: pointer;
+}
+
+#nav-mobile {
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    transition: left .3s ease-in-out;
+    background-color: var(--gris-oscuro);
+    z-index: 9999;
+}
+
+#nav-mobile.active {
+    left: 0;
+}
+
+body:has(#nav-mobile.active) {
+    overflow: hidden;
+}
+
+#nav-mobile > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 20px; */
+    height: 100%;
+    padding: 0;
+}
+
+#nav-mobile > ul > li {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+}
+
+#nav-mobile > ul > li > a {
+    color: var(--gris-claro);
+    font-size: 20px;
+    text-decoration: none !important;
+    display: block;
+    width: 100%;
+    transition: color .2s linear, background-color .2s linear;
+    padding: 10px 0;
+}
+
+#nav-mobile > ul > li > a:hover {
+    color: var(--gris-oscuro) !important;
+    background-color: var(--gris-claro);
+}
+
+#nav-mobile #close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    width: fit-content!important;
+    height: fit-content!important;
+    padding: 5px;
+    margin: auto 0;
+    background: transparent!important;
+    border: none!important;
+    cursor: pointer;
+}
+
 /** ****************************************************
  *
  **                 RESPONSIVE SECTION                 *
@@ -1766,8 +1841,12 @@ flex-direction: column;
 
 @media (max-width: 1200px) {
     /** HEADER */
-    .navbar > ul:first-of-type {
+    .navbar > ul:first-of-type > li {
         display: none;
+    }
+
+    .navbar > ul {
+        gap: 20px;
     }
 
     /** FOOTER */
@@ -1791,6 +1870,34 @@ flex-direction: column;
 
     #list_polls .grid-polls {
         width: 100%!important;
+    }
+
+    /** SURVEY_DETAILS */
+    #survey_details h1 {
+        font-size: 40px !important;
+    }
+
+    #survey_details > main {
+        width: 100%;
+    }
+
+    #survey_details > main > section > div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #survey_details > main > section .chart-opt {
+        width: 100%;
+        border-radius: 20px;
+        border: 2px solid var(--gris-claro);
+    }
+
+    #survey_details > main > aside > div > form > div {
+        flex-direction: column;
+    }
+
+    .survey-details-chart {
+        border: none;
     }
     
     /** FOOTER */
@@ -1859,6 +1966,10 @@ flex-direction: column;
         column-count: 1;
     }
 
+    #list_polls #modal-share {
+        width: 80%;
+    }
+
     /** FOOTER */
     #promotional-section + footer > .authors {
         display: grid;
@@ -1870,6 +1981,6 @@ flex-direction: column;
     }
 
     #promotional-section + footer > .authors .continfo p.mail {
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 }

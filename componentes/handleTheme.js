@@ -34,5 +34,8 @@ addEventListener('load', () => {
                 toggleTheme.textContent = '🌞';
                 break;
         }
+
+        const themeChangeEv = new Event('themechange');
+        document.dispatchEvent(themeChangeEv);
     })
 });

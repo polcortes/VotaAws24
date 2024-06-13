@@ -21,13 +21,18 @@ addEventListener('load', () => {
     }
 
     let pieOptions = {
+      theme: {
+        mode: document.documentElement.dataset.theme,
+      },
       chart: {
         type: 'pie',
-        width: 550
+        //size: '65%',
+        width: '100%',
+        height: '100%',
       },
       plotOptions: {
         pie: {
-          size: 550
+          customScale: 1,
         },
         donut: {
           labels: {
@@ -59,33 +64,37 @@ addEventListener('load', () => {
     }
 
     let columnOptions = {
-        chart: {
-            type: 'bar',
-            width: 550,
-            toolbar : {
-                show: false
-            }
-        },
-        series: [{
-            data: columnData
-        }],
-        xaxis: {
-            labels: {
-                style: {
-                    colors: '#D9D9D9'
-                }
-            }
-        },
-        yaxis: {
-            labels: {
-                style: {
-                    colors: '#D9D9D9'
-                }
-            }
-        },
-        tooltip: {
-            show: false
-        }
+      theme: {
+        mode: document.documentElement.dataset.theme,
+      },
+      chart: {
+          type: 'bar',
+          width: '100%',
+          height: '100%',
+          toolbar : {
+              show: false
+          }
+      },
+      series: [{
+          data: columnData
+      }],
+      xaxis: {
+          labels: {
+              style: {
+                  colors: '#D9D9D9'
+              }
+          }
+      },
+      yaxis: {
+          labels: {
+              style: {
+                  colors: '#D9D9D9'
+              }
+          }
+      },
+      tooltip: {
+          show: false
+      }
     }
 
 
@@ -113,4 +122,34 @@ addEventListener('load', () => {
             pieChartCont.classList.remove("active-chart")
         }
     })
+
+    window.addEventListener('resize', () => {
+      pieChart.updateOptions({
+        chart: {
+          width: '100%',
+          height: '100%',
+        }
+      });
+
+      columnChart.updateOptions({
+        chart: {
+          width: '100%',
+          height: '100%',
+        }
+      });
+    })
+
+    document.addEventListener('themechange', () => {
+      pieChart.updateOptions({
+        theme: {
+          mode: document.documentElement.dataset.theme,
+        }
+      });
+
+      columnChart.updateOptions({
+        theme: {
+          mode: document.documentElement.dataset.theme,
+        }
+      });
+    });
   });
