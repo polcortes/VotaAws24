@@ -2,12 +2,8 @@
 <html lang="es">
 
 <?php
+    session_start();
     if (!isset($_SESSION["usuario"])) {
-        // print_r($_SESSION["usuario"]);
-        session_start();
-        ?>
-        <?= "<h1>Sesión usuario". $_SESSION["usuario"] ."</h1>" ?>
-        <?php
         include_once("errors/error403.php");
         header("HTTP/1.1 403 Forbidden");
         exit();
