@@ -4,6 +4,7 @@
 <?php
     if (!isset($_SESSION["usuario"])) {
         // print_r($_SESSION["usuario"]);
+        session_start();
         ?>
         <?= "<h1>Sesión usuario". $_SESSION["usuario"] ."</h1>" ?>
         <?php
