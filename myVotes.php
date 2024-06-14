@@ -93,54 +93,77 @@ try {
                                     file_put_contents($logFilePath, $logTxt, FILE_APPEND);
                                     echo "<script>errorNotification('ERROR al encontrar la encuesta')</script>";
                                 } else {
-                                    $surveyRow = $surveyQuery->fetch();
-                                    $surveyTitle = $surveyRow["survey_title"];
+                                    while ($surveyRow = $surveyQuery->fetch()) {
+                                        $surveyTitle = $surveyRow["survey_title"];
+                                        /*
+                                        print_r([
+                                            "user_id" => $_SESSION["usuario"],
+                                            "decryptString" => $decryptString,
+                                            //"pass" => $password,
+                                            "survey_id" => $surveyRow["survey_id"]
+                                        ]);
+                                        */
 
-                                    $query = $pdo->prepare(
-                                        "SELECT `i`.`mail_to`, `i`.`survey_id`, `v`.`option_id`, `i`.`invitation_id`
-                                FROM UserVote v
-                                INNER JOIN Invitation i ON `v`.`invitation_id_enc` = aes_encrypt(concat(convert(`i`.`invitation_id`, char), :decryptString), :pass)
-                                WHERE `i`.`mail_to` = (SELECT user_mail FROM User WHERE user_id = :user_id);"
-                                    );
-                                    $query->execute([
-                                        ":user_id" => $_SESSION["usuario"],
-                                        ":decryptString" => $decryptString,
-                                        ":pass" => $password
-                                    ]);
-                                    // $query = $pdo->prepare("select `i`.`survey_id`, `v`.`option_id`
-                                    // from `UserVote` `v`, `Invitation` `i`
-                                    // where `i`.`mail_to` = :email
-                                    // and `v`.`invitation_id_enc` = aes_encrypt(concat(cast( :invitation_id as char), :decryptString), :pass);");
-            
-                                    // $query->execute([
-                                    //     ':email' => $email,
-                                    //     ':invitation_id' => $invitationId,
-                                    //     ':decryptString' => $decryptString,
-                                    //     ':pass' => $password
-                                    // ]);
-                                    if ($query->rowCount() == 0) {
-                                        $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― NO VOTES]: El usuario $email no ha votado en la encuesta '$surveyTitle' (survey_id = $surveyId)\n";
-                                        file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-                                        echo "<script>errorNotification('Aun no has votado en la encuesta $surveyTitle')</script>";
-                                    } else {
-                                        $row = $query->fetch();
-                                        $optionId = $row["option_id"];
-
-                                        $optionQuery = $pdo->prepare("SELECT * FROM SurveyOption WHERE option_id = :id;");
-                                        $optionQuery->execute([':id' => $optionId]);
-
-                                        if ($optionQuery->rowCount() == 0) {
-                                            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― NO OPTION]: No se ha encontrado la opción con id= " . $optionId . "\n";
+                                        $query = $pdo->prepare(
+                                            "SELECT `i`.`mail_to`, `i`.`survey_id`, `v`.`option_id`, `i`.`invitation_id`
+                                            FROM UserVote v
+                                            INNER JOIN Invitation i ON `v`.`invitation_id_enc` = aes_encrypt(concat(convert(`i`.`invitation_id`, char), :decryptString), :pass)
+                                            WHERE `i`.`survey_id` = :survey_id AND `i`.`mail_to` = (SELECT user_mail FROM User WHERE user_id = :user_id);");
+                                        $query->execute([
+                                            ":user_id" => $_SESSION["usuario"],
+                                            ":decryptString" => $decryptString,
+                                            ":pass" => $password,
+                                            ":survey_id" => $surveyRow["survey_id"]
+                                        ]);
+                
+                
+                                        // $query->execute([
+                                        //     ':email' => $email,
+                                        //     ':invitation_id' => $invitationId,
+                                        //     ':decryptString' => $decryptString,
+                                        //     ':pass' => $password
+                                        // ]);
+                                        
+                                        // $query->execute([
+                                        //     ':email' => $email,
+                                        //     ':invitation_id' => $invitationId,
+                                        //     ':decryptString' => $decryptString,
+                                        //     ':pass' => $password
+                                        // ]);
+                                        if ($query->rowCount() == 0) {
+                                            $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― NO VOTES]: El usuario $email no ha votado en la encuesta '$surveyTitle' (survey_id = $surveyId)\n";
                                             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-                                            echo "<script>errorNotification('ERROR al encontrar la opción')</script>";
+                                            echo "<script>errorNotification('Aun no has votado en la encuesta $surveyTitle')</script>";
                                         } else {
-                                            $optionRow = $optionQuery->fetch();
-                                            $optionText = $optionRow["option_text"];
+                                            while ($row = $query->fetch()) {
+                                                $optionId = $row["option_id"];
 
-                                            echo "<li class='voto'>";
-                                            echo "<h2>$surveyTitle</h2>";
-                                            echo "<span class='option'>$optionText</span><button class='mostrar-ocultar-respuesta'>Mostrar respuesta</button>";
-                                            echo "</li>";
+                                                $optionQuery = $pdo->prepare("SELECT * FROM SurveyOption WHERE option_id = :id;");
+                                                $optionQuery->execute([':id' => $optionId]);
+
+                                                if ($optionQuery->rowCount() == 0) {
+                                                    $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― NO OPTION]: No se ha encontrado la opción con id= " . $optionId . "\n";
+                                                    file_put_contents($logFilePath, $logTxt, FILE_APPEND);
+                                                    echo "<script>errorNotification('ERROR al encontrar la opción')</script>";
+                                                } else {
+                                                    $optionRow = $optionQuery->fetch();
+                                                    $optionText = $optionRow["option_text"];
+
+                                                    $titleQuery = $pdo->prepare("SELECT * FROM Survey WHERE survey_id = :id;");
+                                                    $titleQuery->execute([':id' => $optionRow["survey_id"]]);
+
+                                                    $titleRow = $titleQuery->fetch();
+                                                    $surveyTitle = $titleRow["survey_title"];
+
+                                                    // print_r($optionRow);
+                                                    // print_r($row);
+
+                                                    echo "<li class='voto'>";
+                                                    echo "<h2>$surveyTitle</h2>";
+                                                    echo "<span class='option'>$optionText</span><button class='mostrar-ocultar-respuesta'>Mostrar respuesta</button>";
+                                                    echo "</li>";
+                                                }
+                                            }
                                         }
                                     }
                                 }

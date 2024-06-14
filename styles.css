@@ -860,11 +860,28 @@ footer > .links > .github > a {
     color: var(--rojo);
 }
 
-#notification__list > li span,
-#notification__list > li span span {
+#notification__list > li span {
     display: flex;
     align-items: center;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
 }
+
+#notification__list > li span span {
+    display: inline;
+    overflow-wrap: break-word;
+}
+
+.ellipsis {
+    display: block;
+    inline-size: 100%;
+    overflow-wrap: break-word;
+}
+
+/* -----------------------------------------------------
+** |  inline-size: 100%;                               |
+** |  overflow-wrap: break-word;                       |
+** -----------------------------------------------------*/
 
 /* -----------------------------------------------------
  * LIST POLLS
@@ -1670,6 +1687,7 @@ flex-direction: column;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-inline: 20px;
 }
 
 #my-votes > main > form {
@@ -1899,6 +1917,26 @@ body:has(#nav-mobile.active) {
         font-size: 40px;
     }
 
+    /** MAIL_VERIFICATION */
+    #mailVerification main {
+        width: 100%;
+        padding-inline: 20px;
+        box-sizing: border-box;
+    }
+
+    /** CONDITIONS */
+    #conditions h1 {
+        width: 100%;
+        padding-inline: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    #conditions #terms {
+        width: 100%;
+        padding-inline: 20px;
+        box-sizing: border-box;
+    }
+
     /** DASHBOARD */
     #dashboard main ul {
         width: 550px;
@@ -1970,6 +2008,32 @@ body:has(#nav-mobile.active) {
 
     .survey-details-chart {
         border: none;
+    }
+
+    /** VOTE */
+    #vote main {
+        width: 100% !important;
+        padding-inline: 20px;
+        box-sizing: border-box;
+    }
+
+    #vote main > div > img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #vote main > form > section {
+        width: 100% !important;
+        column-count: 1 !important;
+    }
+
+    #vote main > form > section > article {
+        width: 100% !important;
+    }
+
+    #vote main > form > section > article img {
+        width: 100% !important;
+        height: auto !important;
     }
     
     /** FOOTER */
@@ -2061,6 +2125,12 @@ body:has(#nav-mobile.active) {
 
     #list_polls #modal-share {
         width: 80%;
+    }
+
+    /** MYVOTES */
+    #my-votes main > ul {
+        width: 100%;
+        grid-template-columns: 1fr;
     }
 
     /** FOOTER */

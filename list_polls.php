@@ -184,7 +184,7 @@ try {
                 $checkUserQuery = $pdo->prepare("SELECT * FROM User WHERE user_mail = :user_mail");
                 $checkUserQuery->execute([':user_mail' => $email]);
 
-                print_r($checkUserQuery->fetch());
+                // print_r($checkUserQuery->fetch());
 
                 if ($checkUserQuery->rowCount() == 0) {
                     $insertUserQuery = $pdo->prepare("INSERT INTO User (user_mail, encryptString) VALUES (:user_mail, aes_encrypt(:encryptString, 'aaaaAaa1'));");
@@ -206,7 +206,7 @@ try {
                 } else {
                     $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― ERROR invitation]: Ya existe una invitación para $email\n";
                     file_put_contents($logFilePath, $logTxt, FILE_APPEND);
-                    echo "<script>errorNotification('Ya existe una invitación a esta encuesta para $email.');</script>";
+                    echo "<script>errorNotification('Ya existe una invitación a esta encuesta para <span class=\"ellipsis\">$email</span>.');</script>";
                 }
             } else {
                 $logTxt = "\n[" . end($filePathParts) . " ― " . date('H:i:s') . " ― Invalid mail]: El correo $email no es válido.\n";
@@ -224,7 +224,7 @@ function validarEmail($email)
     $regex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 
     if (preg_match($regex, $email)) {
-        echo $email;
+        // echo $email;
         return true;
     } else {
         return false;

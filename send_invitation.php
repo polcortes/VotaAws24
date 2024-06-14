@@ -54,7 +54,7 @@ try {
             $content = "Haz clic en este enlace para participar en mi encuesta: $link";
             $mail->MsgHTML($content);
             $mail->CharSet = 'UTF-8';
-            $mail->Send();
+            // $mail->Send();
 
             file_put_contents($logFilePath, $logTxt, FILE_APPEND);
             if (!$mail->Send()) {

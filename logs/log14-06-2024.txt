@@ -1,0 +1,216 @@
+
+[login.php ― 18:46:12 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[register.php ― 18:54:15 ― REGISTER COMPLEAT]: Se ha registrado un usuario con correo 'polcortesg@gmail.com'
+
+[mail_verification.php ― 18:54:17 ― MAIL SEND]: Se ha enviado un email de verificacion al correo polcortesg@gmail.com.
+
+[mail_verification.php ― 18:56:10 ― MAIL SEND]: Se ha enviado un email de verificacion al correo polcortesg@gmail.com.
+
+[mail_verification.php ― 18:56:37 ― MAIL SEND]: Se ha enviado un email de verificacion al correo polcortesg@gmail.com.
+
+[mail_verification.php ― 18:57:04 ― MAIL SEND]: Se ha enviado un email de verificacion al correo polcortesg@gmail.com.
+
+[mail_verification.php ― 18:58:12 ― MAIL VAERIFICATED]: Se ha verificado el email.
+
+[create_poll.php ― 19:02:56 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 19:02:56 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 19:02:56 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 19:02:56 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 9 en la base de datos (2 de 3)
+
+[create_poll.php ― 19:02:56 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 9 en la base de datos (3 de 3)
+
+[list_polls.php ― 19:04:21 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (pcortesgarcia.cf@iesesteveterradas.cat)
+
+[list_polls.php ― 19:10:18 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:14:52 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:15:40 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:15:45 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:17:52 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:19:35 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:21:16 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:21:17 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:21:17 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:21:17 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:26:20 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:28:42 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:28:55 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:15 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:15 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:15 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:16 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:48 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:48 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:29:50 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:30:30 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:30:31 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:31:13 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:31:13 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:31:13 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:31:14 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[list_polls.php ― 19:31:14 ― ERROR invitation]: Ya existe una invitación para pcortesgarcia.cf@iesesteveterradas.cat
+
+[send_invitation.php ― 19:38:14 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 19:38:14 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 19:38:14 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 19:38:17 ― Invitation email]: Envio de invitación a pol2@gmail.com exitoso
+
+[send_invitation.php ― 19:38:17 ― Invitation email]: Envio de invitación a pol2@gmail.com exitoso
+
+[send_invitation.php ― 19:38:20 ― Invitation email]: Envio de invitación a pcortesgarcia.cf@iesesteveterradas.cat exitoso
+
+[login.php ― 19:40:24 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[login.php ― 20:02:11 ― LOGIN SUCCESFULL]: El usuario polcortesg@gmail.com ha iniciado sesión.
+
+[login.php ― 20:03:49 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[login.php ― 20:04:33 ― LOGIN SUCCESFULL]: El usuario polcortesg@gmail.com ha iniciado sesión.
+
+[create_poll.php ― 20:05:52 ― SURVEY FORM SEND]: Se ha enviado el formulario de la encuesta.
+
+[create_poll.php ― 20:05:52 ― SURVEY RECIVED]: Se han obtenido las variables del formulario (solo survey).
+
+[create_poll.php ― 20:05:52 ― SURVEY INSERTED]: Se ha insertado la encuesta en la base de datos.
+
+[create_poll.php ― 20:05:52 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 1 de la encuesta 10 en la base de datos (2 de 4)
+
+[create_poll.php ― 20:05:52 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 2 de la encuesta 10 en la base de datos (3 de 4)
+
+[create_poll.php ― 20:05:52 ― SURVEY OPTION INSERTED]: Se ha insertado la opcion 3 de la encuesta 10 en la base de datos (4 de 4)
+
+[list_polls.php ― 20:06:56 ― Invitation add]: Se añadió una nueva invitacion a la tabla Invitation (pcortesgarcia.cf@iesesteveterradas.cat)
+
+[login.php ― 20:07:10 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[send_invitation.php ― 20:07:36 ― BD CONNECTION] Conexión con la db establecida
+
+[send_invitation.php ― 20:07:36 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 20:07:36 ― PHPMailer OK] PHPMailer OK
+
+[send_invitation.php ― 20:07:39 ― Invitation email]: Envio de invitación a pcortesgarcia.cf@iesesteveterradas.cat exitoso
+
+[myVotes.php ― 20:28:49 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:28:52 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:30:22 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:31:22 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:31:23 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:33:29 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:34:18 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:34:37 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:34:38 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:34:39 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:34:58 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:35:12 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:36:27 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:36:28 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:36:38 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:36:39 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:36:39 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 20:42:10 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[login.php ― 21:27:02 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[myVotes.php ― 21:27:12 ― PASSWORD INCORRECT]: El usuario con user_id= 5 ha intentado ver sus botos pero ha introducido una contraseña incorrecta
+
+[myVotes.php ― 21:27:20 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 21:37:41 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'verde o azul' (survey_id = 9)
+
+[myVotes.php ― 21:37:41 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 21:38:50 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 21:46:30 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 21:47:23 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 21:49:35 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'verde o azul' (survey_id = 10)
+
+[myVotes.php ― 21:50:21 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 21:51:17 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[login.php ― 22:54:42 ― LOGIN SUCCESFULL]: El usuario pcortesgarcia.cf@iesesteveterradas.cat ha iniciado sesión.
+
+[myVotes.php ― 22:54:48 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:55:41 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:58:24 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:58:58 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:59:31 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:59:53 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:59:55 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 22:59:56 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:00:12 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:00:31 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:00:32 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:02:52 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:03:08 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:03:33 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:05:36 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
+
+[myVotes.php ― 23:21:13 ― NO VOTES]: El usuario pcortesgarcia.cf@iesesteveterradas.cat no ha votado en la encuesta 'És albion online un mmorpg no lineal?' (survey_id = 10)
