@@ -86,7 +86,7 @@ try {
                 }
 
                 // aws24.ieti.site
-                $link = "https://localhost:8080/mail_verification.php?token=$token";
+                $link = "https://pcortesgarcia.ieti.cat/mail_verification.php?token=$token";
                 try {
                     $mail = new PHPMailer();
                     // $mail->IsSMTP();
