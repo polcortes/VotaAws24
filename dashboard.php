@@ -19,8 +19,8 @@
     include_once("common/header.php");
     if (!isset($_SESSION["usuario"])) {
         include_once("errors/403.php");
-        header("HTTP/1.1 403 Forbidden");
-        exit();
+        //header("HTTP/1.1 403 Forbidden");
+        //exit();
     } else {
     ?>
     <main>
