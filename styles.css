@@ -1679,7 +1679,7 @@ flex-direction: column;
 
 
 /* -----------------------------------------------------
- * FORGOT PASS:
+ * MY-VOTES:
  * -----------------------------------------------------*/
 
 #my-votes > main {
@@ -1922,6 +1922,14 @@ body:has(#nav-mobile.active) {
         width: 100%;
         padding-inline: 20px;
         box-sizing: border-box;
+    }
+
+    /** FORGOT_PASS */
+    #forgot_pass h1 {
+        text-align: center;
+    }
+    #forgot_pass main {
+        padding-inline: 20px;
     }
 
     /** CONDITIONS */
