@@ -21,7 +21,7 @@
         include_once("errors/403.php");
         header("HTTP/1.1 403 Forbidden");
         exit();
-    }
+    } else {
     ?>
     <main>
         <h1>Bienvenido,
@@ -43,6 +43,7 @@
         echo "<script>successfulNotification('Has iniciado sesión correctamente.');</script>";
     }
     include_once("common/footer.php");
+    }
     ?>
 </body>
 
