@@ -107,6 +107,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
     echo "<input type='hidden' id='questions-to-js' name='questions' value='" . json_encode($questions, JSON_UNESCAPED_UNICODE) . "'>";
 
 } else {
+    include_once("errors/error403.php");
     header("HTTP/1.1 403 Forbidden");
     exit();
 }
