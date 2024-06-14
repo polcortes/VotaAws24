@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION["usuario"])) {
-    header("Location: login.php");
+    include_once("errors/error403.php");
+    header("HTTP/1.1 403 Forbidden");
     exit();
 }
 
