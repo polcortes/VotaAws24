@@ -1925,10 +1925,10 @@ body:has(#nav-mobile.active) {
     }
 
     /** FORGOT_PASS */
-    #forgot_pass h1 {
+    #forgot-pass h1 {
         text-align: center;
     }
-    #forgot_pass main {
+    #forgot-pass main {
         padding-inline: 20px;
     }
 
