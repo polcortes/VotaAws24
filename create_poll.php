@@ -21,7 +21,7 @@ try {
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?<?php echo date('Y-m-d_H:i:s'); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="componentes/notificationHandler.js"></script>
 </head>

@@ -32,7 +32,7 @@ try {
     <title>Registrarse | Vota!</title>
     <meta name="description"
         content="Página para registrarse en nuestra web. ¡Crea una cuenta y podrás participar y generar encuestas para todo el mundo!">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?<?php echo date('Y-m-d_H:i:s'); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="componentes/notificationHandler.js"></script>
 </head>

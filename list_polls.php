@@ -18,7 +18,7 @@ try {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lista de encuestas | Vota!</title>
         <meta name="description" content="Accede a todas las encuestas que hayas creado.">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles.css?<?php echo date('Y-m-d_H:i:s'); ?>">
         <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
         <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
