@@ -17,7 +17,7 @@ try {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Terminos y condiciones</title>
         <meta name="description" content="Verifica tu dirección de email para acceder a 'Vota!'">
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="styles.css?<?php echo date('Y-m-d_H:i:s'); ?>">
         <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
         <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
         <script src="https://code.jquery.com/jquery-3.7.1.js"

@@ -121,7 +121,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
     </title>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <meta name="description" content="Crea una encuesta para obtener las respuestas de todo el mundo!">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css?<?php echo date('Y-m-d_H:i:s'); ?>">
 
     <link rel="shortcut icon" href="/icons/faviconDark.svg" type="image/svg">
     <link rel="shortcut icon" href="/icons/favicon.svg" type="image/svg" media="(prefers-color-scheme: light)">
