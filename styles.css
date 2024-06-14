@@ -1929,7 +1929,7 @@ body:has(#nav-mobile.active) {
         text-align: center;
     }
     #forgot-pass main {
-        padding-inline: 20px;
+        padding-inline: 20px !important;
     }
 
     /** CONDITIONS */
