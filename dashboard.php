@@ -2,7 +2,6 @@
 <html lang="es">
 
 <?php
-    include_once("common/header.php");
     if (!isset($_SESSION["usuario"])) {
         include_once("errors/error403.php");
         header("HTTP/1.1 403 Forbidden");
@@ -24,6 +23,7 @@
 </head>
 
 <body id="dashboard">
+    <?php include_once("common/header.php"); ?>
     <main>
         <h1>Bienvenido,
             <?php echo $_SESSION["nombre"]; ?>!
@@ -36,6 +36,7 @@
         </ul>
     </main>
 
+    <?php include_once("common/footer.php"); ?>
     
 
     <ul id="notification__list"></ul>
@@ -43,7 +44,6 @@
     if (isset($_GET["succ"])) {
         echo "<script>successfulNotification('Has iniciado sesión correctamente.');</script>";
     }
-    include_once("common/footer.php");
     }
     ?>
 </body>
