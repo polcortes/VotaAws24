@@ -110,7 +110,7 @@ html {
     }
 
     #conditions input[type="submit"]:hover {
-        color: var(--gris-oscuro);
+        color: var(--gris-oscuro) !important;
         background-color: var(--gris-claro);
     }
 }
