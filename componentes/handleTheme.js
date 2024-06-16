@@ -1,6 +1,6 @@
 addEventListener('load', () => {
     let theme = localStorage.getItem('theme');
-    if (theme) {
+    if (theme && (theme === 'dark' || theme === 'light')) {
         document.documentElement.dataset.theme = theme;
     } else {
         theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
