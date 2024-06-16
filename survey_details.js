@@ -30,12 +30,18 @@ addEventListener('load', () => {
   const pieOptions = {
     type: 'pie',
     data: data,
+    options: {
+      responsive: true,
+      mantainAspectRatio: true
+    }
   };
 
   const barOptions = {
     type: 'bar',
     data: data,
     options: {
+      responsive: true,
+      mantainAspectRatio: true,
       scales: {
         y: {
           beginAtZero: true
