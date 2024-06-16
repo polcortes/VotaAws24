@@ -106,6 +106,7 @@ html {
     #conditions input[type="submit"] {
         color: var(--gris-oscuro);
         background-color: var(--gris-claro);
+        border: 1px solid var(--gris-claro);
     }
 
     #conditions input[type="submit"]:hover {
