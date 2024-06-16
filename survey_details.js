@@ -109,7 +109,7 @@ addEventListener('load', () => {
   let chart = new ApexCharts(chartContainer, pieOptions);
 
   pieButt.addEventListener('click', function () {
-    chart.updateOptions(pieOptions);
+    chart.updateOptions(pieOptions, false, true, false);
     this.disabled = true;
 
     const theme = document.documentElement.dataset.theme
@@ -119,7 +119,7 @@ addEventListener('load', () => {
   })
 
   columnButt.addEventListener('click', function () {
-    chart.updateOptions(columnOptions);
+    chart.updateOptions(columnOptions, false, true, false);
     this.disabled = true;
 
     const theme = document.documentElement.dataset.theme
