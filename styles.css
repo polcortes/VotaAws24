@@ -56,17 +56,17 @@ html {
 
     #conditions input[type="submit"],
     #create {
-        color: var(--gris-claro);
-        background-color: var(--gris-oscuro);
-        border: 1px solid var(--gris-claro);
+        color: var(--gris-claro) !important;
+        background-color: var(--gris-oscuro) !important;
+        border: 1px solid var(--gris-claro) !important;
 
-        transition: color .3s linear, background-color .3s linear;
+        transition: color .3s linear, background-color .3s linear !important;
     }
 
     #conditions input[type="submit"]:hover,
     #create:hover {
         color: var(--gris-oscuro) !important;
-        background-color: var(--gris-claro);
+        background-color: var(--gris-claro) !important;
     }
 }
 
