@@ -149,6 +149,7 @@ addEventListener('load', () => {
     ctx,
     pieOptions
   );
+  pieButt.disabled = false;
 
   pieButt.addEventListener('click', function () {
     Chart.getChart("chart-container").destroy()
