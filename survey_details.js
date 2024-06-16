@@ -14,10 +14,10 @@ addEventListener('load', () => {
   for (const question of questions) {
     series.push(question.countOfVotes)
     labels.push(question.optionText)
-    columnData.push({
-      x: question.optionText,
-      y: question.countOfVotes,
-    })
+    // columnData.push({
+    //   x: question.optionText,
+    //   y: question.countOfVotes,
+    // })
   }
 
   const data = {
