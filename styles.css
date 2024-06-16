@@ -1176,7 +1176,8 @@ footer > .links > .github > a {
 }
 
 #survey_details > main > section > div > div {
-    width: 600px;
+    max-width: 600px;
+    width: fit-content;
 }
 
 #survey-detils tspan {

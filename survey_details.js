@@ -20,6 +20,15 @@ addEventListener('load', () => {
     // })
   }
 
+  let theme = document.documentElement.dataset.theme;
+  if (!theme) {
+    document.documentElement.dataset.theme = 'dark';
+    theme = 'dark';
+  }
+
+  if (theme === 'light') Chart.defaults.color = '#d9d9d9';
+  if (theme === 'dark') Chart.defaults.color = '#272727';
+
   const data = {
     labels,
     datasets: [{
@@ -192,16 +201,12 @@ addEventListener('load', () => {
   // })
 
   document.addEventListener('themechange', () => {
-    // pieChart.updateOptions({
-    //   theme: {
-    //     mode: document.documentElement.dataset.theme,
-    //   },
-    // })
-
-    // columnChart.updateOptions({
-    //   theme: {
-    //     mode: document.documentElement.dataset.theme,
-    //   },
-    // })
+    if (!theme) {
+      document.documentElement.dataset.theme = 'dark';
+      theme = 'dark';
+    }
+  
+    if (theme === 'light') Chart.defaults.color = '#d9d9d9';
+    if (theme === 'dark') Chart.defaults.color = '#272727';
   })
 })
