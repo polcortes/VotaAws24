@@ -127,7 +127,7 @@ addEventListener('load', () => {
       document.querySelector('.survey-details-chart').style.backgroundColor = '#272727 !important'
     }
   })
-
+  //
   // window.addEventListener('resize', () => {
   //   pieChart.updateOptions({
   //     chart: {

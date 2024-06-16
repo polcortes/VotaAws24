@@ -227,7 +227,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
                         echo '<input type="checkbox" id="checkbox" name="blocked" checked/>';
                         echo '<div class="slider"></div>';
                         echo '</label>';
-                        echo '</div>';
+                        echo '</div>'; // </div>
                         echo '</div>';
                     }
                     ?>
