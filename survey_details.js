@@ -3,8 +3,10 @@ addEventListener('load', () => {
   const pieButt = document.getElementById('pie-chart')
   const columnButt = document.getElementById('column-chart')
 
-  const pieChartCont = document.querySelector('#pie-chart-cont')
-  const columnChartCont = document.querySelector('#column-chart-cont')
+  // const pieChartCont = document.querySelector('#pie-chart-cont')
+  // const columnChartCont = document.querySelector('#column-chart-cont')
+
+  const chartContainer = document.getElementById('chart-container')
 
   let series = []
   let labels = []
@@ -99,19 +101,16 @@ addEventListener('load', () => {
     },
   }
 
-  var pieChart = new ApexCharts(pieChartCont, pieOptions)
-  pieChart.render()
-  var columnChart = new ApexCharts(columnChartCont, columnOptions)
-  columnChart.render()
+  // var pieChart = new ApexCharts(pieChartCont, pieOptions)
+  // pieChart.render()
+  // var columnChart = new ApexCharts(columnChartCont, columnOptions)
+  // columnChart.render()
+
+  let chart = new ApexCharts(chartContainer, pieOptions);
 
   pieButt.addEventListener('click', function () {
-    if (!this.classList.contains('active-chart-butt')) {
-      this.classList.add('active-chart-butt')
-      columnButt.classList.remove('active-chart-butt')
-
-      pieChartCont.classList.add('active-chart')
-      columnChartCont.classList.remove('active-chart')
-    }
+    chart.updateOptions(pieOptions);
+    this.disabled = true;
 
     const theme = document.documentElement.dataset.theme
     if (theme === 'light') {
@@ -120,13 +119,8 @@ addEventListener('load', () => {
   })
 
   columnButt.addEventListener('click', function () {
-    if (!this.classList.contains('active-chart-butt')) {
-      this.classList.add('active-chart-butt')
-      pieButt.classList.remove('active-chart-butt')
-
-      columnChartCont.classList.add('active-chart')
-      pieChartCont.classList.remove('active-chart')
-    }
+    chart.updateOptions(columnOptions);
+    this.disabled = true;
 
     const theme = document.documentElement.dataset.theme
     if (theme === 'light') {
@@ -134,21 +128,25 @@ addEventListener('load', () => {
     }
   })
 
-  window.addEventListener('resize', () => {
-    pieChart.updateOptions({
-      chart: {
-        width: '100%',
-        height: '100%',
-      },
-    })
+  // window.addEventListener('resize', () => {
+  //   pieChart.updateOptions({
+  //     chart: {
+  //       width: '100%',
+  //       height: '100%',
+  //     },
+  //   })
 
-    columnChart.updateOptions({
-      chart: {
-        width: '100%',
-        height: '100%',
-      },
-    })
-  })
+  //   columnChart.updateOptions({
+  //     chart: {
+  //       width: '100%',
+  //       height: '100%',
+  //     },
+  //   })
+
+  //   pieChart.updateOptions({
+
+  //   })
+  // })
 
   document.addEventListener('themechange', () => {
     pieChart.updateOptions({

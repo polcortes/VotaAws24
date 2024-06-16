@@ -145,8 +145,9 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
             </h1>
             <span>Gráfico de los resultados:</span>
             <div>
-                <div class="survey-details-chart active-chart" id="pie-chart-cont"></div>
-                <div class="survey-details-chart" id="column-chart-cont"></div>
+                <!-- <div class="survey-details-chart active-chart" id="pie-chart-cont"></div>
+                <div class="survey-details-chart" id="column-chart-cont"></div> -->
+                <div class="survey-details-chart active-chart" id="chart-container"></div>
                 <aside>
                     <!--<label><input type="radio" name="chart-opt" class="chart-opt" value="pie-chart"></label>
                     <label><input type="radio" name="chart-opt" class="chart-opt" value="column-chart"></label>-->
