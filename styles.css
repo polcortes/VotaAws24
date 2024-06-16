@@ -54,14 +54,17 @@ html {
         background-color: rgba(39, 39, 39, .2) !important;
     }
 
-    #conditions input[type="submit"] {
-        color: var(--gris-oscuro);
-        background-color: var(--gris-claro);
-    }
-
-    #conditions input[type="submit"]:hover {
+    #conditions input[type="submit"],
+    #create {
         color: var(--gris-claro);
         background-color: var(--gris-oscuro);
+        border: 1px solid var(--gris-claro);
+    }
+
+    #conditions input[type="submit"]:hover,
+    #create:hover {
+        color: var(--gris-oscuro) !important;
+        background-color: var(--gris-claro);
     }
 }
 
@@ -422,6 +425,7 @@ footer {
     font-size: larger;
     margin-top: 50px;
     margin-bottom: 0;
+    cursor: pointer;
 }
 
 #createPoll #create:hover {
