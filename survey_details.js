@@ -150,6 +150,7 @@ addEventListener('load', () => {
     pieOptions
   );
   pieButt.disabled = false;
+  pieButt.classList.add('active-chart-butt');
 
   pieButt.addEventListener('click', function () {
     Chart.getChart("chart-container").destroy()
@@ -161,6 +162,8 @@ addEventListener('load', () => {
 
     this.disabled = true;
     columnButt.disabled = false;
+    this.classList.add('active-chart-butt');
+    columnButt.classList.remove('active-chart-butt');
   })
 
   columnButt.addEventListener('click', function () {
@@ -173,6 +176,8 @@ addEventListener('load', () => {
 
     this.disabled = true;
     pieButt.disabled = false;
+    this.classList.add('active-chart-butt');
+    pieButt.classList.remove('active-chart-butt');
   })
   //
   // window.addEventListener('resize', () => {
