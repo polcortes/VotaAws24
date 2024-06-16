@@ -115,7 +115,7 @@ addEventListener('load', () => {
 
     const theme = document.documentElement.dataset.theme
     if (theme === 'light') {
-      document.querySelector('.survey-details-chart').style.backgroundColor = '#D9D9D9 !important'
+      document.getElementsByClassName('survey-details-chart')[0].style.backgroundColor = '#D9D9D9 !important'
     }
   })
 
