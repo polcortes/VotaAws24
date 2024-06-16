@@ -179,7 +179,7 @@ addEventListener('load', () => {
     this.classList.add('active-chart-butt');
     pieButt.classList.remove('active-chart-butt');
   })
-  //
+  
   // window.addEventListener('resize', () => {
   //   pieChart.updateOptions({
   //     chart: {
