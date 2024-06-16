@@ -92,8 +92,6 @@ html {
         color: #d9d9d9;
     }
 
-   
-
     #pie-chart-cont, #column-chart-cont,
     #pie-chart-cont [class~="apexcharts"], #column-chart-cont [class~="apexcharts"] {
         color: #d9d9d9;
@@ -1215,7 +1213,7 @@ footer > .links > .github > a {
 
 
 /* Gráfico: */
-div.apexcharts-legend.apexcharts-align-center.apx-legend-position-right {
+/*div.apexcharts-legend.apexcharts-align-center.apx-legend-position-right {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1225,7 +1223,7 @@ div.apexcharts-legend.apexcharts-align-center.apx-legend-position-right {
 
 span.apexcharts-legend-text {
     color: var(--gris-claro)!important;
-}
+}*/
 
 
 /* -----------------------------------------------------
