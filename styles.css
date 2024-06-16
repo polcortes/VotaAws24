@@ -68,10 +68,6 @@ html {
         color: var(--gris-oscuro) !important;
         background-color: var(--gris-claro) !important;
     }
-
-    .survey-details-chart {
-        background-color: var(--gris-claro);
-    }
 }
 
 [data-theme="dark"] {

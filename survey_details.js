@@ -112,6 +112,12 @@ addEventListener('load', () => {
       pieChartCont.classList.add('active-chart')
       columnChartCont.classList.remove('active-chart')
     }
+
+    const theme = document.documentElement.dataset.theme
+    if (theme === 'light') {
+      document.querySelector('.survey-details-chart').style.backgroundColor =
+        '#D9D9D9 !important'
+    }
   })
 
   columnButt.addEventListener('click', function () {
@@ -121,6 +127,12 @@ addEventListener('load', () => {
 
       columnChartCont.classList.add('active-chart')
       pieChartCont.classList.remove('active-chart')
+    }
+
+    const theme = document.documentElement.dataset.theme
+    if (theme === 'light') {
+      document.querySelector('.survey-details-chart').style.backgroundColor =
+        '#272727 !important'
     }
   })
 
