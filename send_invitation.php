@@ -46,7 +46,7 @@ try {
         $mailsToSend = $query->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($mailsToSend as $mailToSend) {
-            $link = "https://aws24.ieti.site/vote.php?token=" . $mailToSend['invitation_token'] . "&survey_id=" . $mailToSend['survey_id'];
+            $link = "https://pcortesgarcia.ieti.site/vote.php?token=" . $mailToSend['invitation_token'] . "&survey_id=" . $mailToSend['survey_id'];
             $mail->IsHTML(true);
             $mail->AddAddress($mailToSend['mail_to']);
             $mail->SetFrom($emailUsername);
