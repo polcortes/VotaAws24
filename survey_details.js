@@ -115,8 +115,7 @@ addEventListener('load', () => {
 
     const theme = document.documentElement.dataset.theme
     if (theme === 'light') {
-      document.querySelector('.survey-details-chart').style.backgroundColor =
-        '#D9D9D9 !important'
+      document.querySelector('.survey-details-chart').style.backgroundColor = '#D9D9D9 !important'
     }
   })
 
@@ -131,8 +130,7 @@ addEventListener('load', () => {
 
     const theme = document.documentElement.dataset.theme
     if (theme === 'light') {
-      document.querySelector('.survey-details-chart').style.backgroundColor =
-        '#272727 !important'
+      document.querySelector('.survey-details-chart').style.backgroundColor = '#272727 !important'
     }
   })
 
