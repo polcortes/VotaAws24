@@ -120,7 +120,8 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
     <title>Detalles de "
         <?php echo $question_text; ?>"
     </title>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <meta name="description" content="Crea una encuesta para obtener las respuestas de todo el mundo!">
     <link rel="stylesheet" href="styles.css?<?php echo date('Y-m-d_H:i:s'); ?>">
 
@@ -147,7 +148,7 @@ if (isset($_SESSION["usuario"]) && isset($_GET["id"])) {
             <div>
                 <!-- <div class="survey-details-chart active-chart" id="pie-chart-cont"></div>
                 <div class="survey-details-chart" id="column-chart-cont"></div> -->
-                <div class="survey-details-chart active-chart" id="chart-container"></div>
+                <canvas class="survey-details-chart" id="chart-container"></canvas>
                 <aside>
                     <!--<label><input type="radio" name="chart-opt" class="chart-opt" value="pie-chart"></label>
                     <label><input type="radio" name="chart-opt" class="chart-opt" value="column-chart"></label>-->
