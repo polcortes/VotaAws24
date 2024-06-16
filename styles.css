@@ -101,7 +101,17 @@ html {
     #nav-mobile #close:hover,
     #toggle-menu {
         background-color: rgba(39, 39, 39, .2) !important;
-    }   
+    }
+
+    #conditions input[type="submit"] {
+        color: var(--gris-oscuro);
+        background-color: var(--gris-claro);
+    }
+
+    #conditions input[type="submit"]:hover {
+        color: var(--gris-claro);
+        background-color: var(--gris-oscuro);
+    }
 }
 
 * {
