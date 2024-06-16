@@ -104,14 +104,14 @@ html {
     }
 
     #conditions input[type="submit"] {
-        color: var(--gris-oscuro);
-        background-color: var(--gris-claro);
+        color: var(--gris-claro);
+        background-color: var(--gris-oscuro);
         border: 1px solid var(--gris-claro);
     }
 
     #conditions input[type="submit"]:hover {
-        color: var(--gris-claro);
-        background-color: var(--gris-oscuro);
+        color: var(--gris-oscuro);
+        background-color: var(--gris-claro);
     }
 }
 
