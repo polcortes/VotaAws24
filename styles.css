@@ -1170,6 +1170,10 @@ footer > .links > .github > a {
     display: block;
 }
 
+#survey_details > main > section > div {
+    justify-content: center;
+}
+
 #survey_details > main > section > div,
 #survey_details > main > section > div > div {
     display: flex;

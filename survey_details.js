@@ -150,34 +150,28 @@ addEventListener('load', () => {
     pieOptions
   );
 
-  pieButt.addEventListener('click', async function () {
+  pieButt.addEventListener('click', function () {
     Chart.getChart("chart-container").destroy()
+
     new Chart(
       ctx,
       pieOptions
     )
-    this.disabled = true;
 
-    const theme = document.documentElement.dataset.theme
-    if (theme === 'light') {
-      document.getElementsByClassName('survey-details-chart')[0].style.backgroundColor = '#D9D9D9 !important'
-    }
+    this.disabled = true;
+    columnButt.disabled = false;
   })
 
-  columnButt.addEventListener('click', async function () {
-    // await chart.updateOptions(columnOptions, false, true, false);
+  columnButt.addEventListener('click', function () {
     Chart.getChart("chart-container").destroy()
+
     new Chart(
       ctx,
       barOptions
     )
 
     this.disabled = true;
-
-    const theme = document.documentElement.dataset.theme
-    if (theme === 'light') {
-      document.querySelector('.survey-details-chart').style.backgroundColor = '#272727 !important'
-    }
+    pieButt.disabled = false;
   })
   //
   // window.addEventListener('resize', () => {
