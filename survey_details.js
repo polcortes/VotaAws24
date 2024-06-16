@@ -36,9 +36,28 @@ addEventListener('load', () => {
     }]
   };
 
+  const getData = (data, labels, useLabel = false) => {
+    if (useLabel) {
+      return {
+        labels,
+        datasets: [{
+          data,
+          label: document.querySelector('h1').textContent,
+        }]
+      };
+    }
+
+    return {
+      labels,
+      datasets: [{
+        data
+      }]
+    };
+  }
+
   const pieOptions = {
     type: 'pie',
-    data: data,
+    data: getData(series, labels),
     options: {
       responsive: true,
       mantainAspectRatio: true
@@ -47,7 +66,7 @@ addEventListener('load', () => {
 
   const barOptions = {
     type: 'bar',
-    data: data,
+    data: getData(series, labels, true),
     options: {
       responsive: true,
       mantainAspectRatio: true,
@@ -157,7 +176,7 @@ addEventListener('load', () => {
 
     new Chart(
       ctx,
-      pieOptions
+      {...pieOptions}
     )
 
     this.disabled = true;

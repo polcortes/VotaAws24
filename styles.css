@@ -1084,6 +1084,7 @@ footer > .links > .github > a {
 
 #survey_details > main > section {
     padding: 20px;
+    padding-right: 30px;
 }
 
 #survey_details > main > section > h1 {
