@@ -116,7 +116,7 @@ try {
                     $mail->Username = $emailUsername;
                     $mail->Password = $emailPassword;
 
-                    $link = "https://aws24.ieti.site/forgot_pass.php?token=" . $row['token'];
+                    $link = "https://pcortesgarcia.ieti.site/forgot_pass.php?token=" . $row['token'];
                     $mail->IsHTML(true);
                     $mail->AddAddress($_POST["email-forgot"]);
                     $mail->SetFrom($emailUsername);
